@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "首页",
+  "disableScroll": true,
+  "usingComponents": {
+    "work_list": "/component/work_list/work_list"
+  }
+}

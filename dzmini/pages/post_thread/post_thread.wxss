@@ -1,0 +1,183 @@
+/* pages/post_thread/post_thread.wxss */
+
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+
+.classTypeView {
+  display: flex;
+  border-bottom:1px solid #e1e1e1c0;
+}
+.classType {
+  width:100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding-left: 30rpx;
+  background: url('http://static.qr.cntv.cn/2018hb/class/down.png') no-repeat 690rpx center/22rpx 13rpx #fff;
+  color: #333333;
+  font-size: 30rpx;
+}
+
+ .text-deal{
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all; /* 追加这一行代码 */
+    padding-right: 35rpx;
+ }
+.easyType {
+  width:120rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding-left: 30rpx;
+  background: url('http://static.qr.cntv.cn/2018hb/class/down.png') no-repeat 110rpx center/22rpx 13rpx #fff;
+  color: #333333;
+  font-size: 30rpx;
+}
+.easyInput {
+  width: 590rpx;
+  font-size:30rpx;
+  border-left:0.5px solid #e1e1e1c0;
+  margin:20rpx 0;
+  padding-left:30rpx;
+
+}
+.detailText {
+  height: 300rpx;
+  width: 100%;
+  font-size: 30rpx;
+  padding: 30rpx;
+  color: #333333;
+  word-break: break-all;
+}
+
+.attachmentContain {
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+  margin-bottom:-4px;
+  margin-right:-9px;
+  overflow:hidden;
+
+}
+.uploader__bd {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-bottom: -4px;
+  margin-right: -9px;
+  overflow: hidden;
+}
+.uploader__files {
+  display: flex;
+  flex-wrap:wrap;
+}
+.uploader__file {
+  margin-bottom:20rpx;
+  position: relative;
+}
+
+.uploader__img {
+  display: block;
+  width: 140rpx;
+  height: 140rpx;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+}
+
+.uploader__input {
+  width:140rpx;
+  height:140rpx;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+}
+
+.postBtn {
+  margin: 30rpx;
+  margin-top: 35rpx;
+}
+
+/* 音频播放start */
+.audio-playView {
+    position: relative;
+    width: 650rpx;
+    padding: 15rpx;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+    background: #d7d7d7;
+    display: flex;
+    border-radius: 10rpx;
+    background:#f4f4f4;
+    border: 1px solid #e1e1e1c0;
+    margin: 50rpx 30rpx;
+    height: 120rpx;
+}
+
+.record-close {
+  width: 120rpx;
+  height:64rpx;
+  margin-top: 10rpx;
+}
+.record-time {
+  margin-top: 15rpx;
+  width: 280rpx;
+  height:64rpx;
+  text-align: left;
+  margin-left:15rpx;
+  color: red;
+}
+.record-icon {
+  margin: 0 20rpx;
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.record-finish {
+  margin-top: 15rpx;
+  width: 88rpx;
+  color: #6199fd;
+}
+
+/* 音频滚动条start */
+.control-process {
+    display: flex;
+    justify-content: space-between;
+}
+.control-process .slider {
+    width: 280rpx;
+    margin-top: 30rpx;
+}
+.control-process text {
+    font-size: 24rpx;
+    margin-left: 20rpx;
+    width: 66rpx;
+    color:#999999;
+    line-height: 1.4;
+}
+
+.audio-icon {
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 10rpx;
+}
+/* 音频播放end */
+.playViewContain {
+  position:relative;
+  width:690rpx;
+}
+.deleteA {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 0rpx;
+  right: -10rpx;
+}
+.audioDele {
+  top: -15rpx;
+}

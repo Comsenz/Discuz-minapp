@@ -1,0 +1,235 @@
+/* pages/manage2/manage2.wxss */
+page{
+  background-color: #F4F4F4;  
+}
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+button::after{
+  border:none;
+}
+input{
+  outline:none;
+  border:none;
+  list-style: none;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right
+}
+
+.l_flex {
+  display: flex;
+  
+}
+
+.l_pwd {
+  height: 82rpx;
+  margin-right: 20rpx;
+  width: 360rpx;
+  border: 1rpx solid #e1e1e1;
+  border-radius: 15rpx;
+}
+page{
+  width:100%;
+  height:100%;
+}
+.row{
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.ell{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.l_main{
+  font-size: 28rpx;
+  width:100%;
+  line-height: 1; 
+  color: #000;
+  position: relative;
+  padding-top:88rpx; 
+  padding-bottom:125rpx;
+  height:100%;
+}
+.l_sea{
+  height: 88rpx;
+  background-color: #EFEFF4;
+  width: 100%;
+  padding:15rpx;
+  border-bottom:1rpx solid #D6D6DB;
+  position: fixed;
+  left:0;
+  top:0;
+  z-index:9999;
+}
+.sea_bar{
+  width:100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.sea_btn1{
+  width: 100rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  display: block;
+  padding-left: 36rpx;
+  background: url('http://static.qr.cntv.cn/2018hb/class/search.png') no-repeat left center/25rpx 25rpx;
+  font-size: 28rpx;
+  margin: 0 auto;
+  color: #B2B2B2;
+}
+.sea_btn{
+  height: 58rpx;
+  line-height: 58rpx;
+  padding-left: 61rpx;
+  background: url('http://static.qr.cntv.cn/2018hb/class/search.png') no-repeat 25rpx center/25rpx 25rpx;
+  font-size: 28rpx;
+  margin: 0 auto;
+}
+.l_group{
+  height: 44rpx;
+  line-height: 44rpx;
+  width: 100%;
+  font-size: 25rpx;
+  padding-left: 30rpx;
+  color: #999999;
+}
+.l_member{
+  background-color: #fff;
+  padding-left: 30rpx;
+}
+.me_item{
+  padding-top: 20rpx;
+  height: 130rpx;
+  overflow: hidden;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.me_item:last-child{
+  border-bottom: 0;
+}
+.me_head{
+  margin-right: 32rpx;
+  position: relative;
+}
+.imgbox{
+  overflow: hidden;
+  border-radius: 10rpx;
+  border: 1rpx solid #E1E1E1;
+  width: 90rpx;
+  height:90rpx;
+  background-color: #fff;
+}
+.imgbox image{
+  width: 100%;
+  height:100%;
+}
+.me_lab{
+  position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  border-radius: 16rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 22rpx;
+  right: -16rpx;
+  bottom: 0rpx;
+}
+.lab_zhu{
+  background-color: #FF6C00;
+}
+.lab_guan{
+  background-color: #5ABF39;
+}
+.lab_shi{
+  background-color: #EA9A7F;
+}
+.me_nick{
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 27rpx;
+  width: 300rpx;
+  margin-right: 30rpx;
+}
+.me_nc{
+  height: 90rpx;
+  width: 140rpx;
+  background: url('http://static.qr.cntv.cn/2018hb/class/nc.png') no-repeat left center/26rpx 19rpx;
+}
+.me_tel{
+  height: 90rx;
+  line-height: 90rpx;
+  font-size: 27rpx;
+}
+
+.l_true{
+  width: 100%;
+  height: 125rpx;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 0 15rpx 2rpx rgba(0,0,0,0.1);
+  padding:20rpx 30rpx;
+  z-index:9999;
+}
+.l_true button{
+  background-color: #09BB07;
+  border: 1rpx solid #029400;
+  color: #fff;
+  height: 85rpx;
+  line-height: 85rpx;
+  width: 100%;
+}
+.l_nav{
+  position: fixed;
+  top: 50%;
+  right: 8rpx;
+  transform: translate(0,-50%);
+  width: 88rpx;
+  padding-top: 68rpx;
+  padding-bottom: 20rpx;
+  border-radius: 44rpx;
+  box-shadow: 0 0 15rpx 2rpx rgba(0,0,0,0.1);
+  background: url('http://static.qr.cntv.cn/2018hb/class/search2.png') no-repeat center 32rpx/24rpx 24rpx;
+  background-color: #fff;
+}
+.nav_item{
+  font-weight: 700;
+  text-align: center;
+  font-size: 27rpx;
+  padding: 12rpx 0;
+}
+.me_sele{
+  width: 76rpx;
+  height: 90rpx;
+}
+.me_sele.no{
+  background: url('http://static.qr.cntv.cn/2018hb/class/sele0.png') no-repeat left center/46rpx 46rpx;
+}
+.me_sele.yes{
+  background: url('http://static.qr.cntv.cn/2018hb/class/sele1.png') no-repeat left center/46rpx 46rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

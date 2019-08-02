@@ -1,0 +1,155 @@
+<!--pages/course_question_detail/course_question_detail.wxml-->
+<import src="../common_temp/audio_player.wxml" />
+<view class='detail' wx:if="{{datalist.length > 0}}">
+  <view class='content'>
+    <view class='userInfo'>
+      <view class='user'>
+        <image class='autherAvatar' src="{{userAvatar}}{{datalist[0].autherid}}"></image>
+
+        <view class='auther_info'>
+          <view class='auther fontWeight'>
+            <view class='username'>
+              {{datalist[0].nickname?datalist[0].nickname:datalist[0].author}}
+            </view>
+
+          </view>
+          <rich-text class='time' nodes="{{datalist[0].dateline}}"></rich-text>
+        </view>
+      </view>
+
+
+      <view class='shareBtn'>
+        <button open-type='share' plain='{{true}}' data-sharetype='detail'>
+          <image class='shareIcon' src="{{minImgDoc}}qa_share.png"></image>
+        </button>
+      </view>
+
+    </view>
+
+
+    <view class='worker'>
+      <view class='easyTitle'>
+        <text class='wen'>问</text> {{thread.subject}}</view>
+      <rich-text class="message easyMessage" nodes="{{datalist[0].message}}"></rich-text>
+
+      <view class='attachlist' wx:if="{{datalist[0].attachments}}">
+        <block wx:for="{{datalist[0].imageA}}" wx:for-item="image" wx:key="image.aid">
+          <image class='attachImage' src="{{image.newUrl}}" mode='widthFix' id="{{aidx}}" data-cellindex="0" id="{{index}}" catchtap="lookImage"></image>
+        </block>
+        <block wx:for="{{datalist[0].videoA}}" wx:for-item="video" wx:key="{{video.aid}}">
+          <view class='viodeoView'>
+            <video id='myVideo' class="uploader__video uploader__input" controls="false" show-fullscreen-btn="false" bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{video.newUrl}}">
+            </video>
+          </view>
+        </block>
+        <block wx:for="{{datalist[0].audioA}}" wx:for-item="audio" wx:key="audio.aid">
+          <template is="audio_player" data='{{...audio.toolUse,minImgDoc}}' />
+        </block>
+      </view>
+    </view>
+
+    <view class='cell-info-left'>
+      <view class='icon-item cell-tag'>
+        <image class='cell-icon' src='{{minImgDoc}}re_tag.png'></image>
+        <view class='cell-icon-text'>{{thread.typename?thread.typename:'语文'}}</view>
+      </view>
+      <view class='icon-item cell-recount'>
+        <image class='cell-icon' src='{{minImgDoc}}re_dis.png'></image>
+        <view class='cell-icon-text'>{{thread.replies}}个回答</view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='grayRow replyInfo'>
+    <view>
+    </view>
+    <view class='sortTip' bindtap='showSort'>{{listSortType}}</view>
+
+    <view class='shortListContain' wx:if="{{sortListShow}}">
+      <image src='{{minImgDoc}}sortList.png' mode='top' class='shortList'>
+      </image>
+      <view class='sortType sortTypeF' catchtap='sortClick' id='2'>
+        <view>默认顺序</view>
+        <image class='sortCheck' src='{{minImgDoc}}check.png' hidden='{{!sortdefault}}'></image>
+      </view>
+      <view class='sortType' id='1' catchtap='sortClick'>
+        <view>按时间</view>
+        <image class='sortCheck' src='{{minImgDoc}}check.png' hidden='{{sortdefault}}'></image>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='reply'>
+    <block wx:for="{{datalist}}" wx:key="item.pid">
+
+      <view class='replyCell' id="{{item.pid}}" wx:if="{{index != 0}}" bindtap='cellClick'>
+        <view class='replyinfo-c'>
+          <view class='replyerInfo'>
+            <image class='avatar' src="{{userAvatar}}{{item.autherid}}"></image>
+            <view class='auther_info'>
+              <view class='username fontWeight'>
+                {{item.nickname?item.nickname:item.username}}
+              </view>
+              <rich-text class='retime' nodes="{{item.dateline}}"></rich-text>
+            </view>
+          </view>
+
+          <block wx:if="{{special_reward.bestpost.pid==item.pid}}">
+            <image class='best_answer' src='{{minImgDoc}}best_answer.png'></image>
+          </block>
+          <block wx:elif="{{!special_reward.bestpost.pid && datalist[0].authorid == member_uid}}">
+            <view class='agree' id="{{item.pid}}" catchtap='bestanswer'>采纳</view>
+          </block>
+          
+        </view>
+
+        <view class='messageView'>
+          <rich-text class='message' nodes="{{item.message}}"></rich-text>
+          <view class='attachlist' wx:if="{{item.attachments}}">
+
+            <view class="attachementView {{item.imageA.length ==0 && item.videoA.length == 1?'singleVideo':''}}" wx:if="{{item.attachments}}">
+              <block wx:for="{{item.imageA}}" wx:for-item="attItem" wx:for-index="imgIndex" wx:key="attItem.aid">
+                <image class="attachement {{item.imageA.length ==1&& item.videoA.length == 0?'signle-image':'' }}" mode="{{item.imageA.length + item.videoA.length == 1?'widthFix':'aspectFill'}}" src="{{attItem.newUrl}}" id="{{imgIndex}}" data-cellindex="{{index}}" catchtap="lookImage"></image>
+              </block>
+
+              <block wx:for="{{item.videoA}}" wx:for-index="aidx" wx:for-item="video" wx:key="{{video.aid}}">
+                <image catchtap='clickVideo' id="{{video.newUrl}}" class="attachement" src='{{minImgDoc}}videoPlace.png'></image>
+              </block>
+            </view>
+            <block wx:for="{{item.audioA}}" wx:for-item="audio" wx:key="{{attItem.aid}}">
+                <template is="audio_player" data='{{...audio.toolUse,minImgDoc}}' />
+              </block>
+          </view>
+        </view>
+
+        <view class='flowerAndDiscuss'>
+          <!-- <image src="{{item.issupport==1?minImgDoc+'answer_agreed.png':minImgDoc+'answer_agree.png'}}" class='workButton' catchtap='sendFlower' id="{{index}}"></image> -->
+          <view class='support' catchtap='sendFlower' id="{{index}}">
+            <image src='/image/support.png'></image>
+            <view class='support-count'>{{item.postreview.support?item.postreview.support:0}}</view>
+          </view>
+          <image src='{{minImgDoc}}work_discuss.png' class='workButton' catchtap='replyWork' id="{{item.pid}}"></image>
+        </view>
+
+        <view class='workReply' wx:if="{{item.comments}}">
+          <block wx:for="{{item.comments}}" wx:for-item='wreply' wx:key="{{wreply.id}}">
+            <view class='workReplyText'>
+              <text class='workReplyAuthor'>{{wreply.nickname?wreply.nickname:wreply.author}}：</text>{{wreply.comment}}</view>
+          </block>
+          <view bindtap="commentMore" class="commentMore" data-index="{{index}}" data-pid="{{item.pid}}" wx:if="{{commentMoreLock[item.pid] !== false && datalist[index].comments.length >= 5}}">查看更多></view>
+        </view>
+
+      </view>
+
+    </block>
+  </view>
+  <view class='noMoreView' hidden="{{hasMore}}">
+    别再用力了，你已经滑到底啦
+  </view>
+</view>
+<video id='detailVideo' autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" bind src="{{currentVideo}}">
+</video>
+
+<image src='{{minImgDoc}}postEnter.png' class='postEnter borderShowdow' wx:if="{{currentTab != 0}}" bindtap='postEnter'>发布</image>

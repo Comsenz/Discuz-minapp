@@ -1,0 +1,30 @@
+/* pages/forum/forum.wxss */
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+
+.cat {
+  font-size: 34rpx;
+  padding: 15rpx 30rpx;
+  background: #ebebeb;
+  font-weight: 500;
+}
+
+.forum_section {
+  padding-left: 30rpx;
+}
+
+.forum_cell {
+  font-size: 32rpx;
+  color: #333333;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+.bar_right{
+  background: url('http://static.qr.cntv.cn/2018hb/class/right.png') no-repeat  665rpx/16rpx 25rpx;
+}
+
+.forum_cell text {
+  color: #4b89ef;
+  font-size: 28rpx;
+}

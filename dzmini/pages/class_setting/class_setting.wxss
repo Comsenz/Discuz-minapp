@@ -1,0 +1,199 @@
+button::after{
+  border:none;
+}
+page{
+  background-color: #F4F4F4;
+}
+.weui-cells_after-title{
+  margin-top: 30rpx;
+}
+.little_text{
+  font-size: 25rpx;
+  color:#999;
+}
+.logo{
+  width:100rpx;
+  height: 100rpx;
+}
+.weui-badge{
+  display: block;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right
+}
+page{
+  width:100%;
+  height:100%;
+}
+.row{
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.ell{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.l_main{
+  font-size: 28rpx;
+  width:100%;
+  line-height: 1; 
+  color: #000;
+  position: relative;
+  padding-top:30rpx; 
+}
+.l_member{
+  background-color: #fff;
+  border-top: 1rpx solid #E5E5E5;
+  border-bottom: 1rpx solid #E5E5E5;
+  padding-left: 52rpx;
+  overflow: hidden;
+  margin-top:30rpx;
+  padding-bottom:30rpx;
+}
+.me_item{
+  padding-top: 33rpx;
+  margin-right: 44rpx;
+  height:165rpx;
+  box-sizing: border-box;
+}
+.img_block{
+  width: 90rpx;
+  height:90rpx;
+  position: relative;
+}
+.me_head{
+  width: 90rpx;
+  height:90rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #E1E1E1;
+  background-color: #fff;
+  padding:0;
+  margin:0;
+  overflow: hidden;
+  position: relative;
+}
+.me_head image{
+  width: 100%;
+  height:100%;
+}
+.me_lab{
+  position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  border-radius: 16rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 22rpx;
+  right: -16rpx;
+  bottom: -1rpx;
+}
+.lab_guan{
+  background-color: #5ABF39;
+}
+.lab_shi{
+  background-color: #EA9A7F;
+}
+.me_nick{
+  font-size: 22rpx;
+  width: 100rpx;
+  margin-left: -5rpx;
+  color: #666;
+  height: 30rpx;
+  padding-top: 15rpx;
+  text-align: center;
+  line-height: 1;
+}
+.me_add{
+  width: 4rpx;
+  height:44rpx;
+  background-color: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+}
+.me_jian{
+  width: 44rpx;
+  height:4rpx;
+  background-color: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+}
+.me_more{
+  width: 100%;
+  font-size: 26rpx;
+  color: #989898;
+  text-align: center;
+  padding:32rpx 52rpx 12rpx 0;
+}
+.me_more>text{
+  display: inline-block;
+  margin: 0 auto;
+  padding-right: 35rpx;
+  background: url('http://static.qr.cntv.cn/2018hb/class/right.png') no-repeat right center/16rpx 25rpx;
+}
+.lab_zhu{
+  background-color: #FF6C00;
+}
+
+.page__bd{
+  font-size: 32rpx;
+  overflow: hidden;
+}
+.weui-cell__ft{
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.weui-cell{
+  font-size: 32rpx;
+  padding: 21rpx 30rpx;
+}
+.weui-cell:before{
+  border-color: #E5E5E5!important;
+}
+.weui-cells:before{
+  border-color: #E5E5E5!important;
+}
+.img_box{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 12rpx;
+  border:1rpx solid #e1e1e1;
+  overflow: hidden;
+  float: right;
+}
+.kouhao{
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  width: 500rpx;
+}
+.mingcheng{
+  width: 500rpx;
+}
+.weui-btn-area{
+  margin:33rpx 36rpx 50rpx;
+}
+.weui-cell__ft_in-access{
+  min-height: 44rpx;
+}
+.weui-badge_dot{
+  float:right;
+  margin-top:10rpx;
+}

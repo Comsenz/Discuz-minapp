@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "我的主题",
+  "onReachBottomDistance": 150,
+  "enablePullDownRefresh": true
+}

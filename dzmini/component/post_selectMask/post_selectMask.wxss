@@ -1,0 +1,44 @@
+/* component/post_selectMask/post_selectMask.wxss */
+.Mask {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color:#000;background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.maskContain {
+  position:absolute;
+  width: 650rpx;
+  border-radius: 10rpx;
+  /* margin:200rpx auto; */
+  text-align: center;
+  overflow:hidden;
+  background: white;
+  padding:50rpx;
+  left: 50rpx;
+  bottom: 200rpx;
+}
+
+.postType {
+  display: flex;
+  background: url('http://static.qr.cntv.cn/2018hb/class/right.png') no-repeat 500rpx center/16rpx 25rpx #fff;
+  align-items: center;
+  background-color:#eeeeee;
+  border-radius:10rpx;
+  height: 120rpx;
+  margin-top: 30rpx;
+}
+
+.postType image {
+  margin-left: 30rpx;
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.typeText {
+  margin-left: 120rpx;
+  color: #3379E6;
+}

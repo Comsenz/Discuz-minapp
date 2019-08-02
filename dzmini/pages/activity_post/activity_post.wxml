@@ -1,0 +1,107 @@
+<!--pages/activity_post/activity_post.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+<view class='container'>
+  <form catchsubmit="formSubmit">
+    <view class='section1'>
+      <input class="easyInput" name="subject" value="{{subject}}" placeholder="标题（最多只能输入80个字符）" />
+
+      <textarea wx:if="{{!fullScreen}}" class="weui-input detailText" name="message" placeholder="活动详情 请输入活动内容的详细描述" value="{{message}}" maxlength="-1" />
+      <view class="weui-cell" bindtap='chooseImage'>
+        <view class="weui-cell__hd">
+          <view class="weui-label">头图</view>
+          <view class='att-tip'>(大小不超过4M)</view>
+        </view>
+        <view class="weui-cell__bd">
+
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <view class='img_box'>
+            <image class="logo" mode='aspectFill' src="{{imageList[0]?imageList[0].src:minImgDoc+'post_course_image.png'}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='section1'>
+
+      <view class='.activity-type-c'>
+          <view class='time-tip activity-tip'>类型</view>
+          <input name="activitytype" value="{{activitytype}}" placeholder='请输入活动类型' focus="{{isSelf}}"></input>
+         <picker class='dateType' mode="selector" value="{{activityIndex}}" range="{{activitytypelist}}" bindchange="activityTypeChange">
+            <text decode="{{true}}">{{activitytypelist[activityIndex]?activitytypelist[activityIndex]:'自定义'}}</text>
+          </picker>
+        </view>
+    </view>
+
+    <view class='section1'>
+      <view class='teachTime'>
+        <view class='tt_title'>报名时间</view>
+        <view class='tt_pickercontent'>
+          <picker class='dateType' mode="date" value="{{enrolStart}}" bindchange="bindEnrolStartChange">
+            <text>{{enrolStart?enrolStart:'请选择'}}</text>
+          </picker>
+          <view class='zhi'>至</view>
+          <picker class='dateType' mode="date" value="{{enrolEnd}}" start="{{enrolStart}}" bindchange="bindEnrolEndChange">
+            <text decode="{{true}}">{{enrolEnd?enrolEnd:'请选择'}}</text>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+
+    <view class='section1'>
+      <view class='teachTime'>
+        <view class='tt_title'>活动时间</view>
+        <view class='tt_pickercontent'>
+          <view class='time-tip'>开始时间</view>
+          <picker class='dateType' mode="date" value="{{activityDateStart}}" bindchange="activityDateStartChange">
+            <text>{{activityDateStart?activityDateStart:'请选择'}}</text>
+          </picker>
+          <picker class='dateType' mode="time" value="{{activityTimeStart}}" start="{{activityTimeStart}}" bindchange="activityTimeStartChange">
+            <text decode="{{true}}">{{activityTimeStart?activityTimeStart:'00:00'}}</text>
+          </picker>
+        </view>
+        <view class='tt_pickercontent'>
+          <view class='time-tip'>结束时间</view>
+          <picker class='dateType' mode="date" value="{{activityDateEnd}}" bindchange="activityDateEndChange">
+            <text>{{activityDateEnd?activityDateEnd:'请选择'}}</text>
+          </picker>
+          <picker class='dateType' mode="time" value="{{activityTimeEnd}}" start="{{activityTimeEnd}}" bindchange="activityTimeEndChange">
+            <text decode="{{true}}">{{activityTimeEnd?activityTimeEnd:'00:00'}}</text>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__bd">活动地点</view>
+        <input class="weui-cell__ft weui-cell__ft_in-access" name="activityplace" value="{{activityplace}}"></input>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">活动人数</view>
+        <input type='number' class="weui-cell__ft weui-cell__ft_in-access" name="activitynumber" value="{{activitynumber}}"></input>
+      </view>
+      <picker mode="selector" value="{{genderIndex}}" range="{{genderlist}}" bindchange="bindGenderChange">
+        <view class="weui-cell picker-cell">
+          <view class="weui-cell__bd">性别</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">
+            {{genderlist[genderIndex]?genderlist[genderIndex]:''}}
+          </view>
+        </view>
+      </picker>
+    </view>
+
+    <view class='section1'>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">消耗积分</view>
+        <input type='number' class="weui-cell__ft weui-cell__ft_in-access" name="activitycredit" value="{{activitycredit}}"></input>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">每人花销</view>
+        <input type='digit' class="weui-cell__ft weui-cell__ft_in-access" name="cost" value="{{cost}}"></input>
+      </view>
+    </view>
+
+    <button class='postBtn' disabled="{{postLock}}" type="primary" formType="submit">发布</button>
+
+  </form>
+</view>

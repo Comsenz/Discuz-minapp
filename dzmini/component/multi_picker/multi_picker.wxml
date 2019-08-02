@@ -1,0 +1,51 @@
+<!--component/multi_picker/multi_picker.wxml-->
+<view catchtap='showSelectList'>
+  <slot></slot>
+</view>
+<view class='sele_box {{showSelectList?"active":""}}' wx:if="{{showSelectList}}">
+  <view class='ceng' catchtap='hideSelectList'></view>
+  <view class='content {{hideSearch?"muti_low":""}}'>
+    <view class='top'>
+      <view class='fl'>{{title}}</view>
+      <view class='fr' catchtap='hideSelectList'>完成</view>
+    </view>
+    <view class='sea_box' wx:if="{{!isWeek}}">
+      <input class='sea_bar' placeholder='输入搜索关键词' bindinput='search' value="{{keyword}}"></input>
+    </view>
+    <view class="sch_list {{hideSearch?'hideSearch':''}}">
+
+      <checkbox-group bindchange="everyDayChange" wx:if="{{isAll}}">
+        <view class='poll-cell'>
+          <label class="checkbox box_space">
+            <text>全选</text>
+            <checkbox value="all" id='all' checked="{{allChecked}}" />
+          </label>
+        </view>
+      </checkbox-group>
+
+      <checkbox-group bindchange="checkboxChange" wx:if="{{showTeachers.length>0}}">
+        <block wx:for="{{showTeachers}}" wx:key="t_muti">
+          <view class='poll-cell'>
+
+            <label class="checkbox">
+              <text>{{item.realname}}</text>
+              <checkbox value="{{item.uid}}" name='teacherid' checked="{{item.checked}}" />
+            </label>
+          </view>
+        </block>
+      </checkbox-group>
+      
+      <checkbox-group bindchange="checkDayChange" wx:if="{{isWeek}}">
+        <block wx:for="{{weekarray}}" wx:key="t_muti">
+          <view class='poll-cell'>
+            <label class="checkbox box_space">
+              <text>{{item.name}}</text>
+              <checkbox value="{{index}}" name='day' checked="{{item.checked}}" />
+            </label>
+          </view>
+        </block>
+      </checkbox-group>
+
+    </view>
+  </view>
+</view>

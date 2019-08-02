@@ -1,0 +1,143 @@
+page{
+  background-color: #F4F4F4;
+}
+.weui-cells_after-title{
+  margin-top: 30rpx;
+}
+.logo{
+  width:80rpx;
+  height: 80rpx;
+}
+
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+button::after{
+  border:none;
+}
+input{
+  outline:none;
+  border:none;
+  list-style: none;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right
+}
+page{
+  width:100%;
+  height:100%;
+}
+.row{
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.ell{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.l_main{
+  font-size: 28rpx;
+  width:100%;
+  line-height: 1; 
+  color: #000;
+  position: relative;
+  padding-top:88rpx; 
+}
+.ap_switch{
+  background-color: #fff;
+  border-top: 1rpx solid #E5E5E5;
+  border-bottom: 1rpx solid #E5E5E5;
+  overflow: hidden;
+  padding-left: 30rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+.ap_txt{
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.ap_switch switch{
+  position: absolute;
+  top: 50%;
+  right: 35rpx;
+  transform: translate(0,-50%);
+}
+.ap_tips{
+  height:44rpx;
+  line-height:44rpx;
+  width:100%;
+  font-size:25rpx;
+  padding-left:30rpx;
+  color:#999999;
+}
+.ap_block{
+  padding-left: 30rpx;
+  background-color: #fff;
+}
+.ap_item{
+  border-bottom: 1rpx solid #E5E5E5;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  overflow: hidden;
+}
+.ap_item::after{
+  border-bottom: 0;
+}
+.me_head{
+  width: 90rpx;
+  height:90rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #E1E1E1;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  margin-right:27rpx;
+}
+.me_head image{
+  width: 100%;
+  height:100%;
+}
+.ap_ap{
+  height:90rpx;
+  line-height:90rpx;
+  font-size:27rpx;
+}
+.ap_btn{
+  width: 270rpx;
+  height: 90rpx;
+  padding-top: 15rpx;
+}
+.ap_btn button{
+  width: 115;
+  height: 60rpx;
+  line-height: 58rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 27rpx;
+}
+.ap_agree{
+  background-color: #1AAD19;
+  color: #fff;
+  border: 1rpx solid #189F17;
+  margin-right: 10rpx;
+}
+.ap_refuse{
+  background-color: #F8F8F8;
+  color: #444;
+  border: 1rpx solid #DFDFDF;
+}
+.ap_name{
+  width: 157rpx;
+  height:90rpx;
+  line-height:90rpx;
+  font-size:27rpx;
+  color: #3B6DEA;
+}

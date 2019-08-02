@@ -1,0 +1,7 @@
+<!--pages/vote_list/vote_list.wxml-->
+<block wx:for="{{polloption}}" wx:key="{{item.polloptionid}}">
+  <view class="weui-cell" bindtap="voteDetail" id="{{item.polloptionid}}">
+    <view class="weui-cell__bd">{{item.polloption}}</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{item.votes}}</view>
+  </view>
+</block>

@@ -1,0 +1,21 @@
+/* pages/vote_optiondetail/vote_optiondetail.wxss */
+.cell {
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+}
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  border: 1rpx solid #f4f4f4;
+  margin:  20rpx  30rpx 20rpx 0;
+}
+.username {
+  font-size:28rpx;
+  height:50rpx;
+  width:400rpx;
+  overflow:hidden;
+  line-height:50rpx;
+}

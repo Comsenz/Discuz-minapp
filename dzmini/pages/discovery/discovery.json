@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "发现",
+  "onReachBottomDistance": 150,
+  "enablePullDownRefresh": true
+}

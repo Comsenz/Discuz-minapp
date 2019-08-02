@@ -1,0 +1,128 @@
+/* pages/mine_favorite/mine_favorite.wxss */
+page {
+  background-color: #f8f8f8;
+}
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+
+.borderShowdow {
+  box-shadow:0 0 15rpx 2rpx rgba(0,0,0,0.1);
+}
+.messageList {
+  
+  height: auto;
+  background-color: white;
+  border-radius: 15rpx;
+  margin: 30rpx;
+}
+
+.classCell {
+  display: flex;
+  margin: 0 24rpx;
+  border-bottom: 1px solid #e1e1e1c0; 
+}
+
+.class-cell-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 20rpx 0;
+  border-radius:8rpx;
+  border:1rpx solid #E1E1E1;
+}
+
+.class-cell-contentView {
+  margin-left: 20rpx;
+  width: 560rpx;
+}
+
+.username {
+  font-size: 30rpx;
+  color: #5f739b;
+  padding-top: 20rpx;
+  font-weight: 600;
+}
+
+.message {
+  font-size: 30rpx;
+  color: #353535;
+  margin-top:10rpx;
+  word-break: break-all;
+}
+
+.attachement {
+  width: 155rpx;
+  height: 155rpx;
+  margin-top:20rpx;
+  margin-right: 15rpx;
+}
+
+.class-cell-time {
+  width:200rpx;
+  float:left;
+  font-size:22rpx;
+  line-height:60rpx;
+  color:#888888;
+}
+.toolRight button{
+  padding: 0rpx;
+  border: none;
+  width: 115rpx;
+  height: 70rpx;
+}
+.toolRight {
+  margin-bottom: 10rpx;
+  width: 290rpx;
+  height: 70rpx;
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+}
+.shareHidden {
+  display: flex;
+  width: 238rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+}
+.shareIcon {
+  width: 100rpx;
+  height: 50rpx;
+}
+
+.discIcon {
+  width: 40rpx;
+  height: 30rpx;
+  margin-top: 20rpx;
+  display: none;
+}
+@import "../common_temp/audio_player.wxss";
+#myVideo {
+  width: 0rpx;
+  height: 0rpx;
+}
+
+
+.emptyView {
+  font-size: 28rpx;
+  color: #666666;
+  text-align: center;
+  margin:  50rpx 90rpx;
+
+}
+.emptyView image {
+  display: block;
+  width: 349rpx;
+  height: 261rpx;
+  margin: 300rpx auto 30rpx;
+}
+.emptyMsg {
+  padding-bottom: 600rpx;
+  width:410rpx;
+  margin:0 auto;
+}
+.noMoreView {
+  text-align: center;
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}

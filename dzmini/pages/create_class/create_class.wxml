@@ -1,0 +1,75 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+        <form bindsubmit="formSubmit">
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">圈子名称</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入圈子名称" name="className" value="{{groupInfo.name}}"/>
+                  </view>
+              </view>
+              <view class="weui-cell">
+                  <view class="weui-cell__bd">
+                      <textarea class="weui-textarea" placeholder="请输入圈子介绍" style="height: 3.3em" name="classInfo" value="{{groupInfo.description}}"/>
+                  </view>
+              </view>
+              <view class="weui-cell" bindtap="uploadPic">
+                <view class="weui-cell__hd">
+                      <view class="weui-label">圈子LOGO</view>
+                  </view>            
+                  <view class="weui-cell__bd">
+
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access">
+                      <block wx:if="{{iconnew_preview}}">
+                        <image class="logo" src="{{iconnew_preview}}"></image>
+                      </block>
+                      <block wx:else>
+                        <block wx:if="{{groupInfo.iconnew != 0}}">
+                          <image class="logo" src="{{groupInfo.icon}}"></image>
+                        </block>
+                        <block wx:if="{{groupInfo.iconnew == 0 || !isUpdate}}">
+                          <image class="logo" src="{{minImgDoc}}unknow_logo.jpg"></image>
+                        </block> 
+                       </block> 
+                  </view>
+              </view>
+          </view>
+          <view class="weui-cells weui-cells_after-title" wx:if="{{!isUpdate}}">
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">一级分类</view>
+                  </view>
+                  <view class="weui-cell__bd">                 
+                    <search_picker class='l_block l_sele weui-input' mode="selector" range="{{cityList}}" rangeKey="name" bindsearchchange="cityChange" beSelected="{{cityIndex}}" title="选一级分类" disabledNavto="{{true}}">{{cityList[cityIndex]['name']?cityList[cityIndex]['name']:'一级分类'}}</search_picker>
+                  </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">二级分类</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <search_picker class='l_block l_sele weui-input' mode="selector" range="{{_areaList}}" rangeKey="name" bindsearchchange="areaChange" disabled="{{isAreaLock}}" beSelected="{{areaIndex}}" title="选二级分类" disabledNavto="{{true}}">{{_areaList[areaIndex]['name']?_areaList[areaIndex]['name']:'二级分类'}}</search_picker>
+                  </view>
+              </view>
+              
+          </view>        
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_switch">
+                  <view class="weui-cell__bd">私密</view>
+                  <view class="weui-cell__bd little_text">(申请通过方可加入圈子)</view>
+                  <view class="weui-cell__ft">
+                      <switch wx:if="{{isUpdate}}" checked="{{groupInfo.jointype == 2?true:false}}" name="isPrivate"/>
+                      <switch wx:if="{{!isUpdate}}" checked name="isPrivate"/>
+                  </view>
+              </view>
+          </view>
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" form-type="submit">{{isUpdate?'保存':'创建圈子'}}</button>
+          </view>
+        </form>
+    </view>
+</view>

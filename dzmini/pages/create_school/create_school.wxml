@@ -1,0 +1,81 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+        <form bindsubmit="formSubmit">
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">所在城市</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <search_picker class='l_block l_sele weui-input' mode="selector" range="{{cityList}}" rangeKey="name" bindsearchchange="cityChange" beSelected="{{cityIndex}}" title="选城市" disabledNavto="{{true}}">{{cityList[cityIndex]['name']?cityList[cityIndex]['name']:'选城市'}}</search_picker>                  
+                  </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">所在地区</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <search_picker class='l_block l_sele weui-input' mode="selector" range="{{_areaList}}" rangeKey="name" bindsearchchange="areaChange" disabled="{{isAreaLock}}" beSelected="{{areaIndex}}" title="选地区" disabledNavto="{{true}}">{{_areaList[areaIndex]['name']?_areaList[areaIndex]['name']:'选地区'}}</search_picker>
+                  </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">学校名称</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入学校名称" name="schoolName" value=""/>
+                  </view>
+              </view> 
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">学校类别</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <search_picker class='l_block l_sele weui-input' mode="selector" range="{{schoolType}}" bindsearchchange="schoolTypeChange" title="选学校类别" disabledNavto="{{true}}">{{schoolType[schoolTypeIndex]?schoolType[schoolTypeIndex]:'请选择'}}</search_picker>
+                  </view>
+              </view> 
+              <view class="weui-cell">
+                  <view class="weui-cell__bd">
+                      <textarea class="weui-textarea" placeholder="请输入学校介绍" style="height: 3.3em" name="schoolInfo" value=""/>
+                  </view>
+              </view>   
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">网站</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入网站" name="website" value=""/>
+                  </view>
+              </view> 
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">邮编</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入邮编" name="postcode" value=""/>
+                  </view>
+              </view> 
+                            <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">地址</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入地址" name="address" value=""/>
+                  </view>
+              </view> 
+                            <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">电话</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入电话" name="tel" value=""/>
+                  </view>
+              </view>                                                    
+          </view>        
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" form-type="submit">创建学校</button>
+          </view>
+        </form>
+    </view>
+</view>

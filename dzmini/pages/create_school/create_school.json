@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "search_picker": "/component/search_picker/search_picker"
+  },
+  "navigationBarTitleText": "创建学校"
+}

@@ -1,0 +1,32 @@
+<!--pages/register/register.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+<form catchsubmit="formSubmit">
+  <view class="textArea">
+    <view class='logo'>论坛管家</view>
+    <view class='bottomLine'>
+      <input class="weui-input" name="username" value="{{username}}" placeholder="账号" />
+    </view>
+    <view>
+      <view class='bottomLine'>
+        <input class="weui-input" type="password" name="password" placeholder="密码" />
+      </view>
+
+      <view class='bottomLine'>
+        <input class="weui-input" type="password" name="password2" placeholder="重复密码" />
+      </view>
+
+      <view class='bottomLine'>
+        <input class="weui-input" name="email" placeholder="邮箱" />
+      </view>
+
+      <view class='bottomLine viewflex' wx:if="{{imageSrc}}">
+        <input class="weui-input" name="seccodeverify" placeholder="验证码" />
+        <image class='secodeImg' src='{{imageSrc}}' mode='aspectFit' bindtap='downSeccode'></image>
+      </view>
+    </view>
+    <view class="btnArea">
+      <button type="primary" formType="submit">注 册</button>
+    </view>
+  </view>
+
+</form>

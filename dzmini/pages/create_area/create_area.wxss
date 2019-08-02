@@ -1,0 +1,14 @@
+page{
+  background-color: #F4F4F4;
+}
+.weui-cells_after-title{
+  margin-top: 30rpx;
+}
+.little_text{
+  font-size: 25rpx;
+  color:#999;
+}
+.logo{
+  width:80rpx;
+  height: 80rpx;
+}

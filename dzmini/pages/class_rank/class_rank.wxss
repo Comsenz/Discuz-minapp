@@ -1,0 +1,164 @@
+page{
+  background-color: #EFEEF3;   
+}
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+button::after{
+  border:none;
+}
+input{
+  outline:none;
+  border:none;
+  list-style: none;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right
+}
+page{
+  width:100%;
+  height:100%;
+}
+.row{
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.ell{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.l_main{
+  font-size: 28rpx;
+  width:100%;
+  line-height: 1; 
+  color: #000;
+  position: relative;
+}
+
+
+
+.rank_top{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1;
+}
+.ran_list{
+  width: 25%;
+  float: left;
+  font-size: 26rpx;
+  color: #888;
+  position: relative;
+}
+.active.ran_list{
+  font-size: 28rpx;
+  color: #000;
+  font-weight: 700;
+}
+.active.ran_list::before{
+  content: '';
+  width: 44rpx;
+  height: 6px;
+  background-color: #5ABF39;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.l_own{
+  border-radius: 10rpx;
+  box-shadow: 0 0 15rpx 2rpx rgba(0,0,0,0.1);
+  background-color: #fff;
+  margin: 114rpx 30rpx 0;
+  overflow: hidden;
+  font-size: 28rpx;
+}
+.own_imgbox{
+  margin: 40rpx auto 30rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  overflow: hidden;
+}
+.own_imgbox image{
+  width: 100%;
+  height: 100%;
+}
+.own_flower{
+  width: 50%;
+  height: 127rpx;
+  position: relative;
+}
+.own_txt{
+  text-align: center;
+}
+.own_center{
+  position: absolute;
+  top: 52rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  display: inline-block;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.own_num{
+  color: #FF5555;
+  font-size: 40rpx;
+  padding-right: 14rpx;
+}
+.own_zi{
+  padding-top: 12rpx;
+}
+.own_no{
+  color: #5ABF39;
+  padding-top: 12rpx;
+  padding-right: 14rpx;
+}
+.own_ran{
+  color: #5ABF39;
+  font-size: 40rpx;
+}
+
+.l_rank{
+  border-radius: 10rpx;
+  box-shadow: 0 0 15rpx 2rpx rgba(0,0,0,0.1);
+  background-color: #fff;
+  margin: 24rpx 30rpx 55rpx;
+}
+.rank_item{
+  height: 94rpx;
+  line-height: 94rpx;
+  padding: 0 14rpx;
+  margin: 0 30rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  font-size: 34rpx;
+}
+.rank_item:last-child{
+  border-bottom: 0;
+}
+.rank_no{
+  width: 135rpx;
+  color: #5ABF39;
+}
+.rank_name{
+  width: 320rpx;
+  padding-right: 66rpx;
+  background: url('http://static.qr.cntv.cn/2018hb/class/flower.png') no-repeat right center/28rpx 35rpx;
+}
+.rank_txt{
+  padding: 0 14rpx;
+  color: #888;
+}
+

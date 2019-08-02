@@ -1,0 +1,44 @@
+<template name="audio_player">
+  <view class="audio-playView">
+    <image  src="{{is_play && currentAudio == attachment? minImgDoc+'audio_play.png': minImgDoc+'audio_paused.png'}}" class="audio-icon audio-play" data-listindex='{{listIndex}}' catchtap="audio_play" id="{{attachment}}"></image>
+    <view class="control-process">
+      <text class="current-process">
+        <block wx:if="{{current_process.length > 0 && currentAudio == attachment}}">
+        {{current_process}}
+        </block>
+        <block wx:else>
+        00:00
+        </block>
+      </text>
+      
+      <text class="total-process">
+        <block>
+        {{total_process}}
+        </block>
+      </text>
+      <slider class="slider" 
+        bindchange="hanle_slider_change" 
+        bindtouchstart="handle_slider_move_start" 
+        bindtouchend="handle_slider_move_end" 
+        min="0" 
+        block-size="12" 
+        block-color="#6199fd"
+        max="{{slider_max}}" 
+        activeColor="#5abf39" 
+        backgroundColor="rgb(153,153,153,0.4)" 
+        value="{{(currentAudio == attachment)?slider_value:0}}"
+      />
+
+    </view>
+  </view>
+</template>
+
+<!-- 
+attachment
+currentAudio
+
+slider_max
+slider_value
+
+current_process
+total-process -->

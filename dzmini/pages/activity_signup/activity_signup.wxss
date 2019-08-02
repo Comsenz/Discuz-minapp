@@ -1,0 +1,146 @@
+/* pages/activity_signup/activity_signup.wxss */
+page {
+  background: #f8f8f8;
+}
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+.banner {
+  width: 100%;
+  height: 300rpx;
+  z-index:-1;
+  position:absolute;
+  top:0rpx;
+  background: #EFEFF4;
+}
+.t_message {
+  height: 300rpx;
+  background: white;
+  opacity: 0.8;
+}
+.t-m-c {
+  padding-top: 60rpx;
+  margin-left: 30rpx;
+}
+.t-title {
+  font-size: 32rpx;
+  color: #666666;
+  font-weight: 500;
+  padding-top: 15rpx;
+}
+.join-count {
+  font-size: 48rpx;
+  color: #1d8dd5;
+  margin:10rpx 30rpx;
+  border-bottom:1rpx solid #E1E1E1E1;
+}
+.distance {
+  font-size: 28rpx;
+  color: #666666;
+  margin:0 70rpx;
+}
+.detail {
+  width:100%;
+}
+
+.tab-head {
+  display:flex;
+  justify-content:space-between;
+  padding:0 30rpx;
+  border-top:1rpx solid #e1e1e1;
+  border-bottom:1rpx solid #e1e1e1;
+  background: white;
+}
+
+.head-item {
+  padding: 0 8rpx;
+  line-height:3;
+  font-size: 32rpx;
+  width:125rpx;
+  text-align:center;
+  font-weight: 500;
+  margin:0 auto;
+  color: #666666;
+}
+
+.active {
+  border-bottom:5rpx solid #5abf39;
+  color: #5abf39;
+}
+
+.j-cell {
+  padding: 20rpx 30rpx;
+  width: 100%;
+  display: flex;
+  font-size: 28rpx;
+  color: #666666;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  background:white;
+}
+.j-info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.stu-name {
+  font-size: 34rpx;
+  font-weight: 500;
+} 
+
+.stu-name text {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #666666;
+}
+
+.btn {
+  background: white;
+  width: 125rpx;
+  height: 55rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  line-height: 1.8;
+  margin:20rpx auto;
+}
+.remove {
+  border:1rpx solid #e1e1e1;
+  color: #666666;
+}
+
+.pass {
+  background: #5abf39;
+  color: white;
+}
+.passed {
+  border:1rpx solid #1d8dd5;
+  color: #1d8dd5;
+}
+.no-pass {
+  background: #e1e1e1;
+  border: none;
+  color: #666666;
+}
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: #EFEFF4;
+  display: block
+}
+.info-item2 {
+  margin-left: 30rpx;
+  width: 415rpx;
+}
+
+.stu-name {
+  height: 60rpx;
+}
+
+.info-item3 {
+  width: 150rpx;
+  margin-left: 30rpx;
+}

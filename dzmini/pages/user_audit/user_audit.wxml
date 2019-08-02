@@ -1,0 +1,28 @@
+<view class="page">
+    <view class="page__bd">      
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_switch">
+                  <view class="weui-cell__bd">圈子成员确认</view>
+                  <view class="weui-cell__ft">
+                      <switch checked="{{groupInfo.jointype == 2?true:false}}" name="isPrivate" bindchange="updatePrivate"/>
+                  </view>
+              </view>
+          </view>
+          <view class="weui-cells__tips">启用后,圈子成员需管理员确认才能邀请好友进群</view>
+            <block wx:for="{{checkUsers}}" wx:key="{{key}}">
+              <view class='ap_block'>
+                <view class='ap_item'>
+                  <view class='fl me_head'>
+                    <image mode='aspectFill' src="{{item.avatar}}"></image>
+                  </view>
+                  <view class='fl ell ap_name'>{{item.nickname?item.nickname:realname[item.uid]?realname[item.uid]:item.username}}</view>
+                  <view class='fl ap_ap'>申请加入圈子</view>
+                  <view class='fr ap_btn'>
+                    <button class='fl ap_agree' bindtap="agree" data-uid="{{item.uid}}">同意</button>
+                    <button class='fl ap_refuse' bindtap="refuse" data-uid="{{item.uid}}">拒绝</button>
+                  </view>
+                </view>
+              </view>
+            </block>       
+    </view>  
+</view>

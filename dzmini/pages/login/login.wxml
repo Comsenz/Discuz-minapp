@@ -1,0 +1,32 @@
+<!--pages/login/login.wxml-->
+<form catchsubmit="formSubmit">
+  <view>
+    
+    <view class="textArea">
+      <view class='logo'>论坛管家</view>
+      <view class='bottomLine'>
+        <input class="weui-input" name="username" bindchange='inputNameChange' value='{{username}}' placeholder="账号" />
+      </view>
+      <view class='bottomLine'>
+        <input class="weui-input" type="password" name="password" placeholder="密码"/>
+      </view>
+      <view class='bottomLine viewflex' wx:if="{{imageSrc}}">
+        <input class="weui-input" name="seccodeverify" placeholder="验证码"/>
+        <image class='secodeImg' mode='aspectFit' src='{{imageSrc}}' catchtap='downSeccode'></image>
+      </view>
+      <view class="btnArea">
+        <button type="primary" formType="submit">登录</button>
+      </view>
+      <button class='register' open-type="getUserInfo" bindgetuserinfo="getUserInfo" bindtap='toRegister'>注 册</button>
+    </view>
+  </view>
+</form>
+
+
+<!-- <view class='shareMask' hidden="{{userInfoHidden}}">
+    <view class='welcomeContain'>
+      <image class='welcomeCover' src='{{minImgDoc}}welcome.png'></image>
+      <view class='shareContent'>欢迎来到论坛管家平台，现在就开始享用论坛服务吧</view>
+      <button class='welcomeBtn' open-type="getUserInfo"  bindgetuserinfo = "getUserInfo" bindtap='hideWelcome'  id='userInfo'>开始</button>
+    </view>
+ </view> -->

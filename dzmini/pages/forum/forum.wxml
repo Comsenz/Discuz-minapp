@@ -1,0 +1,15 @@
+<!--pages/forum/forum.wxml-->
+<view class='containView'>
+  <block wx:for="{{catlist}}" wx:key='cat'>
+    <view class='cat'>
+      {{item.name}}
+    </view>
+
+    <view class='forum_section'>
+      <view class='forum_cell bar_right' bindtap='toFourmdisplay' wx:for="{{item.forums}}" wx:key='forum' wx:for-item="forum" id="{{forum.fid}}">
+      {{forum.name}}
+      <text>({{forum.todayposts}})</text>
+    </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,36 @@
+<!--component/course_joinMask/course_joinMask.wxml-->
+<view class='Mask' hidden='{{!joinShow}}'>
+  <view class='maskContain'>
+    <view class='maskTip'>根据您的个人资料，已经为您自动填充表单</view>
+    <view class='closeView' catchtap='closeMask'>
+      <image class='close' src='{{minImgDoc}}coures_join_close.png'></image>
+    </view>
+    <view class='maskContent'>
+      <form bindsubmit="formSubmit" report-submit='true' report-submit-timeout="500">
+        <view wx:if="{{cid}}">
+          <view class='inputCell'>
+            <view class='subtitle'>姓名：</view>
+            <view class='maskInput' name='name'>{{userinfo.realname}}</view>
+          </view>
+          <view class='inputCell'>
+            <view class='subtitle'>圈子：</view>
+            <view class='maskInput' name='class'>{{grade}}年{{userinfo.classname}}</view>
+          </view>
+          <view class='inputCell'>
+            <view class='subtitle'>学号：</view>
+            <view class='maskInput' name='studynuber'>{{userinfo.field5}}</view>
+          </view>
+          <view class='inputCell'>
+            <view class='subtitle'>电话：</view>
+            <view class='maskInput' name='phone'>{{userinfo.mobile}}</view>
+          </view>
+        </view>
+        <view class='inputCell' wx:if="{{!cid}}">
+          <view class='subtitle'>留言：</view>
+          <input class='maskInput' name='message' placeholder='请输入留言'></input>
+        </view>
+        <button class="weui-btn join-btn" type="primary" form-type="submit">立即报名</button>
+      </form>
+    </view>
+  </view>
+</view>

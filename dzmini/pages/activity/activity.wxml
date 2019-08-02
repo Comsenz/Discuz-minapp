@@ -1,0 +1,48 @@
+<!--pages/activity/activity.wxml-->
+<view class="container">
+  <!-- 内容 -->
+  <view class='class_content'>
+    <form catchsubmit="formSubmit" report-submit='true' report-submit-timeout="500">
+      <block wx:for="{{datalist}}" wx:key="{{afterclass}}">
+        <view class='cell' id="{{index}}" bindtap='activityClick'>
+          <image class='banner' mode='aspectFill' src="{{item.attachlist[0].attachment?item.attachlist[0].attachment:minImgDoc+'couse_bg.png'}}"></image>
+
+          <view class='tj_content'>
+            <view class='title'>{{item.subject}}<text wx:if="{{item.class && item.class != 'undefined'}}">{{item.class}}</text></view>
+
+            <view class='info'>
+              <view class='info-content'>
+                <view class='time_content'>
+                  <image class='small_icon' src='{{minImgDoc}}join_time.png'></image>
+
+                  <view class='time'>{{item.starttime}} - {{item.expiration}}</view>
+                </view>
+
+                <view class='count_content'>
+                  <image class='small_icon' src='{{minImgDoc}}join_count.png'></image>
+
+                  <view class='count'>
+                    <text>已报 {{item.applynumber}}</text>/{{item.number==0?'不限':item.number}} 人</view>
+                </view>
+              </view>
+
+              <view class='join' catchtap='joinActivity' id="{{item.tid}}" hidden>报名</view>
+
+            </view>
+
+          </view>
+
+        </view>
+
+      </block>
+    </form>
+  </view>
+  <view class='noMoreView' hidden="{{!noMore}}">
+  别再用力了，你已经滑到底啦
+</view>
+
+</view>
+
+<image src='{{minImgDoc}}course_post.png' class='postEnter borderShowdow' bindtap='postEnter'>发布</image>
+
+<course_joinMask bind:joinSucceed='joinSucceed' joinShow="{{joinShow}}" tid="{{currenttid}}"></course_joinMask>

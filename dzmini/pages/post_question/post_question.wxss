@@ -1,0 +1,166 @@
+/* pages/post_question/post_question.wxss */
+page {
+  background: #f8f8f8;
+}
+.container {
+  overflow: hidden;
+}
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+
+.section1 {
+  background: white;
+  margin-top: 15rpx;
+}
+
+.easyInput {
+  width: 720rpx;
+  font-size:30rpx;
+  border-bottom:0.5px solid #e1e1e1c0;
+  margin-left:30rpx;
+  height: 100rpx;
+}
+.detailText {
+  height: 300rpx;
+  width: 100%;
+  font-size: 30rpx;
+  padding: 30rpx;
+  color: #333333;
+}
+.radio-g {
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+  font-size: 30rpx;
+}
+.radio {
+  margin-right: 30rpx;
+  color: #333333;
+}
+.input-g {
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+}
+.input-c {
+  display: flex;
+  align-items: center;
+  padding-bottom: 30rpx;
+  width: 852rpx;
+}
+.vote-input {
+  height: 80rpx;
+  width: 520rpx;
+  border: 1rpx solid #e1e1e1;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+.vote-img {
+  width: 150rpx;
+  height: 80rpx;
+  margin-left: 20rpx;
+}
+
+.o-tip {
+  color: red;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+}
+
+.add-btn {
+  color: #198df8;
+  border: 1rpx solid #198df8;
+  text-align: center;
+  margin: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+}
+
+.day-c {
+  display: flex;
+  align-items: center;
+}
+.day-input {
+  width: 635rpx;
+  height: 80rpx;
+  border: 1rpx solid #e1e1e1;
+  border-radius: 10rpx;
+  margin: 30rpx;
+  font-size: 30rpx;
+}
+.tian {
+  font-size: 32rpx;
+  color: #333333;
+}
+.postBtn {
+  margin: 30rpx;
+  margin-top: 35rpx;
+  border-radius:40rpx;
+}
+
+.v-auth-set {
+  border: 1rpx solid #e1e1e1;
+  height: 100rpx;
+  display: flex;
+  align-items:center;
+}
+.checkbox {
+  font-size: 32rpx;
+  color: #333333;
+  margin-left: 30rpx;
+}
+
+/* 滑动删除 */
+view{
+  box-sizing:border-box;
+}
+.slide_box{
+  margin-top: 30rpx;
+  border-top:1rpx solid #d9d9d9;
+  border-bottom:1rpx solid #d9d9d9;
+  background-color: #fff;
+  overflow: auto;
+  padding-left: 30rpx;
+}
+.slide_item{
+  border-bottom: 1rpx solid #D9D9D9;
+  height: 89rpx;
+  overflow: hidden;
+}
+.slide_cell{
+  width: 852rpx;
+  height: 100%;
+  display: flex;
+}
+.slide_item:last-child{
+  border-bottom: 0;
+}
+.slide_for{
+  height: 100%;
+  width: 60rpx;
+}
+.slide_close{
+  background: url('http://static.qr.cntv.cn/2018hb/class/close.png') no-repeat left center/40rpx 40rpx;
+}
+.slide_new_add{
+  background: url('http://static.qr.cntv.cn/2018hb/class/new_add.png') no-repeat left center/40rpx 40rpx;
+}
+.slide_sub{
+  width: 660rpx;
+  height: 100%;
+  line-height: 88rpx;
+}
+input.slide_sub{
+  width: 270rpx;
+  margin-right: 30rpx;
+  text-align: center
+}
+.slide_del{
+  width: 130rpx;
+  height: 100%;
+  line-height: 88rpx;
+  background-color: #E2473C;
+  color: #fff;
+  text-align: center;
+  margin-left: 40rpx;
+}

@@ -1,0 +1,59 @@
+<!--pages/mine_favorite/mine_favorite.wxml-->
+<import src="../common_temp/audio_player.wxml" />
+<view class='messageList borderShowdow'>
+  <block wx:for="{{datalist}}" wx:for-index="cellIdx" wx:for-item="cellItem" wx:key="{{cellIdx}}" >
+    <view class='classCell' id="{{cellIdx}}" bindtap='cellClick'>
+    <image class='class-cell-avatar' src='{{userAvatar}}{{cellItem.uid}}'></image>
+      <view class='class-cell-contentView'>
+        <view class='username'>
+          {{cellItem.nickname?cellItem.nickname:cellItem.author}}
+        </view>
+        <view class='message'>{{cellItem.title}}</view>
+
+        <view class='attachementView' wx:if="{{cellItem.attachments.length > 0}}">
+
+        <block wx:for="{{cellItem.imageA}}" wx:for-index="imageidx" wx:for-item="attItem" wx:key="{{attItem.aid}}">
+          <image class='attachement' src="{{attItem.attachurl}}" id="{{imageidx}}" data-cellindex="{{cellIdx}}" catchtap="lookImage" wx:if="{{(cellItem.videoA && imageidx < 8) || (!cellItem.videoA && imageidx < 9)}}"></image>
+        </block>
+        <block wx:for="{{cellItem.videoA}}" wx:for-index="aidx" wx:for-item="video" wx:key="{{video.aid}}">
+          <image catchtap='clickVideo' id="{{video.attachurl}}" class='attachement' src='{{minImgDoc}}videoPlace.png'></image>
+        </block>
+
+        <block wx:if="{{cellItem.imageA.length == 0 && cellItem.videoA.length == 0 && cellItem.audioA}}">
+          <block wx:for="{{cellItem.audioA}}" wx:for-index="aidx" wx:for-item="audio" wx:key="{{audio.aid}}" wx:if="{{aidx == 0}}">
+            <template is="audio_player" data='{{...audio.toolUse,minImgDoc}}' />
+          </block>
+        </block>
+
+        </view>
+        <rich-text class='class-cell-time' nodes="{{cellItem.dateline}}"></rich-text>
+        <view class='toolRight'>
+          <view class='shareHidden borderShowdow' wx:if="{{cellItem.shareshow == 1}}">
+          <button open-type='share'  plain='true' catchtap='listShare'  id='{{cellIdx}}'><image class='shareIcon' src="{{minImgDoc}}workshare.png" ></image>
+          </button>
+          <button  plain='true' catchtap='disVoice' id='{{cellIdx}}'><image class='shareIcon' src="{{minImgDoc}}workvoice.png"></image>
+          </button>
+          </view>
+          <image src='' class='discIcon' src="{{minImgDoc}}cpostmessage.png" catchtap='discClick' data-tid='{{cellItem.tid}}' id="{{cellIdx}}"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class='emptyView' hidden="{{!(datalist.length <= 0)}}">
+    <view style='width:100%;height:10rpx'></view>
+    <image src='{{minImgDoc}}minefavEmpty.png'></image>
+    <view class='emptyMsg'>
+      真正的懒神就是一篇内容都没有
+    </view>
+  </view>
+</view>
+<view class='noMoreView' hidden="{{!noMore}}">
+  别再用力了，你已经滑到底啦
+</view>
+<video id='myVideo'
+autoplay='{{true}}'
+        bindplay="playVideo"
+        bindfullscreenchange="fullScreenChange"
+        bind
+        src="{{currentVideo}}">
+         </video>

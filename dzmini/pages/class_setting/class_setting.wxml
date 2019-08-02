@@ -1,0 +1,72 @@
+<import src="more_user.wxml" />
+<view class="page">
+    <template is="moreUser" data="{{...userList}}" />
+    <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title" bindtap="goToUpdateClass">
+          <view class="weui-cell">
+              <view class="weui-cell__bd">圈子名称</view>
+              <view class="weui-cell__ft {{myInfo.level == 1 || myInfo.level == 2 ?'weui-cell__ft_in-access':''}} mingcheng">{{groupInfo.name}}</view>
+          </view>
+          <view class="weui-cell">
+              <view class="weui-cell__bd">圈子口号</view>
+              <view class="weui-cell__ft {{myInfo.level == 1 || myInfo.level == 2 ?'weui-cell__ft_in-access':''}} kouhao">{{groupInfo.description}}</view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+                  <view class="weui-label">圈子LOGO</view>
+              </view>            
+              <view class="weui-cell__bd">
+
+              </view>
+              <view class="weui-cell__ft {{myInfo.level == 1 || myInfo.level == 2 ?'weui-cell__ft_in-access':''}}">
+                <view class='img_box'>
+                  <block wx:if="{{groupInfo.iconnew != 0}}">
+                    <image class="logo" src="{{groupInfo.icon}}"></image>
+                  </block>
+                  <block wx:else>
+                    <image class="logo" src="{{minImgDoc}}unknow_logo.jpg"></image>
+                  </block>            
+                </view>
+              </view>
+          </view>
+      </view>   
+      <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell" bindtap='giveUpAdmin' wx:if="{{myInfo.level == 1}}">
+              <view class="weui-cell__bd">圈主转让</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+
+          </view>
+          <view class="weui-cell" bindtap='setAdmin' wx:if="{{myInfo.level == 1}}">
+              <view class="weui-cell__bd">管理员管理</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+          <view class="weui-cell" bindtap='userAudit' wx:if="{{myInfo.level == 1 || myInfo.level == 2}}">
+              <view class="weui-cell__bd">成员审核</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"><view class="weui-badge weui-badge_dot" wx:if="{{groupInfo.moduser>0}}"></view></view>
+          </view>
+          <view class="weui-cell" bindtap='goToTag' wx:if="{{myInfo.level == 1 || myInfo.level == 2}}">
+              <view class="weui-cell__bd">分类管理</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>           
+          <view class="weui-cell" bindtap='goToRank' hidden>
+              <view class="weui-cell__bd">排行榜</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+      </view>  
+      <view class="weui-cells weui-cells_after-title" bindtap='goToUserClass' hidden>
+          <view class="weui-cell">
+              <view class="weui-cell__bd">我在本圈子的昵称</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">{{myInfo.nickname == ''?'设置昵称':myInfo.nickname}}</view>
+          </view>
+          <view class="weui-cell">
+              <view class="weui-cell__bd">我的手机号</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">{{myInfo.mobile == 0?'设置手机号':myInfo.mobile}}</view>
+          </view>
+      </view>  
+      <view class="weui-btn-area">
+          <button class="weui-btn" type="warn" bindtap="exitClass" wx:if="{{myInfo.uid != groupInfo.founderuid}}">退出圈子</button>
+          <button class="weui-btn" type="warn" bindtap="deleteClass" wx:if="{{myInfo.uid == groupInfo.founderuid && userList.userList.length == 1}}" hidden>解散圈子</button>
+          <button class="weui-btn" type="warn" bindtap="giveUpAdmin" wx:if="{{myInfo.uid == groupInfo.founderuid && userList.userList.length > 1}}">转让圈子</button>
+      </view>
+    </view>
+</view>

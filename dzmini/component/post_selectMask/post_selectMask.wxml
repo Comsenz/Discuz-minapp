@@ -1,0 +1,21 @@
+<!--component/post_selectMask/post_selectMask.wxml-->
+<view catchtap='showPostSelect'>
+  <slot></slot>
+</view>
+<view class='Mask' hidden='{{!postShow}}' catchtap='hidePostSelect'>
+  <view class='maskContain' catchtap='contain'>
+    <view>请选择发帖类型</view>
+    <view class='postType' id="0" catchtap='postThread' wx:if="{{!allowspecialonly}}">
+      <image src='/image/thread_ordinary.png'></image>
+      <view class='typeText'>普通帖</view>
+    </view>
+    <view class='postType' id="1" catchtap='postThread' wx:if="{{group.allowpostpoll}}">
+      <image src='/image/thread_vote.png'></image>
+      <view class='typeText'>投票帖</view>
+    </view>
+    <view class='postType' id="4" catchtap='postThread' wx:if="{{group.allowpostactivity}}">
+      <image src='/image/thread_activity.png'></image>
+      <view class='typeText'>活动帖</view>
+    </view>
+  </view>
+</view>

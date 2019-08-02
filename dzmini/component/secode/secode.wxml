@@ -1,0 +1,16 @@
+<!--component/secode/secode.wxml-->
+<view catchtap='showSecode'>
+  <slot></slot>
+</view>
+<view class='Mask' hidden='{{!codeShow}}' catchtap='hideSecode'>
+  <view class='maskContain' catchtap='contain'>
+  <form bindsubmit="formSubmit">
+    <view class='codeView' catchtap='downSeccode'>
+      <image class='secodeImg' mode='aspectFit' src='{{imageSrc}}'></image>
+      <view class='getcode'>看不清？</view>
+    </view>
+    <input class="weui-input" name="seccodeverify" placeholder="请输入验证码" />
+    <button class='subtn' form-type="submit">提交</button>
+    </form>
+  </view>
+</view>

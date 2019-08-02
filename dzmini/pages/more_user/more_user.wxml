@@ -1,0 +1,55 @@
+<!--pages/member/member.wxml-->
+<text class='iconfont icon-home' style='color:red;font-size:60rpx;'></text>
+<!-- 搜索栏 -->
+<view class='l_sea'>
+  <view class='sea_bar' bindtap='showSea'>
+    <view class='sea_btn1' hidden='{{showSea==1}}'>搜索</view>
+    <input class='sea_btn' placeholder='搜索' hidden='{{showSea==0}}' focus="{{showSea==1}}" bindblur="seablur" placeholder-style='color:#B2B2B2' bindinput='seaInput'></input>
+  </view>
+</view>
+<scroll-view class='l_main' scroll-y="true" scroll-into-view="{{toView}}">
+  <!-- 每组 -->
+  <view class='l_group' wx:if="{{userList['admin'].length>0}}">管理员</view>
+  <!-- 成员 -->
+  <view class='l_member'>
+    <block wx:for="{{userList['admin']}}" wx:key="{{key}}">
+      <view class='me_item' bindtap='userModify' data-uid="{{item.uid}}" data-nickname="{{item.nickname}}" data-mobile="{{item.mobile}}">
+        <view class='fl me_head'>
+          <view class='imgbox'>
+            <image mode='aspectFill' src='{{item.avatar}}'></image>
+          </view>
+            <view class='me_lab lab_zhu' wx:if="{{item.level==1}}">管</view>
+            <view class='me_lab lab_guan' wx:if="{{item.level==2}}">管</view>
+            <view class='me_lab lab_shi' wx:if="{{item.level==3}}">师</view>
+        </view>
+        <view class='fl ell me_nick'>{{item.nickname?item.nickname:item.realname?item.realname:item.username}}</view>
+        <view class='fl me_tel'>{{item.mobile == 0?'':item.mobile}}</view>
+      </view>
+    </block>
+  </view>
+  <block wx:for="{{userList['user']}}" wx:key="key" wx:for-index="idx">
+    <view class='l_group' id="view_{{idx}}">{{idx}}</view>
+    <block wx:for="{{item}}" wx:key="_key" wx:for-item="_item">
+      <view class='l_member'>
+        <view class='me_item' bindtap='userModify' data-uid="{{_item.uid}}" data-nickname="{{_item.nickname}}" data-mobile="{{_item.mobile}}">
+          <view class='fl me_head'>
+            <view class='imgbox'>
+              <image mode='aspectFill' src='{{_item.avatar}}'></image>
+            </view>
+            <view class='me_lab lab_zhu' wx:if="{{_item.level==1}}">管</view>
+            <view class='me_lab lab_guan' wx:if="{{_item.level==2}}">管</view>
+            <view class='me_lab lab_shi' wx:if="{{_item.level==3}}">师</view>
+          </view>
+          <view class='fl ell me_nick'>{{_item.nickname?_item.nickname:_item.realname?_item.realname:_item.username}}</view>
+          <view class='fl me_tel'>{{_item.mobile == 0?'':_item.mobile}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <view class='l_nav'>
+    <block wx:for="{{userList['user']}}" wx:key="key" wx:for-index="idx">
+      <view class='nav_item' data-id="{{idx}}" bindtap='jumpTo'>{{idx}}</view>
+    </block>
+  </view>
+</scroll-view>
+

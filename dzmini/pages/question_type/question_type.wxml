@@ -1,0 +1,83 @@
+<!--pages/question_type/question_type.wxml-->
+<view class='containView'>
+  <!--列表start -->
+  <view class='list-p'>
+    <view class='list-nav'>
+      <block wx:for="{{['全部','待回答','已回答']}}" wx:key="nav">
+        <view class="head-item {{index==currentTab?'active':''}}" bindtap='naviClick' id="{{index}}">{{item}}</view>
+      </block>
+    </view>
+
+    <view class='list-c'>
+      <block wx:for="{{datalist}}" wx:key="wenda" wx:for-item="wenItem">
+
+        <view class='cell-p' bindtap='cellClick' id="{{index}}">
+          <block wx:if="{{wenItem.imageA.length==1}}">
+            <view class='cell-single'>
+              <view class='cell-single-left'>
+              
+                <template is='answer_cell' data="{{wenItem,minImgDoc}}" />
+              </view>
+              <view class='cell-single-right'>
+                <image class='cell-image' src="{{wenItem.imageA[0].attachment}}"></image>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <template is='answer_cell' data="{{wenItem,minImgDoc}}"/>
+          </block>
+        </view>
+
+      </block>
+    </view>
+  </view>
+  <!--列表end -->
+  <view class='noMoreView' hidden="{{!noMore}}">
+  别再用力了，你已经滑到底啦
+</view>
+
+</view>
+
+<image src='{{minImgDoc}}course_post.png' class='postEnter borderShowdow' bindtap='postEnter'>发布</image>
+<template name='answer_cell'>
+  <view class='cell'>
+    <!-- cell标题 start-->
+    <view class="cell-title {{wenItem.imageA.length == 1?'single-image':''}}">
+      <text class='wen'>问</text> {{wenItem.subject}}
+    </view>
+    <!-- cell标题 end-->
+
+    <!-- 附件 start-->
+    <view class='cell-att' wx:if="{{wenItem.imageA.length > 1}}">
+      <block wx:for="{{wenItem.imageA}}" wx:if="{{index < 3}}" wx:key="cellAtt">
+        <image class='cell-image' src="{{item.attachment}}" mode='aspectFill'></image>
+      </block>
+    </view>
+
+    <!-- 附件 end-->
+
+    <!-- cell信息start -->
+    <view class='cell-info'>
+      <view class='cell-info-left'>
+        <view class='icon-item cell-tag'>
+          <image class='cell-icon' src='{{minImgDoc}}re_tag.png'></image>
+          <view class='cell-icon-text'>{{wenItem.typename?wenItem.typename:'分类'}}</view>
+        </view>
+        <view class='icon-item cell-recount'>
+          <image class='cell-icon' src='{{minImgDoc}}re_dis.png'></image>
+          <view class='cell-icon-text'>{{wenItem.replies}}个回答</view>
+        </view>
+      </view>
+
+      <view cell-info-right>
+        <view class='icon-item cell-recount' catchtap='clickReply' id="{{wenItem.tid}}">
+          <image class='cell-icon' src='{{minImgDoc}}re_re.png'></image>
+          <view class='cell-reply'>回答</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!-- cell信息end -->
+
+</template>

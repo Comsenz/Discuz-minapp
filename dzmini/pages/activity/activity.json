@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "活动报名",
+  "usingComponents": {
+    "course_joinMask": "/component/course_joinMask/course_joinMask"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200
+}

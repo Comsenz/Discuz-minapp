@@ -1,0 +1,60 @@
+<!--pages/activity_signup/activity_signup.wxml-->
+<view class='contain'>
+  <image class='banner' mode="aspectFill" src="{{special_image?special_image:minImgDoc+'couse_bg.png'}}"></image>
+
+  <view class='t_message'>
+    <view class='t-m-c'>
+      <view class='t-title'>活动名称：{{activityinfo.subject?activityinfo.subject:'---'}}</view>
+      <view class='t-title'>报名人数：{{activityinfo.applynumber?activityinfo.applynumber:'0'}}</view>
+      <view class='t-title'>报名剩余时间：{{activityinfo.days?activityinfo.days:'0'}}</view>
+    </view>
+    
+  </view>
+
+  <view class='detail'>
+
+    <!-- <view class='tab-head'>
+      <block wx:for="{{['待审核','已审核']}}" wx:key="nav">
+        <view class="head-item {{index==currentTab?'active':''}}" bindtap='naviClick' id="{{index}}">{{item}}</view>
+      </block>
+    </view> -->
+
+    <view class='d-content'>
+      <block wx:for="{{signList}}" wx:key="{{item.id}}">
+
+        <view class="j-cell" >
+
+          <view class='j-info'>
+
+            <view class='info-item'><image class='avatar' src="{{userAvatar}}{{item.uid}}"></image></view>
+            <view class='info-item2'>
+              <view class='stu-name'>{{item.username}}</view>
+              <view class='stu-no'>申请时间：{{item.dateline}}</view>
+              <view class='stu-phone'>留言：{{item.message?item.message:'--'}}</view>
+            </view>
+            <view class='info-item3'>
+
+              <view class="btn  {{item.verified==0?'pass':'passed'}}" bindtap='passSignup' id="{{index}}">
+                <block wx:if="{{item.verified == 0}}">
+                审核
+                </block>
+                <block wx:if="{{item.verified == 1}}">
+                已通过
+                </block>
+              </view>
+
+              <block wx:if="{{currentTab!=2}}">
+                <view class='btn remove' catchtap='deleteSignup' id="{{index}}">拒绝</view>
+              </block>
+            </view>
+          </view>
+
+        </view>
+
+      </block>
+    </view>
+
+  </view>
+
+</view>
+

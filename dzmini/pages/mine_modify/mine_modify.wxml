@@ -1,0 +1,82 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+        <form bindsubmit="formSubmit">
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell" bindtap="uploadPic">
+                <view class="weui-cell__hd">
+                      <view class="weui-label">头像</view>
+                  </view>            
+                  <view class="weui-cell__bd">
+
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access">
+                    <view class='imgBox'>
+                      <block wx:if="{{iconnew_preview}}">
+                        <image class="logo" src="{{iconnew_preview}}"></image>
+                      </block>
+                      <block wx:else>
+                        <image class="logo" src="{{avatar}}"></image>
+                      </block>
+                    </view>
+                  </view>
+              </view>          
+              <view class="weui-cell weui-cell_input" bindtap='tishi'>
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">昵称</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input l_block" disabled="false" placeholder-style='color:#999' placeholder="请输入昵称" name="username" value="{{username}}"/>
+                  </view>
+              </view>
+              <view class='edit_item' hidden>
+                <view class='fl'>身份</view>
+                <view class='fr c9'>家长</view>
+                <view class='fr edit_check {{field4 == "家长"?"active":""}}' data-name="家长" bindtap="changeField4"></view>
+                <view class='fr c9'>老师</view>
+                <view class='fr edit_check {{field4 == "老师"?"active":""}}' data-name="老师" bindtap="changeField4"></view>
+              </view>
+          </view>
+          <view class="weui-cells weui-cells_after-title" hidden>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">城市</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <picker class='l_block l_sele weui-input' mode="selector" range="{{cityList}}" range-key="{{'name'}}" bindchange="cityChange">{{cityList[cityIndex]['name']?cityList[cityIndex]['name']:'选城市'}}</picker>
+                  </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">地区</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <picker class='l_block l_sele weui-input' mode="selector" range="{{_areaList}}" range-key="{{'name'}}" bindchange="areaChange" disabled="{{isAreaLock}}">{{_areaList[areaIndex]['name']?_areaList[areaIndex]['name']:'选地区'}}</picker>
+                  </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">学校</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <picker class='l_block l_sele weui-input' mode="selector" range="{{_schoolList}}" range-key="{{'name'}}" bindchange="schoolChange" disabled="{{isSchoolLock}}">{{_schoolList[schoolIndex]['name']?_schoolList[schoolIndex]['name']:'选学校'}}</picker>
+                  </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">电话</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input l_block" type="number" placeholder-style='color:#999' placeholder="请输入电话" name="mobile" value="{{mobile}}"/>
+                  </view>
+              </view>
+          </view>        
+          <view class="weui-btn-area" wx:if="{{!disabled}}">
+              <button class="weui-btn" type="primary" form-type="submit">保存</button>
+          </view>
+          <view class="weui-btn-area" wx:if="{{disabled}}">
+              <button class="weui-btn" type="primary" disabled="true" form-type="submit">保存</button>
+          </view>
+        </form>
+    </view>
+</view>

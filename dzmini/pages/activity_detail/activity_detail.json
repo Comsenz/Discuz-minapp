@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "活动详情",
+  "usingComponents": {
+    "activity_joinMask": "/component/activity_joinMask/activity_joinMask"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200
+}

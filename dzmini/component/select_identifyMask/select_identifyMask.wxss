@@ -1,0 +1,75 @@
+/* component/select_identifyMask/select_identifyMask.wxss */
+.Mask {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color:#000;background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.maskContain {
+  position:relative;
+  width: 650rpx;
+  height: 834rpx;
+  border-radius: 10rpx;
+  margin:100rpx auto;
+  text-align: center;
+  overflow:hidden;
+}
+.banner {
+  width: 100%;
+  height: 399rpx;
+}
+.close {
+  width:120rpx;
+  height:120rpx;
+  position:absolute;
+  top:105rpx;
+  right:0;
+}
+.banner image {
+  width: 100%;
+  height: 100%;
+}
+.content {
+  background: white;
+  width: 100%;
+  height: 435rpx;
+  text-align: center;
+}
+.title {
+  font-size: 42rpx;
+  font-weight: 600;
+  padding-top: 50rpx;
+}
+.msg {
+  font-size: 34rpx;
+  color: #333333;
+  margin-top: 40rpx;
+}
+.btnV {
+  color: white;
+  display: flex;
+  width: 100%;
+  justify-content:space-between;
+  padding:0 30rpx;
+  position:absolute;
+  bottom:90rpx;
+}
+.tea {
+  background: #5abf39;
+  width:240rpx;
+  height:90rpx;
+  border-radius:45rpx;
+}
+.stu {
+  background: #e0633a;
+}
+.btn {
+  width:240rpx;
+  height:90rpx;
+  border-radius:45rpx;
+  line-height:90rpx;
+}

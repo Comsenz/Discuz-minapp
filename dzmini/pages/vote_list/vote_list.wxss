@@ -1,0 +1,7 @@
+/* pages/vote_list/vote_list.wxss */
+.weui-cell__bd {
+  font-size: 32rpx;
+}
+.weui-cell__ft {
+  font-size: 24rpx;
+}

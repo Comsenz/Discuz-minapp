@@ -1,0 +1,27 @@
+<!--pages/questionnaire/questionnaire.wxml-->
+<view class='containView'>
+  <view class="recommend">
+  <view class='recommendList'>
+    <block wx:for-items="{{datalist}}" wx:key="{{item.tid}}">
+      <view class='recommendCell' id="{{item.tid}}" hover-class='cellhover' bindtap='cellClick'>
+        <view class='cell-index'>{{index + 1}}</view>
+
+        <view class='cell-content'>
+          <view class='cellsubject'>{{item.subject}}<text wx:if="{{item.maxchoices != 0 }}">（{{item.maxchoices > 1?'多选':'单选'}}）</text></view>
+          <view class='q-info'>
+            <rich-text class='celltime' nodes="{{item.dateline}}"></rich-text>
+          <view class='author'>{{item.nickname}}</view>
+          </view>
+        </view>
+
+      </view>
+
+    </block>
+  </view>
+</view>
+<view class='noMoreView' hidden="{{!noMore}}">
+  别再用力了，你已经滑到底啦
+</view>
+</view>
+
+<image src='{{minImgDoc}}course_post.png' class='postEnter borderShowdow'  catchtap='postEnter' wx:if="{{member_identity==2}}">发布</image>

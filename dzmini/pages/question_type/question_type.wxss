@@ -1,0 +1,167 @@
+/* pages/question_type/question_type.wxss */
+page {
+  background: #f8f8f8;
+}
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+
+.ell {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.list-p {
+  background: white;
+}
+
+.list-nav {
+  display:flex;
+  justify-content:space-between;
+  padding:0 30rpx;
+  border-bottom:1rpx solid #e1e1e1;
+}
+
+.head-item {
+  padding: 0 8rpx;
+  line-height:3;
+  font-size: 32rpx;
+  width:125rpx;
+  text-align:center;
+  font-weight: 500;
+  margin:0 auto;
+  color: #888888;
+}
+
+.active {
+  border-bottom:5rpx solid #5abf39;
+  color: #5abf39;
+}
+
+.list-c {
+  padding-left: 30rpx;
+}
+
+.cell-p {
+  border-bottom: 1rpx solid #e1e1e1;
+  padding: 30rpx;
+  padding-left: 0;
+}
+
+.cell-single {
+  display: flex;
+}
+.cell-single-left {
+  width: 500rpx;
+}
+
+/* template start */
+.cell {
+  font-size: 32rpx;
+  color: #333333;
+}
+
+.wen {
+  color: white;
+  font-size: 28rpx;
+  font-weight: 500;
+  background: #5abf39;
+  text-align: center;
+  line-height: 34rpx;
+  border-radius: 8rpx;
+  padding: 5rpx;
+}
+
+.cell-att {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx
+}
+
+.cell-image {
+  width: 220rpx;
+  height: 170rpx;
+  background: #f8f8f8;
+}
+
+.cell-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.cell-info-left {
+  display: flex;
+}
+
+.icon-item {
+  display: flex;
+  align-items: center;
+}
+
+.cell-recount {
+  margin-left: 30rpx;
+}
+
+.cell-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.cell-icon-text {
+  margin-left: 15rpx;
+  max-width: 150rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #999999;
+  font-size: 24rpx;
+  overflow: hidden;
+}
+
+.cell-reply {
+  margin-left: 15rpx;
+  font-size: 28rpx;
+  color: #5abf39;
+}
+
+.single-image {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100rpx;
+  line-height: 50rpx;
+  -webkit-line-clamp:2;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+}
+
+.cell-single-right {
+  margin-left: 15rpx;
+}
+/* template end */
+
+/* 发布 */
+.postEnter {
+  position:fixed;
+  width:120rpx;
+  height:120rpx;
+  border-radius:60rpx;
+  bottom:55rpx;
+  right:55rpx;
+  color:white;
+  text-align:center;
+  line-height:120rpx;
+  font:34rpx;
+}
+
+.borderShowdow {
+  box-shadow:0 0 15rpx 2rpx rgba(0,0,0,0.1);
+}
+
+.noMoreView {
+  text-align: center;
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  height: 150rpx;
+}

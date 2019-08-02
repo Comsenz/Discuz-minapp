@@ -1,0 +1,78 @@
+/* pages/questionnaire/questionnaire.wxss */
+.recommendList {
+  margin-top: 30rpx;
+}
+.recommendCell{
+  padding:20rpx 30rpx 0;
+  position:relative;
+  margin:0 0 5rpx 0;
+  background-color:#FFFFFF;
+  overflow-wrap: break-word;
+  display: flex;
+}
+.cellhover {
+  background-color: #F8F8F8;
+}
+.cell-index {
+  width: 60rpx;
+  font-size: 30rpx;
+  color: #198df8;
+}
+.cell-content {
+  width: 680rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+.cell-content  text{
+  color: #198df8;
+}
+.cellsubject {
+  display: block;
+  width: 100%;
+  font-size: 34rpx;
+}
+
+.q-info {
+  display: flex;
+  color:#888888;
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  padding-bottom:30rpx;
+  border-bottom:1rpx solid #e1e1e1;
+}
+
+.author {
+  margin-left:20rpx;
+  height:30rpx;
+  width:300rpx;
+  overflow:hidden;
+  line-height:33rpx;
+}
+
+.bottomLine {
+  border-bottom: 1px solid #e1e1e1; 
+}
+
+/* 发布 */
+.postEnter {
+  position:fixed;
+  width:120rpx;
+  height:120rpx;
+  border-radius:60rpx;
+  bottom:55rpx;
+  right:55rpx;
+  color:white;
+  text-align:center;
+  line-height:120rpx;
+  font:34rpx;
+}
+.borderShowdow {
+  box-shadow:0 0 15rpx 2rpx rgba(0,0,0,0.1);
+}
+.noMoreView {
+  text-align: center;
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  height: 200rpx;
+}

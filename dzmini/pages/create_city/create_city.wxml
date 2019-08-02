@@ -1,0 +1,20 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+        <form bindsubmit="formSubmit">
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label">城市</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入城市名" name="cityName" value=""/>
+                  </view>
+              </view>                                                    
+          </view>        
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" form-type="submit">创建城市</button>
+          </view>
+        </form>
+    </view>
+</view>

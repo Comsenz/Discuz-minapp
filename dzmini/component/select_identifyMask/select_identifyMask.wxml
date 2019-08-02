@@ -1,0 +1,17 @@
+<!--component/select_identifyMask/select_identifyMask.wxml-->
+<view class='Mask' hidden="{{!isShow}}">
+    <view class='maskContain'>
+      <view class='banner'>
+        <image src='{{minImgDoc}}select_identify.png'></image>
+        <view class='close' bindtap='close'></view>
+      </view>
+      <view class='content'>
+        <view class='title'>选择身份</view>
+        <view class='msg'>开启丰富的课余生活</view>
+        <view class='btnV'>
+          <view class='tea btn' bindtap='mineInfo' id='2'>教师</view>
+          <view class='stu btn' bindtap='mineInfo' id='1'>学生</view>
+        </view>
+      </view>
+    </view>
+ </view>

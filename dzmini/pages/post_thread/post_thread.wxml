@@ -1,0 +1,85 @@
+<!--pages/post_thread/post_thread.wxml-->
+<view class='container'>
+  <form catchsubmit="formSubmit">
+    <!-- <view class='classTypeView' wx:if="{{fid!=2&&classTypeList && !isreply && !isevaluate}}">
+      <picker class='classType' name="classType" mode="selector" range="{{classTypeList}}" range-key='name' bindchange="classTypeChange">
+        <text decode="{{true}}">{{classTypeList[classIndex].name?classTypeList[classIndex].name:'课程分类'}}</text>
+      </picker>
+    </view> -->
+    <!--  -->
+    <view class='classTypeView' wx:if="{{!isreply && !isevaluate}}">
+      <picker class='easyType' name="classType" mode="selector" range="{{classTypeList}}" range-key='name' bindchange="classTypeChange" wx:if="{{classTypeList.length > 0}}">
+        <text class="text-deal" decode="{{true}}">{{classTypeList[classIndex].name?classTypeList[classIndex].name:'选分类'}}</text>
+      </picker>
+      <input class="easyInput" name="subject" placeholder="标题" />
+    </view>
+
+    <textarea wx:if="{{!fullScreen}}" class="weui-input detailText" name="message" placeholder="{{detailplaceholder}}" value='{{detaiContent}}' bindblur='detailFinish' focus="{{isText}}" maxlength="-1" />
+    <view class='weui-input detailText' wx:if="{{fullScreen}}" bindtap='detailBegin'>{{detaiContent?detaiContent:detailplaceholder}}</view>
+
+    <view class='attachmentContain' wx:if="{{!isevaluate}}">
+      <view class="audio-playView" wx:if="{{recording}}">
+        <image mode="widthFix" src="{{minImgDoc}}record_close.png" class="record-close" bindtap="clear"></image>
+        <view class='record-time'>{{formatedRecordTime}}</view>
+        <image class='record-icon' src='{{minImgDoc}}record_icon.png' bindtap="parse" data-type="{{is_parse}}"></image>
+        <view class='record-finish' bindtap='stopRecord'>完成</view>
+      </view>
+
+      <view class='playViewContain' wx:if="{{audio}}">
+        <view class="audio-playView">
+          <image mode="widthFix" src="{{is_play?minImgDoc+ 'audio_play.png': minImgDoc+'audio_paused.png'}}" class="audio-icon audio-play" bindtap="audio_play"></image>
+          <view class="control-process">
+            <text class="current-process">
+          <block wx:if="{{current_process.length > 0}}">
+          {{current_process}}
+          </block>
+          <block wx:else>
+          00:00
+          </block>
+        </text>
+            <slider class="slider" bindchange="hanle_slider_change" bindtouchstart="handle_slider_move_start" bindtouchend="handle_slider_move_end" min="0" block-size="12" block-color="#6199fd" max="{{slider_max}}" activeColor="#5abf39" backgroundColor="rgb(153,153,153,0.4)"
+              value="{{slider_value}}" />
+            <text class="total-process">
+        <block wx:if="{{total_process.length > 0}}">
+          {{total_process}}
+          </block>
+          <block wx:else>
+          00:00
+          </block>
+        </text>
+          </view>
+        </view>
+        <image class='deleteA audioDele' src='{{minImgDoc}}att_delete.png' id="{{audio.aid}}" bindtap='deleteAudio'></image>
+      </view>
+
+
+
+      <view class="uploader__files">
+        <block wx:for="{{imageList}}" wx:for-item="image" wx:key="{{image.aid}}">
+          <view class="uploader__file" id="{{image.aid}}">
+            <image class="uploader__img" src="{{image.src}}" data-src="{{image.src}}" bindtap="previewImage"></image>
+            <image class='deleteA' src='{{minImgDoc}}att_delete.png' id="{{image.aid}}" bindtap='deleteImage'>
+            </image>
+          </view>
+        </block>
+        <view class='uploader_videoContain' wx:if="{{video}}">
+          <view class="uploader__file" id="{{image.aid}}">
+            <video id='myVideo' class="uploader__video uploader__input" controls="false" show-fullscreen-btn="{{false}}" bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{video.src}}"></video>
+            <image class='deleteA' src='{{minImgDoc}}att_delete.png' id="{{video.aid}}" bindtap='deleteVideo'>
+            </image>
+          </view>
+        </view>
+        <image class="uploader__input" wx:if="{{imageList.length !== 9}}" src="{{minImgDoc}}post_addimage.png" bindtap="chooseImage">
+        </image>
+        <image class="uploader__input" src="{{minImgDoc}}post_addaudio.png" bindtap="chooseAudio">
+        </image>
+        <image class="uploader__input" src="{{minImgDoc}}post_addvideo.png" bindtap="chooseVideo">
+        </image>
+      </view>
+    </view>
+    <button class='postBtn' disabled="{{postLock}}" type="primary" formType="submit">发布</button>
+  </form>
+</view>
+
+<secode codeShow='{{codeShow}}' bind:secodeSubmit='secodeSubmit' id='secode'>
+</secode>

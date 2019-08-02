@@ -1,0 +1,7 @@
+<!--pages/vote_optiondetail/vote_optiondetail.wxml-->
+<block wx:for="{{polloption}}" wx:key="{{index}}">
+  <view class='cell' id="{{index}}">
+    <image class='avatar'  src="{{userAvatar}}{{item.uid}}"></image>
+    <view class='username'>{{item.username}}</view>
+  </view>
+</block>

@@ -1,0 +1,65 @@
+<!--pages/post_question/post_question.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+
+<view class='container'>
+  <form catchsubmit="formSubmit">
+
+    <view class='section1'>
+        <input class="easyInput" name="subject" value="{{title}}" placeholder="请输入投票标题" />
+        <textarea wx:if="{{!fullScreen}}" class="weui-input detailText" name="message" placeholder="请输入投票内容的描述（选填）" bindblur='detailFinish' value="{{courseintroduce}}" focus="{{isText}}" maxlength="-1"/>
+    </view>
+
+    <view class='section1'>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">项目类型</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class='radio-g'>
+      <radio-group bindchange="radioChange">
+        <label class="radio">
+          <radio value="1" checked="{{choices==1?'true':''}}"/>单选
+        </label>
+        <label class="radio">
+          <radio value="2" checked="{{choices==2?'true':''}}"/>多选
+        </label>
+      </radio-group>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">添加选项</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class='input-g'>
+        <block wx:for="{{slide_list}}" wx:key="{{slide}}">
+          <view class='input-c' style='margin-left:{{item.marginL}}rpx' data-index="{{index}}"  bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE">
+          <input class="vote-input" id="{{index}}" bindchange="inputNameChange"   placeholder="请输入投票选项" value='{{item.text}}'/>
+          <image class='vote-img' src="{{item.image.src?item.image.src:minImgDoc+'vote_att.png'}}" bindtap='chooseImage' id="{{index}}"></image>
+          <view class='slide_del' id="{{index}}"  bindtap="deletePolloption">删除</view> 
+        </view>
+        </block>
+      </view>
+      <view class='o-tip'>向左滑动删除选项</view>
+      <view class='add-c'>
+        <view class='add-btn' bindtap='addPolloption'>+ 添加选项</view>
+      </view>
+    </view>
+    
+    <view class='section1'>
+      <view class='day-c'>
+        <input class="day-input" type='number'  name="expiration" placeholder="投票有效天数" />
+        <view class='tian'>天</view>
+      </view>
+      <view class='v-auth-set'>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="checkbox">
+          <checkbox value='visibilitypoll' name='visibilitypoll' checked="true"/>投票后结果可见
+        </label>
+        <label class="checkbox">
+          <checkbox value='overt' name='overt' />公开投票参与人
+        </label>
+        </checkbox-group>
+      </view>
+    </view>
+    <button class='postBtn' disabled="{{postLock}}" type="primary" formType="submit">发布</button>
+   </form>
+</view>
+

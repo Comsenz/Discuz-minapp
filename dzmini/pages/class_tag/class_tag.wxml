@@ -1,0 +1,38 @@
+<view class="page" bindtap='no_remove'>
+  <view class="page__bd">
+    <view class="slide_box" >
+      <block  wx:for="{{slide_list}}" wx:key>
+        <view class='slide_item {{is_remove==index?"remove_ani":""}}'  data-index='{{index}}'>
+          <view class='slide_cell'>
+            <view class='fl slide_for slide_close' data-index="{{index}}" catchtap="remove"></view>
+            <view class="fl slide_sub">
+              <input class='fl slide_sub' type="number" data-index="{{index}}" data-type="old" bindinput="inputSortChange" placeholder='排序' value="{{item.displayorder}}" ></input>
+              <input class='fl slide_sub' data-index="{{index}}" data-type="old" bindinput="inputNameChange" placeholder='添加分类' value="{{item.name}}"></input>
+            </view>
+            <view class='fr slide_del' data-id="{{item.typeid}}" bindtap="deleteTag">删除</view>     
+          </view>
+        </view>
+      </block>
+      <block  wx:for="{{new_slide_list}}" wx:key>
+        <view class='slide_item {{is_remove_new==index?"remove_ani":""}}'  data-index='{{index}}'>
+          <view class='slide_cell'>
+            <view class='fl slide_for slide_close' data-index="{{index}}" catchtap="removeNew"></view>
+            <view class="fl slide_sub">
+              <input class='fl slide_sub' type="number" data-index="{{index}}" data-type="new" bindinput="inputSortChange" placeholder='排序' value="{{item.displayorder}}" ></input>
+              <input class='fl slide_sub' data-index="{{index}}" data-type="new" bindinput="inputNameChange" placeholder='添加分类' value="{{item.name}}"></input>
+            </view>
+            <view class='fr slide_del' data-index="{{index}}" bindtap="deleteTagNew">删除</view>     
+          </view>
+        </view>
+      </block>      
+      <view class='slide_item'>
+        <view class='fl slide_for slide_new_add' bindtap="addMore"></view>
+        <view class='fl slide_sub'>添加分类</view>
+      </view>      
+    </view>
+
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="warn" bindtap="formSubmit">确定</button>
+    </view>
+  </view>
+</view>

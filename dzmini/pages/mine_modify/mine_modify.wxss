@@ -1,0 +1,67 @@
+page{
+  background-color: #F4F4F4;
+}
+.weui-cells_after-title{
+  margin-top: 30rpx;
+}
+.little_text{
+  font-size: 25rpx;
+  color:#999;
+}
+.logo{
+  width:110rpx;
+  height: 110rpx;
+}
+.edit_item{
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  padding: 0 30rpx;
+  border-top: 1rpx solid #D9D9D9;
+  padding-left: 0;
+  margin-left: 30rpx;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.edit_check{
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 4rpx;
+  border: 1rpx solid #D0D0D0;
+  margin:32rpx 27rpx 0 60rpx;
+}
+.edit_check.active{
+  background: url('http://static.qr.cntv.cn/2018hb/class/nc.png') no-repeat center center/80% auto;
+}
+
+.weui-cell__ft_in-access{
+  padding-right: 50rpx;
+}
+.imgBox{
+  border-radius: 10rpx;
+  border:1rpx solid #E1E1E1;
+  overflow: hidden;
+  width: 110rpx;
+  height: 110rpx;
+}
+
+
+.weui-cell{
+  /* background: url('http://static.qr.cntv.cn/2018hb/class/right.png') no-repeat  704rpx/16rpx 25rpx; */
+}
+.l_block{
+  text-align: right;
+  color: #999;
+  font-size: 34rpx;
+}
+.c9{
+  color: #999
+}
+.weui-cell_input{
+  height: 88rpx;
+  line-height: 88rpx;
+}

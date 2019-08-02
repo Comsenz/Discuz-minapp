@@ -1,0 +1,45 @@
+<view class='l_main'>
+<!-- 选择 -->
+  <view class='l_box'>
+    <search_picker class='l_block ell l_sele1' mode="selector" range="{{cityList}}" rangeKey="name" bindsearchchange="cityChange" beSelected="{{cityIndex}}" disabledNavto="{{false}}" title="选一级分类" navTitle="创建一级分类" navTo="/pages/create_city/create_city">
+      <view class='ell'>{{cityList[cityIndex]['name']?cityList[cityIndex]['name']:'一级分类'}}</view>
+    </search_picker>  
+    <search_picker class='l_block ell l_sele1' mode="selector" range="{{_areaList}}" rangeKey="name" bindsearchchange="areaChange" beSelected="{{areaIndex}}" disabled="{{isAreaLock}}" disabledNavto="{{false}}" title="选二级分类" navTitle="创建二级分类" navTo="/pages/create_area/create_area">
+      <view class='ell'>{{_areaList[areaIndex]['name']?_areaList[areaIndex]['name']:'二级分类'}}</view>
+    </search_picker>
+  </view>
+
+<!-- 搜索 -->
+  <view class='l_box'>
+    <view class='l_block l_seabar'>
+      <view class='fl l_sealeft'></view>
+      <input class='fl l_seacen' placeholder='请输入圈子名称' bindinput='setInput' value="{{keywords}}"></input>
+      <view class='fr l_searight' wx:if="{{isShowEmpty}}" bindtap="cleanInput"></view>
+    </view>
+    <view class='l_block l_t l_seabtn' bindtap='searchResult' data-type="1">搜索</view>
+  </view>
+<!-- 创建圈子 -->
+  <view class='l_block l_t l_creat' bindtap='goToCreateClass' wx:if="{{isShowResult}}">+ 创建圈子</view>
+<!-- 圈子列表 -->
+  <view class='l_block l_class'  wx:if="{{isShowResult && list.length>0}}">
+    <block wx:for="{{list}}" wx:key="{{ley}}">
+      <view class='l_classitem'>
+        <view class='fl l_group'>
+          <block wx:if="{{item.iconnew == 0}}">
+            <view class='{{item.icons.length == 1?"l_head1":item.icons.length>=5?"l_head5":"l_head2"}}' wx:for="{{item.icons}}" wx:key="{{key}}" wx:for-item="userItem"><image src='{{userItem}}' mode='aspectFill'></image></view>
+          </block>
+          <block wx:else>
+            <image src="{{item.icon}}"></image>
+          </block>
+        </view>
+        <view class='fl l_classmsg'>
+          <view class='l_classname'>{{item.name}}</view>
+          <view class='l_classint l_classblack'>{{item.grouptype.three.name}}</view>
+          <view class='l_classint'>{{item.description?item.description:"暂无圈子介绍"}}</view>
+        </view>
+        <view class='fl l_b l_join' wx:if="{{item.ingroup == 0}}" bindtap="joinClass" data-id="{{item.fid}}">加入</view>
+        <view class='fl l_goto' wx:if="{{item.ingroup == 1}}" bindtap='gotoClass' data-id="{{item.fid}}">前往</view>
+      </view>
+    </block>
+  </view>
+</view>

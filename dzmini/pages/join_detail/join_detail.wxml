@@ -1,0 +1,39 @@
+<!--pages/join_detail/join_detail.wxml-->
+<!--pages/detail/detail.wxml-->
+<view class='contain'>
+  <image class='banner' src='/images/courses-bg.png'></image>
+
+  <view class='t_message'>
+    <view class='t-title'>报名人数</view>
+    <view class='join-count'>7</view>
+    <view class='distance'>距离报名结束还有13天7小时</view>
+  </view>
+
+  <view class='detail'>
+
+    <view class='tab-head'>
+      <block wx:for="{{['学生','圈子','学号','管理']}}">
+        <view class='head-item'>{{item}}</view>
+      </block>
+    </view>
+
+    <view class='d-content'>
+      <block wx:for="{{[1,2,3,4]}}">
+        <view class="j-cell {{index%2 == 0?'gray-cell':''}}">
+          <view class='j-index'>{{index + 1}}</view>
+          <view class='j-info'>
+            <view class='info-item'>李欣</view>
+            <view class='info-item'>2016级3班</view>
+            <view class='info-item'>54356</view>
+            <view class='info-item'>
+              <view class='remove'>移除</view>
+              <view class='pass' >通过</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+</view>

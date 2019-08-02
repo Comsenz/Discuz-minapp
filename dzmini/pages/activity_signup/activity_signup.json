@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "报名详情",
+  "usingComponents": {},
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200
+}

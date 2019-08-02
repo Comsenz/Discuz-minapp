@@ -1,0 +1,80 @@
+{
+  "pages": [
+    "pages/discovery/discovery",
+    "pages/index/index",
+    "pages/create_class/create_class",
+    "pages/search_class/search_class",
+    "pages/post_thread/post_thread",
+    "pages/class_setting/class_setting",
+    "pages/admin_setting/admin_setting",
+    "pages/class_rank/class_rank",
+    "pages/user_audit/user_audit",
+    "pages/user_class_setting/user_class_setting",
+    "pages/more_user/more_user",
+    "pages/thread_detail/thread_detail",
+    "pages/mine/mine",
+    "pages/mine_modify/mine_modify",
+    "pages/mine_favorite/mine_favorite",
+    "pages/mine_work/mine_work",
+    "pages/create_school/create_school",
+    "pages/create_city/create_city",
+    "pages/create_area/create_area",
+    "pages/class_tag/class_tag",
+    "pages/questionnaire/questionnaire",
+    "pages/questionnaire_detail/questionnaire_detail",
+    "pages/post_question/post_question",
+    "pages/vote_list/vote_list",
+    "pages/vote_optiondetail/vote_optiondetail",
+    "pages/question_answer/question_answer",
+    "pages/question_answer_post/question_answer_post",
+    "pages/question_answer_detail/question_answer_detail",
+    "pages/question_type/question_type",
+    "pages/activity/activity",
+    "pages/activity_post/activity_post",
+    "pages/activity_detail/activity_detail",
+    "pages/activity_signup/activity_signup",
+    "pages/forum/forum",
+    "pages/forumdisplay/forumdisplay",
+    "pages/login/login",
+    "pages/register/register"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "论坛管家",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#39bf65",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/discovery/discovery",
+        "iconPath": "image/tab-course.png",
+        "selectedIconPath": "image/tab-course-n.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/forum/forum",
+        "iconPath": "image/tab-answer.png",
+        "selectedIconPath": "image/tab-answer-n.png",
+        "text": "版块"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/tab-class.png",
+        "selectedIconPath": "image/tab-class-n.png",
+        "text": "圈子"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "image/tab-mine.png",
+        "selectedIconPath": "image/tab-mine-n.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

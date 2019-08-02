@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "帖子列表",
+  "usingComponents": {
+    "post_selectMask": "/component/post_selectMask/post_selectMask"
+  },
+  "onReachBottomDistance": 150,
+  "enablePullDownRefresh": true
+}

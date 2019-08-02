@@ -1,0 +1,7 @@
+page{
+  background-color: #F4F4F4;
+}
+.little_text{
+  font-size: 25rpx;
+  color:#999;
+}

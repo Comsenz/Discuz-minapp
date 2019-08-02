@@ -1,0 +1,125 @@
+<!--pages/question_answer_post/question_answer_post.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+<view class='containView'>
+  <form catchsubmit="formSubmit">
+    <input class="easyInput" name="subject" value="{{title}}" placeholder="标题" focus='true' bindfocus='inputFocus' bindblur='bindBlur' bindinput='titleInput' />
+
+    <block wx:if="{{searchKeyChange && !toAddDetail}}">
+      <block wx:for="{{searchResultList}}" wx:key="result">
+        <view class='searchCell' bindtap='cellClick' id="{{item.tid}}">
+          <view class='resultTitle'>
+            <block wx:for="{{item.subjectArr}}" wx:key="subjectkey" wx:for-item="subjectItem">
+              <text class="{{subjectItem == keyword ? 'resultkey' : ''}}">{{subjectItem}}</text>
+            </block>
+          </view>
+          <view class='cell-info-left'>
+            <view class='icon-item cell-tag'>
+              <image class='cell-icon' src='{{minImgDoc}}re_tag.png'></image>
+              <view class='cell-icon-text'>{{item.typename?item.typename:'分类'}}</view>
+            </view>
+            <view class='icon-item cell-recount'>
+              <image class='cell-icon' src='{{minImgDoc}}re_dis.png'></image>
+              <view class='cell-icon-text'>{{item.replies}}个回答</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class='noMoreView' hidden="{{!hasMore}}">
+        没有更多了
+      </view>
+    </block>
+
+    <block wx:if="{{searchKeyChange && toAddDetail}}">
+
+      <picker class='classType' name="classType" mode="selector" range="{{classTypeList}}" range-key='name' bindchange="classTypeChange" wx:if="{{classTypeList}}">
+        <text decode="{{true}}">{{classTypeList[classIndex].name?classTypeList[classIndex].name:'选分类'}}</text>
+      </picker>
+
+      <textarea class="weui-input detailText" wx:if="{{!fullScreen}}"  name="message" placeholder="问题描述" bindblur='detailFinish' focus="{{isText}}" maxlength="-1" />
+
+      <!-- 上传图片 start -->
+      <view class='attachmentContain' wx:if="{{!isevaluate}}">
+    <view class="audio-playView" wx:if="{{recording}}">
+      <image mode="widthFix" src="{{minImgDoc}}record_close.png" class="record-close" bindtap="clear"></image>
+      <view class='record-time'>{{formatedRecordTime}}</view>
+      <image class='record-icon' src='{{minImgDoc}}record_icon.png'></image>
+      <view class='record-finish' bindtap='stopRecord'>完成</view>
+    </view>
+
+    <view class='playViewContain' wx:if="{{audio}}">
+      <view class="audio-playView">
+      <image mode="widthFix" src="{{is_play? minImgDoc+'audio_play.png': minImgDoc+'audio_paused.png'}}" class="audio-icon audio-play" bindtap="audio_play"></image>
+      <view class="control-process">
+        <text class="current-process">
+          <block wx:if="{{current_process.length > 0}}">
+          {{current_process}}
+          </block>
+          <block wx:else>
+          00:00
+          </block>
+        </text>
+        <slider class="slider" 
+          bindchange="hanle_slider_change" 
+          bindtouchstart="handle_slider_move_start" 
+          bindtouchend="handle_slider_move_end" 
+          min="0" 
+          block-size="12" 
+          block-color="#6199fd"
+          max="{{slider_max}}" 
+          activeColor="#5abf39" 
+          backgroundColor="rgb(153,153,153,0.4)" 
+          value="{{slider_value}}"
+        />
+        <text class="total-process">
+        <block wx:if="{{total_process.length > 0}}">
+          {{total_process}}
+          </block>
+          <block wx:else>
+          00:00
+          </block>
+        </text>
+      </view>
+    </view>
+    <image class='deleteA audioDele' src='{{minImgDoc}}att_delete.png' id="{{audio.aid}}" bindtap='deleteAudio'></image>
+    </view>
+
+  
+
+    <view class="uploader__files">
+      <block wx:for="{{imageList}}" wx:for-item="image" wx:key="{{image.aid}}">
+        <view class="uploader__file" id="{{image.aid}}">
+          <image class="uploader__img" src="{{image.src}}" data-src="{{image.src}}" bindtap="previewImage"></image>
+          <image class='deleteA' src='{{minImgDoc}}att_delete.png' id="{{image.aid}}" bindtap='deleteImage'>
+          </image>
+        </view>
+      </block>
+      <view class='uploader_videoContain' wx:if="{{video}}">
+         <view class="uploader__file" id="{{image.aid}}">
+          <video id='myVideo' class="uploader__video uploader__input"
+          controls="false" 
+          show-fullscreen-btn="false"
+          bindplay="playVideo"
+          bindfullscreenchange="fullScreenChange"
+           src="{{video.src}}"></video>
+            <image class='deleteA' src='{{minImgDoc}}att_delete.png' id="{{video.aid}}" bindtap='deleteVideo'>
+          </image>
+        </view>
+      </view>
+      <image class="uploader__input" src="{{minImgDoc}}post_addimage.png"  bindtap="chooseImage">
+     </image>
+      <image class="uploader__input" src="{{minImgDoc}}post_addaudio.png" bindtap="chooseAudio">
+      </image>
+      <image class="uploader__input" src="{{minImgDoc}}post_addvideo.png"  bindtap="chooseVideo">
+      </image>
+    </view> 
+  </view>
+
+      <!-- 上传图片 end -->
+      <button class='postBtn' disabled="{{postLock}}" type="primary" formType="submit">提问</button>
+    </block>
+
+    <block wx:if="{{searchKeyChange && !toAddDetail}}">
+      <view class='addDetail' disabled="{{postLock}}" type="primary" catchtap='addDetail' style="bottom:{{keyboardHeight}}px">添加详细描述</view>
+    </block>
+  </form>
+</view>

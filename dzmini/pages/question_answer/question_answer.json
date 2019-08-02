@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "问答",
+  "usingComponents": {},
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 200
+}

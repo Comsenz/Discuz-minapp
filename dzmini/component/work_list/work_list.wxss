@@ -1,0 +1,339 @@
+/* component/work_list/work_list.wxss */
+
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+
+.borderShowdow {
+  box-shadow:0 0 15rpx 2rpx rgba(0,0,0,0.1);
+}
+
+scroll-view {
+  width: 100%;
+  height: 98%;/*动态高度*/
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  /* padding:0 15px; */
+}
+.pointView {
+  width:28rpx;
+  height: 28rpx;
+  position: absolute;
+  top: -20rpx;
+  left: 75rpx;
+  z-index: 1;
+}
+.mainView {
+  margin: 0 30rpx;
+  position: relative;
+}
+
+.addClass {
+  width: 100rpx;
+  height: 100rpx;
+}
+.createclass {
+  color: #5abf39;
+}
+
+/* 圈子信息 */
+.classInfoBg {
+  /* height: 300rpx; */
+  width: 100%;
+  background-color: white;
+  border-radius: 15rpx;
+  word-break:break-all;
+}
+
+.class-message {
+  /* height: 110rpx; */
+  margin: 20rpx 40rpx;
+  padding-top:30rpx;
+  font-size: 30rpx;
+  color: #353535;
+}
+
+.class-show {
+  text-align: center;
+  display: flex;
+  padding-bottom: 50rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.easyTalkDesc {
+  text-align: center;
+  display: flex;
+  padding-bottom: 50rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.easyTalkNav {
+  display:flex;
+  justify-content:space-between;
+  padding:0rpx 30rpx 0rpx;
+  border-bottom:1rpx solid #dcdcdc;
+  margin:0 30rpx;
+  font-size: 32rpx;
+}
+
+.easyTalkNavItem {
+  color: #555555;
+  padding: 0 8rpx;
+  line-height:3;
+}
+
+.easyTalkActive {
+  color: #5abf39;
+  border-bottom:5rpx solid #5abf39;
+}
+.easyTitle {
+  color:#353535;
+  font-size: 30rpx;
+}
+.class-numberItem {
+  width: 300rpx;
+}
+
+.class-number {
+  font-size: 42rpx;
+  color: #5abf39;
+}
+
+.class-numberItem-name {
+  margin-top:15rpx;
+  font-size: 28rpx;
+  color: #666666;
+}
+.enterClass{
+  position: relative;
+}
+.info-more {
+  height: 58rpx;
+  width: 81rpx;
+  margin-top:15rpx;
+}
+.badage {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 8rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 6rpx;
+  background-color: red;
+}
+
+.messageList {
+  margin: 24rpx 0;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border-radius: 15rpx;
+}
+
+.classCell {
+  display: flex;
+  margin: 0 24rpx;
+  border-bottom: 1rpx solid #e0e0e0; 
+}
+
+.class-cell-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 20rpx 0;
+  border-radius:8rpx;
+  border:1rpx solid #E1E1E1;
+}
+
+.class-cell-contentView {
+  margin-left: 20rpx;
+  width: 560rpx;
+}
+
+.username {
+  font-size: 30rpx;
+  color: #5f739b;
+  padding-top: 20rpx;
+  font-weight: 600;
+  width:400rpx;
+  overflow:hidden;
+  height:65rpx;
+}
+
+.message {
+  font-size: 30rpx;
+  color: #353535;
+  margin-top:10rpx;
+
+  display:-webkit-box;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:5;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.easyMessage {
+  color: #666666;
+}
+
+.attachement {
+  width: 155rpx;
+  height: 155rpx;
+  margin-top:20rpx;
+  margin-right: 15rpx;
+}
+.singleVideo {
+  display:flex;
+  width: 80%;
+  justify-content:center;
+  background-color:#444444;
+  height:243rpx;
+  align-items:center;
+  padding-bottom:20rpx;
+  margin-top: 20rpx;
+}
+
+.singleAtt {
+  width: 80%;
+}
+
+.class-cell-time {
+  font-size:22rpx;
+  line-height:3;
+}
+.cell-count {
+  display:flex;
+  justify-content:space-between;
+  font-size: 22rpx;
+  color:#888888;
+}
+.toolRight button{
+  padding:0rpx;
+  border:none;
+  width:164rpx;
+  height:75rpx;
+  display: flex;
+  align-items: center;
+}
+.sv_sepView {
+  height:45rpx;
+  width:1rpx;
+  border-left:1px solid #dcdcdc;
+}
+.easyTalkThreadNumber {
+  display:flex;
+  align-items:center;
+  width:240rpx;
+  height: 65rpx;
+  margin-left: 20rpx;
+}
+.easyTalkThreadNumber image {
+  margin-left:20rpx;
+  margin-right:10rpx;
+}
+.lookimg {
+  width: 24rpx;
+  height: 16rpx;
+}
+.discimg {
+  width:24rpx;
+  height:23rpx;
+}
+.easyTop {
+  margin: 30rpx 30rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+  line-height: 1.8;
+  padding-bottom: 15rpx;
+  display:-webkit-box;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.easyTop text {
+  color:  #ff0000;
+  border: 1rpx solid #ff0000;
+  font-size: 22rpx;
+  margin-right: 15rpx;
+  padding: 0 5rpx;
+}
+.easyTopCell {
+  color: #333333;
+  font-size: 30rpx;
+}
+.toolRight {
+  width: 90rpx;
+  height: 75rpx;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.shareHidden {
+  display:flex;
+  width:328rpx;
+  border-radius:8rpx;
+  margin-right:80rpx;
+  position:absolute;
+  top:-15rpx;
+  right:-25rpx;
+  background-color:white;
+  align-items: center;
+}
+.shareIcon {
+  width:100rpx;
+  height:50rpx;
+  margin: 0 auto;
+}
+
+.discIcon {
+  width: 40rpx;
+  height: 28rpx;
+  margin-top: 20rpx;
+}
+
+@import "/pages/common_temp/audio_player.wxss";
+
+.noMoreView {
+  text-align: center;
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  height: 200rpx;
+}
+
+.emptyView {
+  font-size: 28rpx;
+  color: #666666;
+  text-align: center;
+  margin:  0 90rpx;
+
+}
+.emptyView image {
+  display: block;
+  width: 349rpx;
+  height: 261rpx;
+  margin: 110rpx auto 30rpx;
+}
+.emptyView text{
+  color: #3973db;
+}
+.emptyMsg {
+  padding-bottom: 150rpx;
+  width:410rpx;
+  margin:0 auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #999999;
+  height: 50rpx;
+  font-size: 24rpx;
+}
+
+.headerShow {
+  margin: 0 auto;
+}

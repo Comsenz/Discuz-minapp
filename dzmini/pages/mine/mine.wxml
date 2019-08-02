@@ -1,0 +1,58 @@
+<view class='l_main'>
+  <view class='mi_top' bindtap="goToModify">
+    <view class='fl mi_head'>
+      <image src='{{avatar}}'></image>
+    </view>
+    <view class='fl mi_msg'>
+      <view class='mi_nick'>{{username}}</view>
+      <view class='mi_label'>
+        <view class='label_item label_jia' wx:if="{{grouptitle}}">{{grouptitle}}</view>
+      </view>
+    </view>
+    <image class="label_item1" src="http://static.qr.cntv.cn/2018hb/class/right.png"></image>
+  </view>
+
+  <view class='mi_block'>
+    <view class='mi_item' bindtap="goToFavorite">
+      <view class='mi_icon icon_coll'></view>
+      <view class='fr mi_bar bar_right'>我的收藏</view>
+    </view>
+    <view class='mi_item' bindtap="goToMineWork">
+      <view class='mi_icon icon_task'></view>
+      <view class='fr mi_bar bar_right'>我的主题</view>
+    </view>
+    <view class='mi_item' bindtap="goToMineReply">
+      <view class='mi_icon icon_reply'></view>
+      <view class='fr mi_bar bar_right'>我的回复</view>
+    </view>
+  </view>
+
+  <view class='mi_block'>
+    <view class='mi_item'>
+      <view class='mi_icon icon_num'></view>
+      <view class='fr mi_bar'>
+        <view class='fl'>主题数</view>
+        <view class='fr'>{{threads}}</view>
+      </view>
+    </view>
+    <view class='mi_item'>
+      <view class='mi_icon icon_reply'></view>
+      <view class='fr mi_bar'>
+        <view class='fl'>回复数</view>
+        <view class='fr'>{{posts}}</view>
+      </view>
+    </view>
+    <view class='mi_item'>
+      <view class='mi_icon icon_score'></view>
+      <view class='fr mi_bar'>
+        <view class='fl'>积分</view>
+        <view class='fr'>{{credits}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='switchUser' wx:if="{{uid}}" bindtap='switchLogin' hidden>
+    切换账号
+  </view>
+
+</view>

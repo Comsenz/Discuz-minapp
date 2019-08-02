@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发布帖子",
+  "usingComponents": {
+    "secode": "/component/secode/secode"
+  }
+}

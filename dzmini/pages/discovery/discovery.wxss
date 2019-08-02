@@ -1,0 +1,266 @@
+/* pages/discovery/discovery.wxss */
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+
+.borderShowdow {
+  box-shadow:0 0 15rpx 2rpx rgba(0,0,0,0.1);
+}
+
+.nav {
+    height: 95rpx;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 80rpx;
+    font-size: 16px;
+    white-space: nowrap;
+    position: fixed;
+    background: white;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+.nav-item {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    color: #666666;
+}
+.nav-item.active{
+    /* border-bottom:5rpx solid #5abf39; */
+    color: #5abf39;
+    font-weight: 500;
+}
+
+.active_index {
+  background: #5abf39;
+  height: 6rpx;
+  width: 60rpx;
+  margin: 0 auto;
+  border-radius: 3rpx;
+}
+.show{
+   display:show;
+}
+.hide{
+   display:none;
+}
+
+
+.messageList {
+  height: auto;
+  background-color: white;
+  border-radius: 15rpx;
+  margin: 30rpx;
+  margin-top: 105rpx;
+}
+
+.classCell {
+  display: flex;
+  margin: 0 24rpx;
+  border-bottom: 1px solid #e1e1e1c0; 
+}
+
+.class-cell-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 20rpx 0;
+  border-radius:8rpx;
+  border:1rpx solid #E1E1E1;
+}
+
+.class-cell-contentView {
+  margin-left: 10rpx;
+  width: 560rpx;
+}
+
+.username {
+  font-size: 30rpx;
+  color: #5f739b;
+  padding-top: 20rpx;
+  font-weight: 600;
+}
+
+.message {
+  font-size: 30rpx;
+  color: #353535;
+  margin-top:10rpx;
+  word-break: break-all;
+}
+
+.attachement {
+  width: 155rpx;
+  height: 155rpx;
+  margin-top:20rpx;
+  margin-right: 15rpx;
+}
+
+.class-cell-time {
+  width:200rpx;
+  float:left;
+  font-size:22rpx;
+  line-height:60rpx;
+  color:#888888;
+}
+.toolRight button{
+  padding: 0rpx;
+  border: none;
+  width: 115rpx;
+  height: 70rpx;
+}
+.toolRight {
+  margin-bottom: 10rpx;
+  width: 290rpx;
+  height: 70rpx;
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+}
+.shareHidden {
+  display: flex;
+  width: 238rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+}
+.shareIcon {
+  width: 100rpx;
+  height: 50rpx;
+}
+
+.discIcon {
+  width: 40rpx;
+  height: 30rpx;
+  margin-top: 20rpx;
+  display: none;
+}
+.viodeoView {
+  margin-top: 30rpx;
+}
+
+.attachementView {
+  display: flex;
+  flex-wrap:wrap;
+}
+.singleVideo {
+  display:flex;
+  width: 80%;
+  justify-content:center;
+  background-color:#444444;
+  height:243rpx;
+  align-items:center;
+  padding-bottom:20rpx;
+  margin-top: 20rpx;
+}
+
+.singleAtt {
+  width: 80%;
+}
+
+@import "../common_temp/audio_player.wxss";
+
+#myVideo {
+  width: 0rpx;
+  height: 0rpx;
+}
+
+.emptyView {
+  font-size: 28rpx;
+  color: #666666;
+  text-align: center;
+  margin:  50rpx 90rpx;
+
+}
+.emptyView image {
+  display: block;
+  width: 349rpx;
+  height: 261rpx;
+  margin: 300rpx auto 30rpx;
+}
+.emptyMsg {
+  padding-bottom: 600rpx;
+  width:410rpx;
+  margin:0 auto;
+}
+
+.noMoreView {
+  text-align: center;
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}
+
+.emptyView text{
+  color: #3973db;
+}
+
+/* 获取信息弹窗 */
+.shareMask {
+  position: fixed;
+  top: -0px;
+  left: -0px;
+  width: 100%;
+  height: 905px;
+
+  background-color:#000;background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+.shareContain {
+  position:relative;
+  width: 585rpx;
+  height: 810rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  margin:216rpx auto;
+  text-align: center;
+}
+.shareCover {
+  width: 585rpx;
+  height: 455rpx;
+  margin: 0 auto;
+}
+.closeView {
+  float: right;
+  top:10rpx;
+  right:10rpx;
+  width:100rpx;
+  height:100rpx;
+  position:absolute;
+}
+.close {
+  width: 48rpx;
+  height: 48rpx;
+  margin-left:50rpx;
+}
+
+.shareContent {
+  font-size: 30rpx;
+  color: #888888;
+  margin:0rpx 40rpx 30rpx;
+  line-height:1.4;
+}
+
+.welcomeContain {
+  position:relative;
+  width: 585rpx;
+  height: 645rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  margin:216rpx auto;
+  text-align: center;
+}
+
+.welcomeCover {
+  margin: 30rpx 40rpx;
+  width:505rpx;
+  height:378rpx;
+
+}
+
+.welcomeBtn {
+  color: #5abf39;
+  background-color: white;
+  height:98rpx;
+  line-height:3;
+}
+/* 获取信息弹窗 - end */

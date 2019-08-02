@@ -1,0 +1,408 @@
+/* pages/detail/detail.wxss */
+view,input,textarea,image,text,button,scroll-view{
+  box-sizing: border-box;
+}
+.detail {
+  padding: 20rpx 0rpx 100rpx 0rpx;
+  font-size: 28rpx;
+  overflow-wrap: break-word;
+}
+
+.fontWeight {
+  font-weight: 600;
+}
+.content {
+  display: block;
+  padding: 30rpx;
+  background-color: white;
+}
+.easyTitle {
+  color:#000000;
+  font-size:30rpx;
+  line-height:1.8;
+  border-bottom:1rpx solid #e0e0e0;
+  padding-bottom:15rpx;
+  margin-bottom:15rpx;
+}
+
+.userInfo {
+  display: flex;
+  margin-bottom: 30rpx;
+  align-items: center;
+}
+.autherAvatar {
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius:8rpx;
+  border:1rpx solid #E1E1E1;
+}
+.auther_info {
+  margin-left: 20rpx;
+  width: 320rpx;
+}
+.auther {
+  font-size: 30rpx;
+  color: #5b739f;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.time {
+  color:#888888;
+  font-size: 22rpx;
+}
+.classType {
+  display: flex;
+  width: auto;
+  height: 40rpx;
+  margin-left: auto;
+  align-items: center;
+}
+.classimage {
+  width: 35rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.c_type {
+  color: #353535;
+  font-weight: 700;
+  font-size: 30rpx;
+}
+.worker {
+  /* margin-left: 100rpx; */
+}
+
+.workInfoView {
+  background-color:#f4f4f4;
+  font-size:24rpx;
+  padding:30rpx;
+  margin-top:15rpx;
+  color:#333333;
+}
+
+.workInfoView text {
+  color: #3973db;
+}
+
+.replyInfo {
+  background-color: #f4f4f4;
+  font-size: 24rpx;
+  padding: 20rpx;
+  margin-top: 15rpx;
+  color:#888888;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.replyInfo text {
+  color: #000000;
+}
+.sortTip {
+  background: url('http://static.qr.cntv.cn/2018hb/class/down.png') no-repeat 130rpx center/22rpx 13rpx #fff;
+  width: 160rpx;
+  background-color: #f4f4f4;
+}
+.shortListContain {
+  width: 293rpx;
+  height: 240rpx;
+  position: absolute;
+  overflow: hidden;
+  top: 50rpx;
+  right: 30rpx;
+  z-index: 100;
+  font-size: 24rpx;
+}
+.shortList {
+  width: 293rpx;
+  height: 245rpx;
+  overflow: hidden;
+  position: absolute;
+}
+.sortType {
+  display: flex;
+  justify-content: space-between;
+  z-index: 102;
+  position: relative;
+  margin: 10rpx 50rpx;
+  color: #333333;
+  align-items: center;
+  height: 100rpx;
+}
+.sortTypeF {
+  margin-top: 35rpx;
+}
+.sortCheck {
+  width: 26rpx;
+  height: 19rpx;
+}
+.reply {
+  display: block;
+}
+.replyCell {
+  background-color: white;
+  border-bottom: 1rpx solid #e0e0e0; 
+  margin: 20rpx 30rpx 0;
+}
+.replyerInfo {
+  display: flex;
+  margin-top: 15rpx;
+  align-items:center;
+}
+.avatar {
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius:8rpx;
+  border:1rpx solid #E1E1E1;
+}
+
+.messageView {
+  margin: 0rpx 0rpx 20rpx 95rpx;
+}
+
+.message {
+  color:#666666;
+  font-size: 26rpx;
+}
+.ppt{
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1.4;
+  color:#888;
+  font-size: 26rpx;
+  width: 280rpx;
+  height: 216rpx;
+  border-radius: 18rpx;
+  border:2rpx solid #E1E1E1;
+  padding:90rpx 30rpx 0;
+  float: left;
+  background: url('http://static.qr.cntv.cn/2018hb/file.png') no-repeat center 20rpx/54rpx 54rpx #fff;
+}
+.ppt_t{
+  margin-bottom: 4rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+}
+.easyMessage {
+  color: #666666;
+}
+.username {
+  font-size: 30rpx;
+  line-height: 2;
+  color: #5b739f;
+  width:400rpx;
+  height:60rpx;
+  overflow:hidden;
+}
+
+.retime {
+  color:#888888;
+  font-size: 22rpx;
+}
+
+.attachlist {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.attachImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top:30rpx;
+}
+
+.attachement {
+  width: 155rpx;
+  height: 155rpx;
+  margin-top:20rpx;
+  margin-right: 15rpx;
+}
+.signle-attachement {
+  width: 80%;
+  height: 243rpx;
+}
+.singleVideo {
+  display:flex;
+  justify-content:center;
+  background-color:#444444;
+  align-items:center;
+  height: 335rpx;
+  padding-bottom:20rpx;
+  margin-top: 20rpx;
+}
+.signle-image {
+  width: 80%;
+}
+.viodeoView {
+  margin-top: 30rpx;
+}
+
+.attachementView {
+  display: flex;
+  flex-wrap:wrap;
+}
+
+@import "../common_temp/audio_player.wxss";
+
+.sharecollect {
+  display: flex;
+  text-align: center;
+  justify-content:center;/*垂直居中*/
+  margin-top: 60rpx;
+}
+.sharecollect button {
+  padding: 0rpx;
+  border: none;
+  height: 110rpx
+}
+.share {
+  margin-right: 45rpx;
+  margin-left: 45rpx;
+  color:#888888;
+  font-size: 24rpx;
+}
+.shareIcon {
+  width: 98rpx;
+  height: 98rpx;
+}
+.collectIcon {
+  width: 98rpx;
+  height: 98rpx;
+}
+.toolbar {
+  position: fixed; 
+  bottom: 0rpx; 
+  width: 100%;
+  height: 125rpx;
+  display: flex;
+}
+
+.toolimage {
+  width: 100%;
+  height: 125rpx;
+  position:absolute;
+  z-index: -1;
+}
+
+.flowerAndDiscuss {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30rpx 0;
+}
+
+.workButton {
+  width: 148rpx;
+  height: 62rpx;
+  margin-left: 10rpx;
+}
+
+.workReply {
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 10rpx 20rpx 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.workReplyText {
+  color: #353535;
+  font-size: 30rpx;
+  margin-top: 20rpx
+}
+
+.workReplyAuthor {
+  color: #5b739f;
+}
+
+.replyText {
+  width:460rpx;
+  height:100rpx;
+  margin-top:20rpx;
+}
+
+.replyAudio {
+  width:90rpx;
+  height:90rpx;
+  margin-top:20rpx;
+  margin-left:18rpx;
+}
+
+.replyImage {
+  width:65rpx;
+  height:65rpx;
+  margin-top:45rpx;
+  margin-left:18rpx;
+}
+
+.replyVideo {
+  width:65rpx;
+  height:65rpx;
+  margin-top:45rpx;
+  margin-left:15rpx;
+}
+
+.submitView {
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.unsubmitView {
+  display: flex;
+  flex-wrap:wrap;
+  margin-top: 20rpx;
+}
+
+.noMoreView {
+  text-align: center;
+  color: #999999;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  height: 100rpx;
+}
+.adminButton{
+  color:#628dcf;
+  font-size: 30rpx;
+}
+#detailVideo {
+  width: 0rpx;
+  height: 0rpx;
+}
+.commentMore{
+  font-size: 24rpx;
+  color:#3973db;
+  margin-top:34rpx;
+  margin-bottom: 10rpx;
+}
+
+.rich-img {
+  max-width: 100%;
+}
+
+.support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60rpx;
+  min-width: 150rpx;
+  border-radius: 8rpx;
+  border: 1rpx solid #e1e1e1;
+  color: #c1c1c1;
+  font-size: 26rpx;
+}
+
+.support image {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.support-count {
+  margin-left: 5rpx;
+}

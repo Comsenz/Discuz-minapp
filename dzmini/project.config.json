@@ -1,0 +1,141 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enhance": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.3",
+	"appid": "wxda78c18752d346aa",
+	"projectname": "dzmini",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 11,
+			"list": [
+				{
+					"id": -1,
+					"name": "版块",
+					"pathName": "pages/forum/forum",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "版块列表",
+					"pathName": "pages/forumdisplay/forumdisplay",
+					"query": "fid=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": " 我的帖子",
+					"pathName": "pages/mine_work/mine_work",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "圈子",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动详情",
+					"pathName": "pages/activity_detail/activity_detail",
+					"query": "tid=321",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "转让",
+					"pathName": "pages/admin_setting/admin_setting",
+					"query": "fid=109&type=giveup",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "发投票",
+					"pathName": "pages/post_question/post_question",
+					"query": "fid=94",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "发活动",
+					"pathName": "pages/activity_post/activity_post",
+					"query": "fid=94",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "帖子列表",
+					"pathName": "pages/forumdisplay/forumdisplay",
+					"query": "fid=94",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "悬赏详情",
+					"pathName": "pages/question_answer_detail/question_answer_detail",
+					"query": "tid=387",
+					"scene": null
+				}
+			]
+		}
+	}
+}

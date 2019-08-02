@@ -1,0 +1,42 @@
+/* 音频播放start */
+.audio-playView {
+    position: relative;
+    width: 100%;
+    padding: 15rpx 10rpx;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    border-radius: 10rpx;
+    background:#f4f4f4;
+    border: 1px solid #d7d7d7;
+    margin-top: 20rpx;
+    height: 100rpx;
+}
+.audio-icon {
+  width: 64rpx;
+  height: 64rpx;
+  position: absolute;
+}
+/* 音频滚动条start */
+.control-process {
+    float: right;
+    margin-left:70rpx;
+    width:100%;
+}
+.control-process .slider {
+   margin: 17rpx 95rpx;
+}
+.control-process text {
+    font-size: 24rpx;
+    width: 80rpx;
+    line-height: 1.0;
+    color:#999999;
+    display: block;
+}
+.current-process {
+  float: left;
+}
+.total-process {
+  float: right;
+}

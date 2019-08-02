@@ -1,0 +1,178 @@
+<!--pages/activity_detail/activity_detail.wxml-->
+<import src="../common_temp/audio_player.wxml" />
+<view class='contain' wx:if="{{datalist.length > 0}}">
+  <image class='banner' mode='aspectFill' src="{{special_image?special_image:minImgDoc+'couse_bg.png'}}" wx:if="{{special_image}}"></image>
+  <view class='detail' style = "{{special_image?'margin-top:375rpx':'margin-top:0rpx'}}">
+    <view class='c-nav'>
+      <view class='courses-name'>{{thread.subject}}<text wx:if="{{special_activity.class && special_activity.class != 'undefined'}}">{{special_activity.class}}</text></view>
+    </view>
+
+
+    <view class='c-header'>
+      <view class='info'>
+        <view class='time_content'>
+          <image class='small_icon' src='{{minImgDoc}}join_time.png'></image>
+          <view>报名截止：</view>
+          <view class='time'>{{special_activity.expiration!=0?special_activity.expiration:'不限'}}</view>
+        </view>
+        <view class='count_content'>
+          <image class='small_icon' src='{{minImgDoc}}join_count.png'></image>
+          <view>已报：</view>
+          <view class='count'>{{special_activity.applynumber}}/{{special_activity.number}}人</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='teacher-list'>
+      <view class='mi_top'>
+        <view class='fl mi_head'>
+          <image src="{{userAvatar}}{{datalist[0].authorid}}"></image>
+        </view>
+        <view class='fl mi_msg'>
+          <view class='mi_nick'>{{datalist[0].nickname?datalist[0].nickname:datalist[0].author}}</view>
+          <view class='mi_label'>
+            <text class='mi_ca'>2小时前</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='d_content'>
+      <view class='detail_cell'>
+        <view class='l_title'>活动时间</view>
+        <rich-text class='l_message' nodes="{{special_activity.starttimefrom}} 至 {{special_activity.starttimeto}}"></rich-text>
+      </view>
+      <view class='detail_cell'>
+        <view class='l_title'>活动地点</view>
+        <view class='l_message'>{{special_activity.place}}</view>
+      </view>
+      <view class='detail_cell'>
+        <view class='l_title'>活动介绍</view>
+        <rich-text class='l_message' nodes="{{datalist[0].message}}"></rich-text>
+      </view>
+      <view class='detail_cell'>
+        <view class='l_title'>性别</view>
+        <view class='l_message'>{{special_activity.gender==1?'男':(special_activity.gender==2?'女':'不限')}}</view>
+      </view>
+      <view class='detail_cell last-cell'>
+        <view class='ac-join-c'>
+          <view class='l_title'>已报名（{{special_activity.applynumber}}/{{special_activity.number}}）</view>
+          <view class='j-m-c' wx:if="{{member_uid == special_activity.uid || member_uid == 1}}">
+          <view class='join-manage' bindtap='activityManage'>报名管理</view>
+          </view>
+          
+        </view>
+        
+        <view class='l_student'>
+          <block wx:for="{{applylist}}" wx:key="{{item.uid}}">
+            <view class='mi_head head-top'>
+              <image src="{{item.avatar}}"></image>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="join-btn {{isActivity?'':'join-gray'}}" bindtap='joinActivity'>
+    <block wx:if="{{special_activity.closed==1}}">
+    已截止
+    </block>
+    <block wx:else>
+    {{isActivity?'报名参加':'取消报名'}}
+    </block>
+    </view>
+  </view>
+
+  <view class='grayRow replyInfo'>
+    <view>
+    </view>
+    <view class='sortTip' bindtap='showSort'>{{listSortType}}</view>
+
+    <view class='shortListContain' wx:if="{{sortListShow}}">
+      <image src='{{minImgDoc}}sortList.png' mode='top' class='shortList'>
+      </image>
+      <view class='sortType sortTypeF' catchtap='sortClick' id='2'>
+        <view>默认顺序</view>
+        <image class='sortCheck' src='{{minImgDoc}}check.png' hidden='{{!sortdefault}}'></image>
+      </view>
+      <view class='sortType' id='1' catchtap='sortClick'>
+        <view>按时间</view>
+        <image class='sortCheck' src='{{minImgDoc}}check.png' hidden='{{sortdefault}}'></image>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='reply'>
+    <block wx:for="{{datalist}}" wx:key="item.pid">
+
+      <view class='replyCell' id="{{item.pid}}" wx:if="{{index != 0}}" bindtap='cellClick'>
+        <view class='replyinfo-c'>
+          <view class='replyerInfo'>
+            <image class='avatar' src="{{userAvatar}}{{item.authorid}}"></image>
+            <view class='auther_info'>
+              <view class='username fontWeight'>
+                {{item.nickname?item.nickname:item.username}}
+              </view>
+              <rich-text class='retime' nodes="{{item.dateline}}"></rich-text>
+            </view>
+          </view>
+
+        </view>
+
+        <view class='messageView'>
+          <rich-text class='message' nodes="{{item.message}}"></rich-text>
+          <view class='attachlist' wx:if="{{item.attachments}}">
+
+            <view class="attachementView {{item.imageA.length ==0 && item.videoA.length == 1?'singleVideo':''}}" wx:if="{{item.attachments}}">
+              <block wx:for="{{item.imageA}}" wx:for-item="attItem" wx:for-index="imgIndex" wx:key="attItem.aid">
+                <image class="attachement {{item.imageA.length ==1&& item.videoA.length == 0?'signle-image':'' }}" mode="{{item.imageA.length + item.videoA.length == 1?'widthFix':'aspectFill'}}" src="{{attItem.newUrl}}" id="{{imgIndex}}" data-cellindex="{{index}}" catchtap="lookImage"></image>
+              </block>
+
+              <block wx:for="{{item.videoA}}" wx:for-index="aidx" wx:for-item="video" wx:key="{{video.aid}}">
+                <image catchtap='clickVideo' id="{{video.newUrl}}" class="attachement" src='{{minImgDoc}}videoPlace.png'></image>
+              </block>
+            </view>
+            <block wx:for="{{item.audioA}}" wx:for-item="audio" wx:key="{{attItem.aid}}">
+              <template is="audio_player" data='{{...audio.toolUse,minImgDoc}}' />
+            </block>
+          </view>
+        </view>
+
+        <view class='flowerAndDiscuss'>
+          <!-- <image src="{{item.issupport==1?minImgDoc+'answer_agreed.png':minImgDoc+'answer_agree.png'}}" class='workButton' catchtap='sendFlower' id="{{index}}"></image> -->
+          <view class='support' catchtap='sendFlower' id="{{index}}">
+            <image src='/image/support.png'></image>
+            <view class='support-count'>{{item.postreview.support?item.postreview.support:0}}</view>
+          </view>
+          <image src='{{minImgDoc}}work_discuss.png' class='workButton' catchtap='replyWork' id="{{item.pid}}"></image>
+        </view>
+
+        <view class='workReply' wx:if="{{item.comments}}">
+          <block wx:for="{{item.comments}}" wx:for-item='wreply' wx:key="{{wreply.id}}">
+            <view class='workReplyText'>
+              <text class='workReplyAuthor'>{{wreply.nickname?wreply.nickname:wreply.author}}：</text>{{wreply.comment}}</view>
+          </block>
+          <view bindtap="commentMore" class="commentMore" data-index="{{index}}" data-pid="{{item.pid}}" wx:if="{{commentMoreLock[item.pid] !== false && datalist[index].comments.length >= 5}}">查看更多></view>
+        </view>
+
+      </view>
+
+    </block>
+  </view>
+
+  <view class='noMoreView'>
+    没有更多了~
+  </view>
+
+</view>
+
+<!-- 底部栏 -->
+<view class='toolbar'>
+  <view class='input-area' catchtap='replyText'> 请输入内容</view>
+  <button open-type='share' plain='true' bindtap='share'>
+    <image class='shareIcon' src='{{minImgDoc}}course_share.png'></image>
+    <text class='shareText'>分享</text>
+  </button>
+</view>
+
+<activity_joinMask bind:joinSucceed='joinSucceed' acPostData="{{acPostData}}" joinShow="{{joinShow}}" specialActivity="{{special_activity}}"></activity_joinMask>

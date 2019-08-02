@@ -1,0 +1,26 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorInfo}}</view>
+        <form bindsubmit="{{uid?'userModify':'formSubmit'}}">
+          <view class="weui-cells__title">{{uid?'备注昵称':'我在本圈子的昵称'}}</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" maxlength="16" name="nickname" placeholder="请输入昵称" value="{{nickname}}"/>
+                </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">{{uid?'备注手机号':'我的手机号'}}</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" type="number" maxlength="11" name="mobile" placeholder="请输入手机号" value="{{mobile}}"/>
+                </view>
+            </view>
+          </view>
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" form-type="submit">保存</button>
+          </view>
+        </form>
+    </view>
+</view>

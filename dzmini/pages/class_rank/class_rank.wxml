@@ -1,0 +1,41 @@
+<view class='l_main'>
+  <view class='rank_top'>
+    <view class='ran_list {{type=="day"?"active":""}}' bindtap="changeRank" data-type="day">日排行</view>
+    <view class='ran_list {{type=="week"?"active":""}}' bindtap="changeRank" data-type="week">周排行</view>
+    <view class='ran_list {{type=="month"?"active":""}}' bindtap="changeRank" data-type="month">月排行</view>
+    <view class='ran_list {{type=="all"?"active":""}}' bindtap="changeRank" data-type="all">总排行</view>
+  </view>
+
+  <view class='l_own'>
+    <view class='own_imgbox'>
+      <image mode='aspectFill' src='{{avatar}}'></image>
+    </view>
+    <view class='fl own_flower'>
+      <view class='own_txt'>红花数量</view>
+      <view class='own_center'>
+        <view class='fl own_num'>{{num}}</view>
+        <view class='fl own_zi'>朵</view>
+      </view>
+    </view>
+    <view class='fl own_flower'>
+      <view class='own_txt'>我的排名</view>
+      <view class='own_center'>
+        <view class='fl own_no' wx:if="{{level == 0}}">未上榜</view>
+        <view class='fl own_no' wx:if="{{level >0}}">NO.</view>
+        <view class='fl own_ran' wx:if="{{level >0}}">{{level}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='l_rank'>
+    <block wx:for="{{rank}}" wx:key="key" wx:for-index="idx">
+      <view class='rank_item'>
+        <view class='fl rank_no'>NO.{{idx + 1}}</view>
+        <view class='fl ell rank_name'>{{gnickname[item.authorid] !=''?gnickname[item.authorid]:unickname[item.authorid] !=''?unickname[item.authorid]:item.author}}</view>
+        <view class='fl rank_flower'></view>
+        <view class='fr rank_txt'>朵</view>
+        <view class='fr rank_num'>{{item.support}}</view>
+      </view>
+    </block>
+  </view>
+</view>

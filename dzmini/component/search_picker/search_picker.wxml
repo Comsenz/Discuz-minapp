@@ -1,0 +1,28 @@
+<view bindtap='showSelectList'>
+  <slot></slot>
+</view>
+<view class='sele_box {{showSelectList?"active":""}}' wx:if="{{showSelectList}}">
+  <view class='ceng' catchtap='hideSelectList'></view>
+  <view class='content'>
+    <view class='top'>
+      <view class='fl'>{{title}}</view>
+      <view class='fr'></view>
+    </view>
+    <view class='sea_box'>
+      <input class='sea_bar' placeholder='输入搜索关键词' bindinput='search' value="{{keywords}}"></input>
+    </view>
+    <view class='sch_list'>
+      <view class='sch_item sch_item1' bindtap="navTo" wx:if="{{!disabledNavto}}" hidden='true'>
+        <view class='fl'>{{navTitle}}</view>
+        <view class='fr'>+</view>
+      </view>
+      <block wx:for="{{range}}" wx:key="key">
+        <view class='sch_item sch_item2 {{beSelected==index?"active":""}}' hidden="{{item.isHide != 1?false:true}}"  bindtap="searchChange" data-index="{{index}}">
+          <view class='fl' wx:if="{{rangeKey}}">{{item[rangeKey]}}</view>
+          <view class='fl' wx:if="{{!rangeKey}}">{{item}}</view>
+          <view class='fr'><view></view></view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
