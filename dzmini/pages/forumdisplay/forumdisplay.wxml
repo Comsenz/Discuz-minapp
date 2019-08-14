@@ -10,10 +10,10 @@
       <view class='class-number'>{{dataDic.Variables.forum.threads?dataDic.Variables.forum.threads:"0"}}</view>
       <view class='class-numberItem-name'>主题</view>
     </view>
-    <!-- <view class='class-numberItem'>
-      <view class='class-number'>{{dataDic.Variables.forum.fup?dataDic.Variables.forum.fup:0}}</view>
+    <view class='class-numberItem'>
+      <view class='class-number'>{{dataDic.Variables.forum.rank?dataDic.Variables.forum.rank:'0'}}</view>
       <view class='class-numberItem-name'>排名</view>
-    </view> -->
+    </view>
   </view>
 </view>
 
@@ -39,7 +39,14 @@
         <view class='username'>
           {{member_nickname?member_nickname:cellItem.author}}
         </view>
-        <view class='message'>{{cellItem.subject}}</view>
+        <view class='message'><text class="special" wx:if="{{cellItem.special != 0 && cellItem.special != 2 && cellItem.special != 5}}">
+      <block wx:if="{{cellItem.special==1}}">投票</block>
+      <block wx:if="{{cellItem.special==2}}">商品</block>
+      <block wx:if="{{cellItem.special==3}}">悬赏</block>
+      <block wx:if="{{cellItem.special==4}}">活动</block>
+      <block wx:if="{{cellItem.special==5}}">辩论</block>
+      </text>
+      {{cellItem.subject}}</view>
 
           <wxs module="attCount">
             var onlyOneImg = function(cellItem) {
@@ -104,5 +111,5 @@
 <image src='{{minImgDoc}}postEnter.png' class='postEnter borderShowdow' wx:if="{{currentTab != 0}}" bindtap='postEnter'>发布</image>
 </post_selectMask>
 
-<video id='myVideo' class='{{fullScreen?"show":"hide"}}'  autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" bind src="{{currentVideo}}">
+<video id='myVideo' class='{{fullScreen?"show":"hide"}}'  autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{currentVideo}}">
 </video>

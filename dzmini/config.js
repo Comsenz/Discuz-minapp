@@ -6,7 +6,8 @@ const apiUrl = baseUrl + '/api/mobile/?'
 const indexUrl = baseUrl + '/api/mobile/index.php?'
 const defaultIcon = baseUrl+"/static/image/common/groupicon.gif";
 const userAvatar = baseUrl +"/uc_server/avatar.php?size=middle&uid=";
-const minImgDoc = 'https://guanjia.comsenz-service.com' + '/data/attachment/xiaochengxu/minimg/'
+// const minImgDoc = 'https://guanjia.comsenz-service.com' + '/data/attachment/xiaochengxu/minimg/'
+const minImgDoc = baseUrl + '/source/plugin/mobile/template/image/xiaochengxu/minimg/'
 const config = {
   // 下面的地址配合云端 Server 工作
   host,
@@ -29,11 +30,12 @@ const config = {
   activityAppliesUrl: `${apiUrl}module=activityapplies&version=5`,
   digestUrl: `${indexUrl}module=forumguide&view=digest&version=5`,
   newestUrl: `${indexUrl}module=forumguide&view=newthread&version=5`,
-  commonLoginUrl: `${apiUrl}module=login&version=5&loginsubmit=yes&loginfield=auto`,
+  commonLoginUrl: `${apiUrl}module=login&version=5&type=minapp`,
   seccodeUrl: `${apiUrl}module=secure&version=4`,
   codeImageUrl: `${apiUrl}module=seccode&version=5`,
-  registerUrl: `${apiUrl}module=register&version=5`,
-  // registerUrl: `${apiUrl}module=register&mod=register&version=5`,
+  registerUrl: `${apiUrl}module=register&version=5&type=minapp`,
+  oauthsUrl: `${apiUrl}module=oauths&version=5`,
+  unBindThirdUrl: `${apiUrl}module=oauths&op=unbind&version=5`,
  
   loginUrl: `${apiUrl}module=code2session&version=5`,
   checkUrl: `${apiUrl}module=check&version=5`,

@@ -1,9 +1,10 @@
 // pages/register/register.js
-const registerUrl = require('../../config').registerUrl
-const loginmanager = require('../../utils/loginManager')
-var event = require('../../utils/event.js')
-const app = getApp()
-var self
+const registerUrl = require('../../config').registerUrl;
+const loginmanager = require('../../utils/loginManager');
+const datacheck = require('../../utils/datacheck.js');
+var event = require('../../utils/event.js');
+const app = getApp();
+var self;
 Page({
 
   data: {
@@ -22,19 +23,19 @@ Page({
 
     event.on('userInfoChanged', this, function (data) {
       self.setData({
-        username: loginmanager.wxname,
+        username: data.username,
       })
     });
 
+    console.log(app.globalData.userInfo);
     // self.downSeccode()
-    if (loginmanager.wxname) {
+    if (app.globalData.userInfo.nickName) {
       this.setData({
-        username: loginmanager.wxname,
+        username: app.globalData.userInfo.nickName,
       })
     }
     var regnameurl = registerUrl + '&mod=' + app.globalData.regname;
     app.apimanager.getRequest(regnameurl).then(res => {
-      console.log(res)
       if (res.Variables.reginput.username) {
         this.setData({
           usernamekey: res.Variables.reginput.username,
@@ -51,12 +52,6 @@ Page({
     })
   },
 
-  getWxUserInfo() {
-    self.setData({
-      username: loginmanager.wxname
-    })
-  },
-
   downSeccode() {
     app.apimanager.requstSeccode('register').then(res => {
       if (res.sechash) {
@@ -70,7 +65,7 @@ Page({
 
   formSubmit(e) {
     let param = e.detail.value;
-    if (e.detail.value.username.match(app.globalData.emoji)) {
+    if (datacheck.isEmojiCharacter(e.detail.value.username)) {
       self.setData({
         errorInfo: '用户名不能包含表情',
         showTopTips: true,
@@ -79,19 +74,23 @@ Page({
         self.setData({
           showTopTips: false,
         });
-      }, 2000)
+      }, app.globalData.duration)
       return
     }
     var data = {
       regsubmit:true,
       formhash: app.globalData.formhash,
-      openid: loginmanager.openid
     }
     data[this.data.usernamekey] =  e.detail.value.username;
     data[this.data.passwordkey] =  e.detail.value.password;
     data[this.data.password2key] =  e.detail.value.password2;
     data[this.data.emailkey] =  e.detail.value.email;
-
+    if (loginmanager.openid) {
+      param['openid'] = loginmanager.openid
+    }
+    if (loginmanager.unionid) {
+      param['unionid'] = loginmanager.unionid
+    }
     var regnameurl = registerUrl + '&mod=' + app.globalData.regname;
     wx.showLoading();
     app.apimanager.postRequest(regnameurl, data).then(res => {

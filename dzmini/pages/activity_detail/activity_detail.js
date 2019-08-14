@@ -13,7 +13,6 @@ const userAvatar = require('../../config').userAvatar
 const loginmanager = require('../../utils/loginManager')
 
 const util = require('../../utils/util.js')
-const duration = 2000
 const app = getApp()
 var self
 Page({
@@ -654,8 +653,6 @@ Page({
   onReachBottom: function() {
     if (self.data.hasMore) {
       self.requestMore(true)
-    } else {
-      console.log('没有更多了')
     }
   },
   replyText() {

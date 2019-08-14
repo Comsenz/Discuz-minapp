@@ -1,14 +1,11 @@
 // pages/discovery/discovery.js
-const baseUrl = require('../../config').baseUrl
 const newestUrl = require('../../config').newestUrl
 const digestUrl = require('../../config').digestUrl
-const minImgDoc = require('../../config').minImgDoc 
+const minImgDoc = require('../../config').minImgDoc
 const userAvatar = require('../../config').userAvatar
 const checkUrl = require('../../config').checkUrl
-
 const util = require('../../utils/util.js')
 var event = require('../../utils/event.js')
-
 const app = getApp()
 var self
 
@@ -20,11 +17,11 @@ Page({
   data: {
     minImgDoc: minImgDoc,
     userAvatar: userAvatar,
-    userInfoHidden:true,
+    userInfoHidden: true,
     fullScreen: false,
-    datalist:[],
+    datalist: [],
     navData: [{
-      name: '最新',
+        name: '最新',
       },
       {
         name: '精华'
@@ -34,8 +31,9 @@ Page({
     page: 1,
   },
   onLoad: function(options) {
-    self = this
-    if (options.shareid) {
+    self = this;
+
+    if (options.shareid) { // 从分享进入帖子详情页
       var item = {
         tid: options.shareid,
         special: options.special ? options.special : 0
@@ -45,45 +43,23 @@ Page({
 
     wx.showLoading();
     this.requestData()
-    
+
     self.setupAudioPlayer()
     self.allowpostcomment()
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              app.globalData.userInfo = res.userInfo
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        } else {
-          self.setData({ userInfoHidden: false })
-        }
-      }
-    })
   },
 
   onReady() {
     this.videoContext = wx.createVideoContext('detailVideo')
   },
 
-
-  allowpostcomment: function () {
+  allowpostcomment: function() {
     var url = checkUrl
     app.apimanager.getRequest(url).then(res => {
       var repliesrank = res.setting.repliesrank;
       var allowpostcomment = res.setting.allowpostcomment;
       app.globalData.repliesrank = repliesrank
       app.globalData.allowpostcomment = allowpostcomment
-    }).catch(res => {
-    })
+    }).catch(res => {})
   },
 
   switchNav(event) {
@@ -213,7 +189,6 @@ Page({
       self.stopVoice()
     })
     this.innerAudioContext.onTimeUpdate(() => {
-      console.log("ontimeupdate")
 
       if (!self.data.is_moving_slider) { // 播放中
         self.data.currentAudio = self.data.datalist[self.data.currentAudio.toolUse.listIndex].audioA[0]
@@ -260,15 +235,13 @@ Page({
     let listIndex = e.currentTarget.dataset.listindex
     let postItem = self.data.datalist[listIndex]
     let currentAudio = postItem.audioA[0]
-
-    var param = {}
-    let audioset = "datalist[" + listIndex + "].audioA[0].toolUse.currentAudio";
-    console.log(audioset);
-    param[audioset] = currentAudio.newUrl
-    self.setData(param)
     self.setData({
       currentAudio: currentAudio
     })
+
+    var param = {}
+    let audioset = "datalist[" + listIndex + "].audioA[0].toolUse.currentAudio";
+    param[audioset] = currentAudio.newUrl
     let isplay = self.data.currentAudio.toolUse.is_play
     let playstr = "datalist[" + listIndex + "].audioA[0].toolUse.is_play";
     param[playstr] = !isplay
@@ -283,32 +256,29 @@ Page({
     }
   },
 
-  onUnload: function () {
+  onUnload: function() {
     self.innerAudioContext.destroy()
   },
 
-
   playVoice() {
-    let src = self.data.currentAudio.attachment;
-    console.log(self.data.currentAudio.attachment);
-    this.innerAudioContext.src = src;
-    this.innerAudioContext.play()
+    this.innerAudioContext.src = self.data.currentAudio.attachment;
+    this.innerAudioContext.play();
   },
+
   stopVoice() {
     var param = {}
     let toolUsestr = "datalist[" + self.data.currentAudio.toolUse.listIndex + "].audioA[0].toolUse"
     let toolUse = self.data.currentAudio.toolUse
     toolUse['is_play'] = false
     toolUse['slider_value'] = 0
-    toolUse['current_process'] = util.formatTime(
-      0)
+    toolUse['current_process'] = util.formatTime(0)
     param[toolUsestr] = toolUse
     self.setData(param)
     self.innerAudioContext.stop()
     self.data.currentAudio = self.data.datalist[self.data.currentAudio.toolUse.listIndex].audioA[0]
   },
-
   /* *********************** 语音end *********** */
+
   lookImage(e) {
     let cellItem = self.data.datalist[e.currentTarget.dataset.cellindex]
     let imageA = cellItem.imageA
@@ -317,7 +287,6 @@ Page({
       let item = imageA[i]
       imageSrcArray.push(item.attachment)
     }
-    console.log(imageSrcArray[e.currentTarget.id])
     wx.previewImage({
       current: imageSrcArray[e.currentTarget.id],
       urls: imageSrcArray
@@ -337,23 +306,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
-  },
-
-  getUserInfo: function (e) {
-    console.log(e.detail.userInfo)
-    if (!e.detail.userInfo) {
-      wx.showToast({
-        title: "为了您更好的体验,请先同意授权",
-        icon: 'none',
-        duration: 2000
-      });
+  onShareAppMessage: function(res) {
+    var title = "站长之家论坛";
+    var imagePath = minImgDoc + "kehoushare.png"
+    var path = '/pages/discovery/discovery'
+    return {
+      title: title,
+      path: path,
+      imageUrl: imagePath,
     }
   },
-  hideWelcome() {
-    this.setData({
-      userInfoHidden: true
-    })
-  }
 })

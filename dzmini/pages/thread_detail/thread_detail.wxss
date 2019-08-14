@@ -393,7 +393,7 @@ view,input,textarea,image,text,button,scroll-view{
   height: 60rpx;
   min-width: 150rpx;
   border-radius: 8rpx;
-  border: 1rpx solid #e1e1e1;
+  border: 2rpx solid #dddddd;
   color: #c1c1c1;
   font-size: 26rpx;
 }

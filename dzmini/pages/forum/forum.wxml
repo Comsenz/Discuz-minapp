@@ -2,12 +2,12 @@
 <view class='containView'>
   <block wx:for="{{catlist}}" wx:key='cat'>
     <view class='cat'>
-      {{item.name}}
+      <rich-text nodes="{{item.name}}"></rich-text>
     </view>
 
     <view class='forum_section'>
       <view class='forum_cell bar_right' bindtap='toFourmdisplay' wx:for="{{item.forums}}" wx:key='forum' wx:for-item="forum" id="{{forum.fid}}">
-      {{forum.name}}
+      <rich-text nodes="{{forum.name}}"></rich-text>
       <text>({{forum.todayposts}})</text>
     </view>
     </view>

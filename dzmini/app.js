@@ -1,17 +1,30 @@
 //app.js
 import apimanager from './utils/apimanager.js'
-const loginUrl = require('config').loginUrl
+const commonLoginUrl = require('config').commonLoginUrl
 const checkUrl = require('config').checkUrl
 const loginmanager = require('./utils/loginManager')
 
 App({
   onLaunch: function() {
-    console.log("v1.0.0(beta).1110");
     this.apimanager.getRequest(checkUrl).then(res => {
       this.globalData.regname = res.regname;
     });
     this.globalData.uid = wx.getStorageSync('uid')
     this.relogin(true)
+
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+              this.globalData.userInfo = res.userInfo
+            }
+          })
+        }
+      }
+    });
   },
 
   relogin(isInit) {
@@ -21,20 +34,21 @@ App({
         let dic = {
           code: res.code
         }
-        this.apimanager.getRequest(loginUrl, dic).then(res => {
-          if (res.message == "login_success") {
-            this.globalData.uid = res.data.uid
+        this.apimanager.getRequest(commonLoginUrl, dic).then(res => {
+          if (res.Message.messageval == "login_succeed") {
+            this.globalData.uid = res.Variables.member_uid
             if (!isInit) {
               wx.showToast({
-                title: '自动登录成功！',
-                icon:'none'
+                title: '登录成功！',
+                icon: 'none'
               })
             }
-          } else if (res.message == 'no_user') {
-            loginmanager.openid = res.openid
-            loginmanager.toLogin()
+          } else if (res.Message.messageval == 'no_bind') {
+            loginmanager.openid = res.Variables.openid;
+            loginmanager.unionid = res.Variables.unionid;
+            loginmanager.toLogin();
           }
-        }).catch(res => { 
+        }).catch(res => {
 
         })
       }
@@ -43,15 +57,12 @@ App({
 
   globalData: {
     userInfo: null,
-    emoji: /\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g,
-    easyfid: 2,
     uid: '',
     formhash: '',
-    repliesrank:'',
-    regname:'',
-    allowpostcomment:[],
-    member_identity: '',
-    member_status: ''
+    repliesrank: '',
+    regname: '',
+    allowpostcomment: [],
+    duration: 2000,
   },
   apimanager: new apimanager(),
 })

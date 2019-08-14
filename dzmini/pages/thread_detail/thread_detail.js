@@ -13,11 +13,8 @@ const minImgDoc = require('../../config').minImgDoc
 const userAvatar = require('../../config').userAvatar
 const checkUrl = require('../../config').checkUrl
 const loginmanager = require('../../utils/loginManager')
-
 const util = require('../../utils/util.js')
 var event = require('../../utils/event.js')
-// var ceshi = require('../../utils/ceshi')
-const duration = 2000
 const app = getApp()
 var self
 Page({
@@ -105,7 +102,6 @@ Page({
     var is_quan = options.is_quan ? options.is_quan : false
     var uid = app.globalData.uid
     var repliesrank = app.globalData.repliesrank;
-    console.log(repliesrank);
     var allowpostcomment = app.globalData.allowpostcomment;
     self.setData({
       tid: tid,
@@ -152,8 +148,8 @@ Page({
         }
       }
     })
-
   },
+  
   deleteSelfPost(e) {
     var type = e.currentTarget.dataset.thread ? true : false;
     var pid = e.currentTarget.dataset.pid;
@@ -499,7 +495,7 @@ Page({
       } else {
         if (res.Message.messageval == "group_has_joined") {
           self.makeRequest()
-        } else { 
+        } else {
           wx.showModal({
             content: res.Message.messagestr,
             showCancel: false,
@@ -674,15 +670,15 @@ Page({
     var url = checkUrl
     wx.request({
       url: url,
-      method:'POST',
-      success:function(res){
-        if (res.data.setting.allowpostcomment.length == 0){
+      method: 'POST',
+      success: function(res) {
+        if (res.data.setting.allowpostcomment.length == 0) {
           wx.showToast({
             title: '该功能暂未开启',
             icon: 'none'
           })
           return;
-        }else{
+        } else {
           wx.navigateTo({
             url: '../post_thread/post_thread?isevaluate=true&pid=' + e.currentTarget.id,
           })
@@ -708,7 +704,7 @@ Page({
     app.apimanager.getRequest(sendFlowerUrl, data).then(res => {
       if (res.Message.messageval == "thread_poll_succeed") {
         replyItem.issupport = 1
-        
+
         if (replyItem.postreview && replyItem.postreview.support) {
           replyItem.postreview.support = parseInt(replyItem.postreview.support) + 1;
         } else {
@@ -725,12 +721,12 @@ Page({
 
         // console.log(self.data.datalist);
       } else {
-        if (this.data.repliesrank == '0' && res.Message.messageval == "to_login"){
-            wx.showToast({
-              title: '该功能暂未开启',
-              icon: 'none'
-            })
-        }else{
+        if (this.data.repliesrank == '0' && res.Message.messageval == "to_login") {
+          wx.showToast({
+            title: '该功能暂未开启',
+            icon: 'none'
+          })
+        } else {
           wx.showToast({
             title: res.Message.messagestr,
             icon: 'none'
@@ -904,7 +900,6 @@ Page({
     if (self.data.datalist[0].imageA.length > 0) {
       imagePath = self.data.datalist[0].imageA[0].newUrl
     }
-    console.log(imagePath);
     return {
       title: title,
       path: path,
@@ -953,8 +948,6 @@ Page({
   onReachBottom: function() {
     if (self.data.hasMore) {
       self.requestMore(true)
-    } else {
-      console.log('没有更多了')
     }
   },
 })

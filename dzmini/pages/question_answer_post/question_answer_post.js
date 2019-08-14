@@ -7,8 +7,6 @@ const util = require('../../utils/util.js')
 const datacheck = require('../../utils/datacheck.js')
 const minImgDoc = require('../../config').minImgDoc
 var recordTimeInterval
-const duration = 2000
-
 const app = getApp()
 var self
 

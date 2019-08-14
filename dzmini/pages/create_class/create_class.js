@@ -203,12 +203,6 @@ Page({
       }, 2000)
       return false;
     }
-    if (data.name.match(getApp().globalData.emoji)){
-      wx.showModal({
-        showCancel: false,
-        content: '不能使用emoji表情',
-      })
-    }
     wx.showLoading({
       title: '提交中',
     })

@@ -24,4 +24,4 @@
 </view>
 </view>
 
-<image src='{{minImgDoc}}course_post.png' class='postEnter borderShowdow'  catchtap='postEnter' wx:if="{{member_identity==2}}">发布</image>
+<image src='{{minImgDoc}}course_post.png' class='postEnter borderShowdow'  catchtap='postEnter'>发布</image>

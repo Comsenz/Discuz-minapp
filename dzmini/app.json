@@ -36,7 +36,8 @@
     "pages/forum/forum",
     "pages/forumdisplay/forumdisplay",
     "pages/login/login",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/bound_manage/bound_manage"
   ],
   "window": {
     "backgroundTextStyle": "dark",

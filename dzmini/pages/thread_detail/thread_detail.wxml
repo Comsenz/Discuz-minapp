@@ -178,7 +178,6 @@
   autoplay='{{true}}'
   bindplay="playVideo"
   bindfullscreenchange="fullScreenChange"
-  bind
   src="{{currentVideo}}">
 </video>
 

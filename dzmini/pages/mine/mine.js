@@ -1,7 +1,6 @@
 const profileUrl = require('../../config').profileUrl;
 const userAvatar = require('../../config').userAvatar;
 const minImgDoc = require('../../config').minImgDoc
-const loginUrl = require('../../config').loginUrl
 const loginmanager = require('../../utils/loginManager')
 const app = getApp();
 var _this;
@@ -73,9 +72,16 @@ Page({
     if (!loginmanager.isLogin()) {
       return
     }
-    // return
     wx.navigateTo({
       url: '../mine_modify/mine_modify',
+    })
+  },
+  goToBound() {
+    if (!loginmanager.isLogin()) {
+      return
+    }
+    wx.navigateTo({
+      url: '../bound_manage/bound_manage',
     })
   },
   goToFavorite() {

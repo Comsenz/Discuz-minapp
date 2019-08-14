@@ -1,5 +1,6 @@
 import util from '../../utils/util.js';
 const createTypeUrl = require('../../config').createTypeUrl;
+const datacheck = require('../../utils/datacheck.js');
 const app = getApp();
 var _this;
 Page({
@@ -35,7 +36,7 @@ Page({
       }, 2000)
       return false;
     }
-    if (data.name.match(getApp().globalData.emoji)) {
+    if (datacheck.isEmojiCharacter(data.name)) {
       wx.showModal({
         showCancel: false,
         content: '不能使用emoji表情',

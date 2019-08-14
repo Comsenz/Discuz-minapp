@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -133,6 +133,12 @@
 					"name": "悬赏详情",
 					"pathName": "pages/question_answer_detail/question_answer_detail",
 					"query": "tid=387",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "绑定管理",
+					"pathName": "pages/bound_manage/bound_manage",
 					"scene": null
 				}
 			]

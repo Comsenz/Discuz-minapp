@@ -1,0 +1,104 @@
+/* pages/bound_manage/bound_manage.wxss */
+page {
+  background-color: #efeef3;
+}
+
+.l_main {
+  font-size: 32rpx;
+  width: 100%;
+  line-height: 1;
+  color: #000;
+}
+
+.mi_top {
+  height: 188rpx;
+  padding: 32rpx 30rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid #e5e5e5;
+  align-items:center;
+  display:flex;
+  flex-direction:column;
+}
+
+.mi_head {
+  height: 108rpx;
+  width: 108rpx;
+  border: 1rpx solid #e1e1e1;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.mi_head image {
+  width: 100%;
+  height: 100%;
+}
+
+.mi_nick {
+  width: 400rpx;
+  overflow: hidden;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.mi_group {
+  background-color: #fc0;
+  border-radius: 17rpx;
+  font-size: 21rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0 10rpx;
+  color: white;
+  margin-top: 15rpx
+}
+
+.mi_block {
+  margin-top: 30rpx;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+  padding-left: 30rpx;
+  background-color: #fff;
+}
+
+.mi_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+  color: #666666;
+  font-size: 28rpx;
+}
+
+.b_left {
+  display: flex;
+  align-items: center;
+}
+
+.fr {
+  margin-left: 15rpx;
+}
+
+.mi_icon {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.b_right {
+  margin-right: 15rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: right;
+  color: #999999;
+}
+
+.can-bound {
+  color: #5abf39;
+}
+
+.b-status {
+  font-size: 24rpx;
+  color: #999999;
+}

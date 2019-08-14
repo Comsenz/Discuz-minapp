@@ -102,6 +102,7 @@ view,input,textarea,image,text,button,scroll-view{
 .easyTopCell {
   color: #333333;
   font-size: 30rpx;
+  overflow: hidden;
 }
 
 .messageList {
@@ -243,4 +244,14 @@ detailVideo {
   text-align:center;
   line-height:120rpx;
   font:34rpx;
+}
+
+.special {
+  color: white;
+  font-size: 20rpx;
+  text-align: center;
+  background-color: #5abf39;
+  border-radius: 6rpx;
+  padding: 4rpx 6rpx;
+  margin-right: 4rpx;
 }

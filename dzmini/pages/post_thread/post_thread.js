@@ -8,7 +8,6 @@ const minImgDoc = require('../../config').minImgDoc
 const util = require('../../utils/util.js')
 const datacheck = require('../../utils/datacheck.js')
 var event = require('../../utils/event.js')
-const duration = 2000
 var self
 const app = getApp()
 var recordTimeInterval
@@ -48,6 +47,7 @@ Page({
   onReady() {
     this.videoContext = wx.createVideoContext('myVideo')
   },
+  
   detailBegin() {
     this.setData({
       fullScreen: false,
@@ -352,7 +352,7 @@ Page({
         wx.showToast({
           title: '上传成功',
           icon: 'success',
-          duration: 1000
+          duration: app.globalData.duration
         })
         let aid = result.data
         if (type == fileCatalog.image) {
@@ -793,7 +793,7 @@ Page({
         title: res.Message.messagestr,
         icon: 'none',
         mask: true,
-        duration,
+        duration:app.globalData.duration,
       })
     }).catch(res => {
       console.log(res)

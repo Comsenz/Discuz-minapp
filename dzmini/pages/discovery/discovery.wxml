@@ -20,33 +20,45 @@
 
     <block wx:for="{{datalist}}" wx:for-index="cellIdx" wx:for-item="cellItem" wx:key="{{cellIdx}}">
       <view class='classCell' id="{{cellIdx}}" bindtap='cellClick'>
-        <image class='class-cell-avatar' src="{{cellItem.author?cellItem.avatar:(userAvatar+'0')}}"></image>
+      <view>
+      <image class='class-cell-avatar' src="{{cellItem.author?cellItem.avatar:(userAvatar+'0')}}"></image>
+      </view>
+        
         <view class='class-cell-contentView'>
           <view class='username'>
             {{member_nickname?member_nickname:(cellItem.author?cellItem.author:'匿名')}}
           </view>
-          <view class='message'>{{cellItem.subject}}</view>
+          <view class='message'><text class="special" wx:if="{{cellItem.special != 0 && cellItem.special != 2 && cellItem.special != 5}}">
+      <block wx:if="{{cellItem.special==1}}">投票</block>
+      <block wx:if="{{cellItem.special==2}}">商品</block>
+      <block wx:if="{{cellItem.special==3}}">悬赏</block>
+      <block wx:if="{{cellItem.special==4}}">活动</block>
+      <block wx:if="{{cellItem.special==5}}">辩论</block>
+      </text>{{cellItem.subject}}</view>
           <wxs module="attCount">
             var onlyOneImg = function(cellItem) {
-            return cellItem.imageA.length == 1 && cellItem.videoA.length == 0?true:false;
+              return cellItem.imageA.length == 1 && cellItem.videoA.length == 0 ? true : false;
             }
             var onlyOneVideo = function(cellItem) {
-            return cellItem.videoA.length == 1 && cellItem.imageA.length == 0?true:false;
+              return cellItem.videoA.length == 1 && cellItem.imageA.length == 0 ? true : false;
             }
-            module.exports = {onlyImg:onlyOneImg,onlyVideo: onlyOneVideo,};
-          </wxs> 
-            <view class="attachementView {{attCount.onlyVideo(cellItem)?'singleVideo':''}}" wx:if="{{cellItem.attachlist.length > 0}}" catchtap = "{{attCount.onlyVideo(cellItem)?'clickVideo':''}}" id="{{attCount.onlyVideo(cellItem)?cellItem.videoA[0].attachment:''}}">
+            module.exports = {
+              onlyImg: onlyOneImg,
+              onlyVideo: onlyOneVideo,
+            };
+          </wxs>
+          <view class="attachementView {{attCount.onlyVideo(cellItem)?'singleVideo':''}}" wx:if="{{cellItem.attachlist.length > 0}}" catchtap="{{attCount.onlyVideo(cellItem)?'clickVideo':''}}" id="{{attCount.onlyVideo(cellItem)?cellItem.videoA[0].attachment:''}}">
 
-            <block wx:for="{{cellItem.imageA}}"  wx:for-index="aidx" wx:for-item="attItem" wx:key="{{attItem.aid}}" wx:if="{{aidx < (cellItem.videoA.length > 0 ? 8 : 9)}}">
+            <block wx:for="{{cellItem.imageA}}" wx:for-index="aidx" wx:for-item="attItem" wx:key="{{attItem.aid}}" wx:if="{{aidx < (cellItem.videoA.length > 0 ? 8 : 9)}}">
               <image class="attachement {{attCount.onlyImg(cellItem)?'singleAtt':''}}" mode="{{attCount.onlyImg(cellItem)?'widthFix':'aspectFill'}}" src="{{attItem.thumb}} " id="{{aidx}}" data-cellindex="{{cellIdx}}" catchtap="lookImage"></image>
             </block>
-          <!-- <view class='attachementView' wx:if="{{cellItem.attachlist.length > 0}}">
+            <!-- <view class='attachementView' wx:if="{{cellItem.attachlist.length > 0}}">
             <block wx:for="{{cellItem.imageA}}" wx:for-index="imageidx" wx:for-item="attItem" wx:key="{{attItem.aid}}">
               <image class='attachement' src="{{attItem.attachment}}" id="{{imageidx}}" data-cellindex="{{cellIdx}}" catchtap="lookImage" wx:if="{{(cellItem.videoA && imageidx < 8) || (!cellItem.videoA && imageidx < 9)}}"></image>
             </block> -->
             <block wx:for="{{cellItem.videoA}}" wx:for-index="aidx" wx:for-item="video" wx:key="{{video.aid}}" wx:if="{{aidx < 1}}">
-            <image catchtap='clickVideo' id="{{video.attachment}}" class='attachement' src='{{minImgDoc}}videoPlace.png'></image>
-          </block>
+              <image catchtap='clickVideo' id="{{video.attachment}}" class='attachement' src='{{minImgDoc}}videoPlace.png'></image>
+            </block>
 
             <block wx:if="{{cellItem.audioA}}">
               <block wx:for="{{cellItem.audioA}}" wx:for-index="aid" wx:for-item="audio" wx:key="{{audio.aid}}">
@@ -88,6 +100,6 @@
     别再用力了，你已经滑到底啦
   </view>
 
-  <video id='detailVideo' class='{{fullScreen?"show":"hide"}}' autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" bind src="{{currentVideo}}">
+  <video id='detailVideo' class='{{fullScreen?"show":"hide"}}' autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{currentVideo}}">
   </video>
 </view>

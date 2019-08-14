@@ -5,7 +5,6 @@ const postThreadUrl = require('../../config').postThreadUrl
 const minImgDoc = require('../../config').minImgDoc
 const util = require('../../utils/util.js')
 const datacheck = require('../../utils/datacheck.js')
-const duration = 2000
 const app = getApp()
 var self
 // 附件分类
@@ -294,9 +293,6 @@ Page({
     }
     if (!e.detail.value.subject) {
       errorInfo = '请输入标题'
-      ifError = true
-    } else if (e.detail.value.subject.match(getApp().globalData.emoji)) {
-      errorInfo = '标题不能使用emoji表情'
       ifError = true
     }
     else if (datacheck.isEmojiCharacter(e.detail.value.message) || datacheck.isEmojiCharacter(e.detail.value.subject)) {

@@ -2,159 +2,139 @@
 <view class="container" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend='touchEnd'>
   <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
     <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
-      <view class="nav-item {{currentTab == idx ?'active':''}}"  data-current="{{idx}}" bindtap="switchNav">
-      <view class='nav-image-contain'>
-        <view class="navAvatar">
-          <view class="fl l_group {{currentTab != idx ?'blur':''}}" src="{{navItem.icon}}">
-          <block wx:if="{{navItem.iconnew == 0}}">
-            <view class='{{navItem.icons.length == 1?"l_head1":navItem.icons.length>=5?"l_head5":"l_head2"}}' wx:for="{{navItem.icons}}" wx:key="{{key}}" wx:for-item="userItem"><image src='{{userItem}}' mode='aspectFill'></image></view>
-          </block>
-          <block wx:else>
-            <image src="{{navItem.icon}}"></image>
-          </block>
-        </view>
-        </view>
+      <view class="nav-item {{currentTab == idx ?'active':''}}" data-current="{{idx}}" bindtap="switchNav">
+        <view class='nav-image-contain'>
+          <view class="navAvatar">
+            <view class="fl l_group {{currentTab != idx ?'blur':''}}" src="{{navItem.icon}}">
+              <block wx:if="{{navItem.iconnew == 0}}">
+                <view class='{{navItem.icons.length == 1?"l_head1":navItem.icons.length>=5?"l_head5":"l_head2"}}' wx:for="{{navItem.icons}}" wx:key="{{key}}" wx:for-item="userItem">
+                  <image src='{{userItem}}' mode='aspectFill'></image>
+                </view>
+              </block>
+              <block wx:else>
+                <image src="{{navItem.icon}}"></image>
+              </block>
+            </view>
+          </view>
 
-        <block wx:if="{{idx == 0 && currentTab == 0}}">
-        <!-- <image class='navSetIcon' src='{{minImgDoc}}navmyset.png'></image> -->
-        <image class='navPosIcon' src='{{minImgDoc}}navhome.png'></image>
-        </block>
-        
-      </view>
-      <view class='nav-item-text'>{{navItem.name?navItem.name:'圈子'}}</view>
+          <block wx:if="{{idx == 0 && currentTab == 0}}">
+            <!-- <image class='navSetIcon' src='{{minImgDoc}}navmyset.png'></image> -->
+            <image class='navPosIcon' src='{{minImgDoc}}navhome.png'></image>
+          </block>
+
+        </view>
+        <view class='nav-item-text'>{{navItem.name?navItem.name:'圈子'}}</view>
       </view>
     </block>
     <view class="nav-item" bindtap="addClass">
-    <image class='addClass' src="{{minImgDoc}}addclass.png"></image>
-    <view class='nav-item-text createclass'>创建圈子</view> 
-    </view>  
+      <image class='addClass' src="{{minImgDoc}}addclass.png"></image>
+      <view class='nav-item-text createclass'>创建圈子</view>
+    </view>
   </scroll-view>
-  
-    <!-- 页面内容 -->
-  <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab"> 
+
+  <!-- 页面内容 -->
+  <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
     <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
 
-          <block wx:if="{{idx == 0}}">
-            <scroll-view scroll-y="true" 
-    bindscrolltolower="lower" enable-back-to-top='true' upper-threshold="50">
-    <view class="header" hidden="{{scrollTop >= 0}}">
-              <view class='headerShow' >
-                <view>{{refreshMsg}}</view>
+      <block wx:if="{{idx == 0}}">
+        <scroll-view scroll-y="true" bindscrolltolower="lower" enable-back-to-top='true' upper-threshold="50">
+          <view class="header" hidden="{{scrollTop >= 0}}">
+            <view class='headerShow'>
+              <view>{{refreshMsg}}</view>
+            </view>
+          </view>
+          <view class='mainView'>
+            <image class='pointView' style="left:{{indexPosition}}rpx" src='{{minImgDoc}}pointView.png' id='pointView'></image>
+            <view wx:if="{{idx == 0}}" class='InfoBg borderShowdow'>
+              <image src='/image/shequ.png' mode='widthFix'></image>
+              <view class='infoTitle'>
+                <view>语音发布 小视频发布 畅享交流</view>
               </view>
+              <view class='info_detail'>
+                有
+                <view class="info_detail_infonumber info_first">{{stateInfo.totalforums?stateInfo.totalforums:0}}</view>个圈子
+                <view class='info_detail_infonumber'>{{stateInfo.totalmembers?stateInfo.totalmembers:0}}</view>个成员
+                <view class='info_detail_infonumber'>{{stateInfo.totalthreads?stateInfo.totalthreads:0}}</view>个帖子
+              </view>
+              <view class='tipView' wx:if="{{tipStr != null}}">{{tipStr}}</view>
             </view>
-              <view class='mainView'>
-              <image class='pointView' style="left:{{indexPosition}}rpx" src='{{minImgDoc}}pointView.png' id='pointView'></image> 
-                <view wx:if="{{idx == 0}}" class='InfoBg borderShowdow'>
-                  <image src='/image/shequ.png' mode='widthFix'></image>
-                  <view class='infoTitle'>
-                    <view>语音发布  小视频发布  畅享交流</view>
-                  </view>
-                  <view class='info_detail'>
-                  有<view class="info_detail_infonumber info_first">{{stateInfo.totalforums?stateInfo.totalforums:0}}</view>个圈子 <view class='info_detail_infonumber'>{{stateInfo.totalmembers?stateInfo.totalmembers:0}}</view>个成员 <view class='info_detail_infonumber'>{{stateInfo.totalthreads?stateInfo.totalthreads:0}}</view>个帖子
-                  </view>
-                  <view class='tipView' wx:if="{{tipStr != null}}">{{tipStr}}</view>
-                </view>
 
-                <view class='groupList borderShowdow'>
-                  <block wx:for="{{grouplist}}" wx:for-index="classIdx" wx:for-item="classItem" wx:key="idx">
-                    <view class='groupCell' bindtap='groupClick' id="{{classIdx}}">
-                      <view class='grouplistAvatar'>
-                        <view class='fl l_group'>
-                          <block wx:if="{{classItem.iconnew == 0}}">
-                            <view class='{{classItem.icons.length == 1?"l_head1":classItem.icons.length>=5?"l_head5":"l_head2"}}' wx:for="{{classItem.icons}}" wx:key="{{key}}" wx:for-item="userItem"><image src='{{userItem}}' mode='aspectFill'></image></view>
-                          </block>
-                          <block wx:else>
-                            <image src="{{classItem.icon}}"></image>
-                          </block>
+            <view class='groupList borderShowdow'>
+              <block wx:for="{{grouplist}}" wx:for-index="classIdx" wx:for-item="classItem" wx:key="idx">
+                <view class='groupCell' bindtap='groupClick' id="{{classIdx}}">
+                  <view class='grouplistAvatar'>
+                    <view class='fl l_group'>
+                      <block wx:if="{{classItem.iconnew == 0}}">
+                        <view class='{{classItem.icons.length == 1?"l_head1":classItem.icons.length>=5?"l_head5":"l_head2"}}' wx:for="{{classItem.icons}}" wx:key="{{key}}" wx:for-item="userItem">
+                          <image src='{{userItem}}' mode='aspectFill'></image>
                         </view>
-                      </view>
-                      <view class='cell-messageView'>
-                        <view class='cell-title'>{{classItem.name}}</view>
-                        <view class='cell-school'>{{classItem.grouptype.three.name}}</view>
-                        <view class='cell-message'>
-                        <block wx:if="{{classItem.description.length > 0}}">
-                        {{classItem.description}}
-                        </block>
-                        <block wx:else>
-                        暂无圈子介绍
-                        </block>
-                        </view>
-                      </view>
-                      <view class="group-join  {{classItem.ingroup == 1 ? 'group-enter' : ''}}" catchtap='joinClass' id="{{classIdx}}" >
-                        <block wx:if="{{classItem.ingroup == 1}}">
-                          前往
-                        </block>
-                         <block wx:else>
-                          加入
-                        </block>
-                      </view>
+                      </block>
+                      <block wx:else>
+                        <image src="{{classItem.icon}}"></image>
+                      </block>
                     </view>
-                  </block>
-                </view>
-                 
-                  <view class='noMoreView' hidden="{{!navData[idx].noMore}}">
-                    别再用力了，你已经滑到底啦
                   </view>
-
+                  <view class='cell-messageView'>
+                    <view class='cell-title'>{{classItem.name}}</view>
+                    <view class='cell-school'>{{classItem.grouptype.three.name}}</view>
+                    <view class='cell-message'>
+                      <block wx:if="{{classItem.description.length > 0}}">
+                        <rich-text nodes="{{classItem.description}}"></rich-text>
+                      </block>
+                      <block wx:else>
+                        暂无圈子介绍
+                      </block>
+                    </view>
+                  </view>
+                  <view class="group-join  {{classItem.ingroup == 1 ? 'group-enter' : ''}}" catchtap='joinClass' id="{{classIdx}}">
+                    <block wx:if="{{classItem.ingroup == 1}}">
+                      前往
+                    </block>
+                    <block wx:else>
+                      加入
+                    </block>
+                  </view>
+                </view>
+              </block>
             </view>
 
-           </scroll-view>
-        </block>
+            <view class='noMoreView' hidden="{{!navData[idx].noMore}}">
+              别再用力了，你已经滑到底啦
+            </view>
 
-        <block wx:else>
-            <wxs module="componetName">
-              var componetID = function(index) {
-              return "worklist" + index;
-                }
-              module.exports = {componetID:componetID};
-            </wxs>
-            <work_list fid="{{navData[idx].fid}}" 
-            bind:disVoice='disVoice'
-            bind:seekCurrentAudio='seekCurrentAudio'
-            bind:audio_play='audio_play'
-            bind:stopVoice='stopVoice'
-            bind:clickVideo='clickVideo'
-            bind:postEnter='postEnter'
-            indexPosition="{{indexPosition}}" 
-            currentTab="{{currentTab}}" 
-            index="{{idx}}" 
-            easyTalk="{{false}}" 
-            id="{{componetName.componetID(idx)}}" 
-            usernum="{{navData[idx].uids.length?navData[idx].uids.length:0}}"
-            stateInfo="{{stateInfo}}"></work_list>
-        </block>
+          </view>
+
+        </scroll-view>
+      </block>
+
+      <block wx:else>
+        <wxs module="componetName">
+          var componetID = function(index) {
+            return "worklist" + index;
+          }
+          module.exports = {
+            componetID: componetID
+          };
+        </wxs>
+        <work_list fid="{{navData[idx].fid}}" bind:disVoice='disVoice' bind:seekCurrentAudio='seekCurrentAudio' bind:audio_play='audio_play' bind:stopVoice='stopVoice' bind:clickVideo='clickVideo' bind:postEnter='postEnter' indexPosition="{{indexPosition}}" currentTab="{{currentTab}}"
+          index="{{idx}}" easyTalk="{{false}}" id="{{componetName.componetID(idx)}}" usernum="{{navData[idx].uids.length?navData[idx].uids.length:0}}" stateInfo="{{stateInfo}}"></work_list>
+      </block>
     </swiper-item>
   </swiper>
 
 </view>
 <image src='{{minImgDoc}}postEnter.png' class='postEnter borderShowdow' wx:if="{{currentTab != 0}}" bindtap='postEnter'>发布</image>
-<video id='myVideo'
-autoplay='{{true}}'
-        bindplay="playVideo"
-        bindfullscreenchange="fullScreenChange"
-        bind
-        src="{{currentVideo}}">
-         </video>
+<video id='myVideo' autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{currentVideo}}">
+</video>
 
- <view class='audioMask' hidden="{{recordHidden}}">
-  <view class="recordView">
-    <image mode="widthFix" src="{{minImgDoc}}record_close.png" class="record-close" bindtap="hideRecord"></image>
-    <view class='record-time'>{{formatedRecordTime?formatedRecordTime:'00:00'}}</view>
-    <image class='record-icon' src='{{minImgDoc}}record_icon.png'></image>
-    <view class='record-finish' catchtap='finshRecord'>完成</view>
-  </view>
- </view>
-
- <view class='shareMask' hidden="{{shareHidden}}">
-    <view class='shareContain'>
-      <image class='shareCover' src='{{minImgDoc}}shareMask.png'></image>
-      <view class='closeView' catchtap='closeShareMask'>
-        <image class='close' src='{{minImgDoc}}close.png'></image>
-      </view>
-      <view class='shareTitle'>恭喜你，圈子创建成功了</view>
-      <view class='shareContent'>你可以分享给好友，邀请他们来圈子，也可以完善信息再邀请</view>
-      <button class='shareBtn' open-type="share" type="primary" id='joinclass'>立即邀请好友</button>
+<view class='shareMask' hidden="{{shareHidden}}">
+  <view class='shareContain'>
+    <image class='shareCover' src='{{minImgDoc}}shareMask.png'></image>
+    <view class='closeView' catchtap='closeShareMask'>
+      <image class='close' src='{{minImgDoc}}close.png'></image>
     </view>
- </view>
-
- 
+    <view class='shareTitle'>恭喜你，圈子创建成功了</view>
+    <view class='shareContent'>你可以分享给好友，邀请他们来圈子，也可以完善信息再邀请</view>
+    <button class='shareBtn' open-type="share" type="primary" id='joinclass'>立即邀请好友</button>
+  </view>
+</view>

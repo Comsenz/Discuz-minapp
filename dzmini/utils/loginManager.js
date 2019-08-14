@@ -37,7 +37,7 @@ function toLogin() {
 }
 
 var openid = ''
-var wxname = ''
+var unionid = ''
 
 module.exports = {
   loginOut: loginOut,
@@ -45,5 +45,5 @@ module.exports = {
   isLogin: isLogin,
   toLogin: toLogin,
   openid: openid,
-  wxname: wxname
+  unionid: unionid
 }

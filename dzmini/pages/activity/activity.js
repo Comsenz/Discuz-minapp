@@ -1,7 +1,6 @@
 // pages/activity/activity.js
 const workListUrl = require('/../../config').workListUrl
 const minImgDoc = require('../../config').minImgDoc
-const duration = 2000
 const app = getApp()
 var self
 Page({
@@ -11,7 +10,6 @@ Page({
    */
   data: {
     minImgDoc: minImgDoc,
-    member_identity: '',
     datalist: [],
     loading: false,
     pagenum: 1,
@@ -94,30 +92,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    self.setData({ member_identity: app.globalData.member_identity })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
     wx.showLoading({
       title: 'loading...',

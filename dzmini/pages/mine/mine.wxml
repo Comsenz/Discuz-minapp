@@ -1,7 +1,7 @@
 <view class='l_main'>
   <view class='mi_top' bindtap="goToModify">
     <view class='fl mi_head'>
-      <image src='{{avatar}}'></image>
+      <image mode='aspectFill' src='{{avatar}}'></image>
     </view>
     <view class='fl mi_msg'>
       <view class='mi_nick'>{{username}}</view>
@@ -13,6 +13,11 @@
   </view>
 
   <view class='mi_block'>
+    <view class='mi_item' bindtap="goToBound">
+      <!-- <view class='mi_icon icon_coll'></view> -->
+      <image class='mi_icon mi_image' mode='aspectFit' src='/image/boundm.png'></image>
+      <view class='fr mi_bar bar_right'>绑定管理</view>
+    </view>
     <view class='mi_item' bindtap="goToFavorite">
       <view class='mi_icon icon_coll'></view>
       <view class='fr mi_bar bar_right'>我的收藏</view>

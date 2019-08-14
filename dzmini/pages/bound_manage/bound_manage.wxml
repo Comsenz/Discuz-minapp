@@ -1,0 +1,33 @@
+<!--pages/bound_manage/bound_manage.wxml-->
+<view class='l_main'>
+  <view class='mi_top'>
+    <view class='mi_head'>
+      <image mode='aspectFill' src='{{info.member_avatar}}'></image>
+    </view>
+    <view class='mi_nick'>{{info.member_username}}</view>
+  </view>
+
+  <view class='mi_block'>
+    <block wx:for="{{info.users}}">
+      <view class='mi_item'>
+        <view class='b_left'>
+          <image class='mi_icon' src="{{item.type!='qq'?'/image/bound_wx.png':'/image/bound_qq.png'}}"></image>
+          <view class='fr'>
+            <block wx:if="{{item.type=='weixin'}}">
+              微信
+            </block>
+            <block wx:if="{{item.type=='minapp'}}">
+              小程序
+            </block>
+            <block wx:if="{{item.type=='qq'}}">
+              QQ
+            </block>
+            <text class="b-status">({{item.status == 1 ? '已绑定':'未绑定'}})</text>
+          </view>
+        </view>
+        <view class="b_right {{item.type == 'minapp' && item.status != 1 ?'can-bound':''}}" bindtap="boundChange" id="{{index}}">{{item.status == 1 ? '解绑' : '绑定'}}</view>
+      </view>
+    </block>
+
+  </view>
+</view>

@@ -1,143 +1,150 @@
 <import src="/pages/common_temp/audio_player.wxml" />
-<scroll-view scroll-y="true" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend='touchEnd'
-    bindscrolltolower="lower" enable-back-to-top='true' upper-threshold="-80">
-    <view class="header" hidden="{{scrollTop >= 0}}">
-              <view class='headerShow'>
-                <view>{{refreshMsg}}</view>
+<scroll-view scroll-y="true" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend='touchEnd' bindscrolltolower="lower" enable-back-to-top='true' upper-threshold="-80">
+  <view class="header" hidden="{{scrollTop >= 0}}">
+    <view class='headerShow'>
+      <view>{{refreshMsg}}</view>
+    </view>
+  </view>
+  <view class='mainView'>
+    <image class='pointView' style="left:{{indexPosition}}rpx" src='{{minImgDoc}}pointView.png' id='pointView'></image>
+    <view class='classInfoBg borderShowdow'>
+      <view class='class-message'>
+        <rich-text nodes="{{dataDic.Variables.forum.description?dataDic.Variables.forum.description:'暂无简介'}}"></rich-text>
+      </view>
+
+      <view class='class-show' wx:if="{{!easyTalk}}">
+        <view class='class-numberItem'>
+          <view class='class-number'>{{dataDic.Variables.forum.posts?dataDic.Variables.forum.posts:"0"}}</view>
+          <view class='class-numberItem-name'>主题数</view>
+        </view>
+        <view class='class-numberItem' bindtap='goToMoreUser' id="{{dataDic.Variables.forum.fid}}">
+          <!-- <view class='class-number'>{{dataDic.Variables.forum.membernum?dataDic.Variables.forum.membernum:"0"}}</view> -->
+          <view class='class-number'>{{usernum}}</view>
+          <view class='class-numberItem-name'>成员数</view>
+        </view>
+        <view class='enterClass'>
+          <view class='badage' hidden='{{!((dataDic.Variables.forum.groupuserinfo.level == 1 || dataDic.Variables.forum.groupuserinfo.level == 2) && dataDic.Variables.forum.moduser > 0)}}'></view>
+          <image src='{{minImgDoc}}classManage.png' class='info-more' bindtap='classInfoManage' id="{{dataDic.Variables.forum.fid}}"></image>
+        </view>
+      </view>
+
+      <view class='easyTalkDesc' wx:if="{{easyTalk}}">
+        <view class='class-numberItem'>
+          <view class='class-number'>{{dataDic.Variables.forum.todayposts?dataDic.Variables.forum.todayposts:"0"}}</view>
+          <view class='class-numberItem-name'>今日</view>
+        </view>
+        <view class='class-numberItem'>
+          <view class='class-number'>{{dataDic.Variables.forum.threads?dataDic.Variables.forum.threads:"0"}}</view>
+          <view class='class-numberItem-name'>主题</view>
+        </view>
+        <view class='class-numberItem'>
+          <view class='class-number'>{{stateInfo.totalmembers}}</view>
+          <view class='class-numberItem-name'>成员数</view>
+        </view>
+      </view>
+    </view>
+
+
+
+
+    <view class='messageList borderShowdow'>
+      <view class='easyTalkNav' wx:if="{{easyTalk}}">
+        <block wx:for="{{easyNav}}" wx:key="{{item.name}}">
+          <view class="easyTalkNavItem  {{esaySelected == index ?'easyTalkActive':''}}" id="{{index}}" bindtap='easyTalkNavClick'>{{item.name}}</view>
+        </block>
+      </view>
+
+      <view class='easyTop' wx:if="{{easyTalk}}" wx:if="{{toplist.length > 0}}">
+        <block wx:for="{{toplist}}" wx:key="{{index}}">
+          <view class='easyTopCell' id="{{index}}" bindtap='topCellClick'>
+            <text>置顶</text>{{item.subject}}</view>
+        </block>
+      </view>
+
+
+
+
+      <block wx:for="{{datalist}}" wx:for-index="cellIdx" wx:for-item="cellItem" wx:key="cellIdx">
+        <view class='classCell' id="{{cellIdx}}" bindtap='cellClick'>
+          <image class='class-cell-avatar' src='{{userAvatar}}{{cellItem.authorid}}'></image>
+          <view class='class-cell-contentView'>
+            <view class='username'>
+              {{cellItem.nickname?cellItem.nickname:cellItem.author}}
+            </view>
+            <view class='easyTitle'>{{types[cellItem.typeid]?'【'+types[cellItem.typeid]+'】':''}}{{cellItem.subject}}</view>
+            <text class="message easyMessag">{{cellItem.message}}</text>
+
+            <wxs module="attCount">
+              var onlyOneImg = function(cellItem) {
+                return cellItem.imageA.length == 1 && cellItem.videoA.length == 0 ? true : false;
+              }
+              var onlyOneVideo = function(cellItem) {
+                return cellItem.videoA.length == 1 && cellItem.imageA.length == 0 ? true : false;
+              }
+              module.exports = {
+                onlyImg: onlyOneImg,
+                onlyVideo: onlyOneVideo,
+              };
+            </wxs>
+            <view class="attachementView {{attCount.onlyVideo(cellItem)?'singleVideo':''}}" wx:if="{{cellItem.attachlist.length > 0}}" catchtap="{{attCount.onlyVideo(cellItem)?'clickVideo':''}}" id="{{attCount.onlyVideo(cellItem)?cellItem.videoA[0].attachment:''}}">
+
+              <block wx:for="{{cellItem.imageA}}" wx:for-index="aidx" wx:for-item="attItem" wx:key="{{attItem.aid}}" wx:if="{{aidx < (cellItem.videoA.length > 0 ? 8 : 9)}}">
+                <image class="attachement {{attCount.onlyImg(cellItem)?'singleAtt':''}}" mode="{{attCount.onlyImg(cellItem)?'widthFix':'aspectFill'}}" src="{{attItem.thumb}} " id="{{aidx}}" data-cellindex="{{cellIdx}}" catchtap="lookImage"></image>
+              </block>
+              <block wx:for="{{cellItem.videoA}}" wx:for-index="aidx" wx:for-item="video" wx:key="{{video.aid}}" wx:if="{{aidx < 1}}">
+                <image catchtap='clickVideo' id="{{video.attachment}}" class="attachement" src='{{minImgDoc}}videoPlace.png'></image>
+              </block>
+
+              <block wx:if="{{cellItem.audioA}}">
+                <block wx:for="{{cellItem.audioA}}" wx:for-index="aidx" wx:for-item="audio" wx:key="{{audio.aid}}">
+                  <template is="audio_player" data='{{...audio.toolUse,minImgDoc}}' />
+                </block>
+              </block>
+
+            </view>
+
+            <view class='cell-count'>
+              <view style="display: flex;">
+                <rich-text class='class-cell-time' nodes="{{cellItem.dateline}}"></rich-text>
+                <view class='easyTalkThreadNumber' wx:if="{{easyTalk}}">
+                  <image class='lookimg' src='{{minImgDoc}}looknum.png'></image>
+                  <view>{{cellItem.views}}</view>
+                  <image class='discimg' src='{{minImgDoc}}discnum.png'></image>
+                  <view>{{cellItem.replies}}</view>
+                </view>
+              </view>
+              <view class='toolRight' catchtap='discClick' data-tid='{{cellItem.tid}}' id="{{cellIdx}}">
+                <view class='shareHidden borderShowdow' wx:if="{{cellItem.shareshow == 1 && cellIdx == clickIdx}}">
+                  <button open-type='share' plain='true' catchtap='listShare' data-sharetype='work' id='{{cellIdx}}'>
+                    <image class='shareIcon' src="{{minImgDoc}}workshare.png"></image>
+                  </button>
+                  <view class='sv_sepView'></view>
+                  <button plain='true' catchtap='disVoice' id='{{cellIdx}}' data-tid='{{cellItem.tid}}' data-fid="{{dataDic.Variables.forum.fid}}">
+                    <image class='shareIcon' src="{{minImgDoc}}workvoice.png"></image>
+                  </button>
+                </view>
+                <image src='' class='discIcon' src="{{minImgDoc}}cpostmessage.png" catchtap='discClick' data-tid='{{cellItem.tid}}' id="{{cellIdx}}"></image>
               </view>
             </view>
-              <view class='mainView'>
-              <image class='pointView' style="left:{{indexPosition}}rpx" src='{{minImgDoc}}pointView.png' id='pointView'></image> 
-                <view  class='classInfoBg borderShowdow'>
-                  <view class='class-message' >
-                    {{dataDic.Variables.forum.description?dataDic.Variables.forum.description:"暂无简介"}}
-                  </view>
 
-                  <view class='class-show' wx:if="{{!easyTalk}}">
-                    <view class='class-numberItem'>
-                      <view class='class-number'>{{dataDic.Variables.forum.posts?dataDic.Variables.forum.posts:"0"}}</view>
-                      <view class='class-numberItem-name'>主题数</view>
-                    </view>
-                    <view class='class-numberItem' bindtap='goToMoreUser' id="{{dataDic.Variables.forum.fid}}">
-                      <!-- <view class='class-number'>{{dataDic.Variables.forum.membernum?dataDic.Variables.forum.membernum:"0"}}</view> -->
-                      <view class='class-number'>{{usernum}}</view>
-                      <view class='class-numberItem-name'>成员数</view>
-                    </view>
-                    <view class='enterClass'>
-                      <view class='badage' hidden='{{!((dataDic.Variables.forum.groupuserinfo.level == 1 || dataDic.Variables.forum.groupuserinfo.level == 2) && dataDic.Variables.forum.moduser > 0)}}'></view>
-                      <image src='{{minImgDoc}}classManage.png' class='info-more' bindtap='classInfoManage' id="{{dataDic.Variables.forum.fid}}"></image>
-                    </view>
-                  </view>
-
-                  <view class='easyTalkDesc' wx:if="{{easyTalk}}"> 
-                    <view class='class-numberItem'>
-                      <view class='class-number'>{{dataDic.Variables.forum.todayposts?dataDic.Variables.forum.todayposts:"0"}}</view>
-                      <view class='class-numberItem-name'>今日</view>
-                    </view>
-                    <view class='class-numberItem'>
-                      <view class='class-number'>{{dataDic.Variables.forum.threads?dataDic.Variables.forum.threads:"0"}}</view>
-                      <view class='class-numberItem-name'>主题</view>
-                    </view>
-                    <view class='class-numberItem'>
-                      <view class='class-number'>{{stateInfo.totalmembers}}</view>
-                      <view class='class-numberItem-name'>成员数</view>
-                    </view>
-                  </view>
-                </view>
-
-                  
-                 
-
-                <view  class='messageList borderShowdow'>
-                  <view class='easyTalkNav' wx:if="{{easyTalk}}">
-                    <block wx:for="{{easyNav}}" wx:key="{{item.name}}">
-                    <view class="easyTalkNavItem  {{esaySelected == index ?'easyTalkActive':''}}" id="{{index}}" bindtap='easyTalkNavClick'>{{item.name}}</view>
-                    </block>
-                  </view>
-
-                  <view class='easyTop' wx:if="{{easyTalk}}" wx:if="{{toplist.length > 0}}">
-                     <block wx:for="{{toplist}}" wx:key="{{index}}">
-                      <view class='easyTopCell' id="{{index}}" bindtap='topCellClick'><text>置顶</text>{{item.subject}}</view>
-                    </block>
-                  </view>
-                 
-
-                  
-
-                  <block wx:for="{{datalist}}" wx:for-index="cellIdx" wx:for-item="cellItem" wx:key="cellIdx" >
-                    <view class='classCell' id="{{cellIdx}}" bindtap='cellClick'>
-                    <image class='class-cell-avatar' src='{{userAvatar}}{{cellItem.authorid}}'></image>
-                      <view class='class-cell-contentView'>
-                        <view class='username'>
-                        {{cellItem.nickname?cellItem.nickname:cellItem.author}}
-                        </view>
-                        <view class='easyTitle'>{{types[cellItem.typeid]?'【'+types[cellItem.typeid]+'】':''}}{{cellItem.subject}}</view>
-                        <text class="message easyMessag">{{cellItem.message}}</text>
-
-                      <wxs module="attCount">
-                        var onlyOneImg = function(cellItem) {
-                        return cellItem.imageA.length == 1 && cellItem.videoA.length == 0?true:false;
-                        }
-                        var onlyOneVideo = function(cellItem) {
-                        return cellItem.videoA.length == 1 && cellItem.imageA.length == 0?true:false;
-                        }
-                        module.exports = {onlyImg:onlyOneImg,onlyVideo: onlyOneVideo,};
-                      </wxs> 
-                        <view class="attachementView {{attCount.onlyVideo(cellItem)?'singleVideo':''}}" wx:if="{{cellItem.attachlist.length > 0}}" catchtap = "{{attCount.onlyVideo(cellItem)?'clickVideo':''}}" id="{{attCount.onlyVideo(cellItem)?cellItem.videoA[0].attachment:''}}">
-
-                        <block wx:for="{{cellItem.imageA}}"  wx:for-index="aidx" wx:for-item="attItem" wx:key="{{attItem.aid}}" wx:if="{{aidx < (cellItem.videoA.length > 0 ? 8 : 9)}}">
-                          <image class="attachement {{attCount.onlyImg(cellItem)?'singleAtt':''}}" mode="{{attCount.onlyImg(cellItem)?'widthFix':'aspectFill'}}" src="{{attItem.thumb}} " id="{{aidx}}" data-cellindex="{{cellIdx}}" catchtap="lookImage"></image>
-                        </block>
-                        <block wx:for="{{cellItem.videoA}}" wx:for-index="aidx" wx:for-item="video" wx:key="{{video.aid}}" wx:if="{{aidx < 1}}">
-                          <image catchtap='clickVideo' id="{{video.attachment}}" class="attachement" src='{{minImgDoc}}videoPlace.png'></image>
-                        </block>
-
-                        <block wx:if="{{cellItem.audioA}}">
-                          <block wx:for="{{cellItem.audioA}}" wx:for-index="aidx" wx:for-item="audio" wx:key="{{audio.aid}}">
-                            <template is="audio_player" data='{{...audio.toolUse,minImgDoc}}' />
-                          </block>
-                        </block>
-
-                        </view>
-
-                        <view class='cell-count'>
-                        <view style="display: flex;">
-                          <rich-text class='class-cell-time' nodes="{{cellItem.dateline}}"></rich-text>
-                          <view class='easyTalkThreadNumber' wx:if="{{easyTalk}}">
-                              <image  class='lookimg' src='{{minImgDoc}}looknum.png'></image><view>{{cellItem.views}}</view>
-                              <image class='discimg' src='{{minImgDoc}}discnum.png'></image><view>{{cellItem.replies}}</view>
-                          </view>
-                        </view>
-                          <view class='toolRight' catchtap='discClick' data-tid='{{cellItem.tid}}' id="{{cellIdx}}">
-                            <view class='shareHidden borderShowdow' wx:if="{{cellItem.shareshow == 1 && cellIdx == clickIdx}}">
-                              <button open-type='share'  plain='true' catchtap='listShare' data-sharetype='work'  id='{{cellIdx}}'>
-                                <image class='shareIcon' src="{{minImgDoc}}workshare.png" ></image>
-                              </button>
-                              <view class='sv_sepView'></view>
-                              <button  plain='true' catchtap='disVoice' id='{{cellIdx}}' data-tid='{{cellItem.tid}}' data-fid="{{dataDic.Variables.forum.fid}}"><image class='shareIcon' src="{{minImgDoc}}workvoice.png"></image>
-                              </button>
-                            </view>
-                            <image src='' class='discIcon' src="{{minImgDoc}}cpostmessage.png" catchtap='discClick' data-tid='{{cellItem.tid}}' id="{{cellIdx}}"></image>
-                          </view>      
-                        </view>
-
-                      </view>
-                    </view>
-                  </block>
-
-                  
-          <view class='emptyView' hidden="{{!(datalist.length <= 0)}}">
-            <view style='width:100%;height:10rpx'></view>
-            <image src='{{minImgDoc}}emptyIcon.png'></image>
-            <view class='emptyMsg'>
-              <block wx:if="{{!easyTalk}}">
-              您可真幸运，圈子的第一篇内容属于您发布的，赶紧去<text catchtap='postEnter'>发布</text>吧
-              </block>
-              <block wx:else>
-              还没有精华帖哦~
-              </block>
-            </view>
           </view>
+        </view>
+      </block>
+
+
+      <view class='emptyView' hidden="{{!(datalist.length <= 0)}}">
+        <view style='width:100%;height:10rpx'></view>
+        <image src='{{minImgDoc}}emptyIcon.png'></image>
+        <view class='emptyMsg'>
+          <block wx:if="{{!easyTalk}}">
+            您可真幸运，圈子的第一篇内容属于您发布的，赶紧去
+            <text catchtap='postEnter'>发布</text>吧
+          </block>
+          <block wx:else>
+            还没有精华帖哦~
+          </block>
+        </view>
+      </view>
     </view>
 
     <view class='noMoreView' hidden="{{!noMore}}">

@@ -2,7 +2,6 @@
 const activitySinupListUrl = require('../../config').activitySinupListUrl
 const userAvatar = require('../../config').userAvatar
 const minImgDoc = require('../../config').minImgDoc
-const duration = 2000
 const app = getApp()
 
 var self

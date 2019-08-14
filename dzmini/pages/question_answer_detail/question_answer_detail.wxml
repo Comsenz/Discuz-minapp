@@ -149,7 +149,7 @@
     别再用力了，你已经滑到底啦
   </view>
 </view>
-<video id='detailVideo' autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" bind src="{{currentVideo}}">
+<video id='detailVideo' autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{currentVideo}}">
 </video>
 
 <image src='{{minImgDoc}}postEnter.png' class='postEnter borderShowdow' wx:if="{{currentTab != 0}}" bindtap='postEnter'>发布</image>

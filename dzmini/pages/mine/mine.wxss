@@ -95,19 +95,9 @@ page {
 }
 
 .label_item1 {
-  /* display: inline; */
   float: right;
-  width:10px;
-  height:20px;
-  /* padding-top: 30px;
-  padding-right: 30px; */
-  /* border-radius: 17rpx;
-  font-size: 34rpx;
-  height: 43rpx;
-  line-height: 43rpx;
-  padding: 0 10rpx; 
-  margin-right: -160rpx;
-  color: #fff; */
+  width:20rpx;
+  height:30rpx;
   margin-top: 30rpx;
  } 
 
@@ -146,6 +136,10 @@ page {
   float: left;
   height: 100%;
   width: 42rpx;
+}
+
+.mi_image {
+  width: 50rpx;
 }
 
 .icon_coll {

@@ -39,20 +39,14 @@ Page({
     this.requestData();
     self.setupAudioPlayer();
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-    // this.requestData()
-  },
+
   onReady() {
     this.videoContext = wx.createVideoContext('myVideo')
   },
 
   navClick(e) {
-    let id = e.currentTarget.id
     this.setData({
-      order: id,
+      order: e.currentTarget.id,
       pagenum: 1
     })
     this.requestData()
@@ -119,7 +113,6 @@ Page({
         }
       }
 
-      var usernicknames = res.Variables.usernicknames
       let arr1 = res.Variables.forum_threadlist
       if (res.Variables.threadtypes) {
         this.setData({
@@ -131,11 +124,6 @@ Page({
       var topCheckArr = ['1', '2', '3']
       for (let i = 0; i < arr1.length; i++) {
         let postItem = arr1[i]
-        if (usernicknames) {
-          if (usernicknames[postItem.authorid]) {
-            postItem.nickname = usernicknames[postItem.authorid]
-          }
-        }
         if (postItem.message && postItem.message.length > 0) {
           postItem.message = util.filterHtml(postItem.message)
         }
@@ -147,8 +135,6 @@ Page({
           let videoA = []
           for (let k = 0; k < attachments.length; k++) {
             let attItem = attachments[k]
-
-
             let realIndex = commonArr.length;
             if (this.data.pagenum > 1) {
               realIndex = commonArr.length + this.data.datalist.length
@@ -175,17 +161,15 @@ Page({
               videoA.push(attItem)
             }
           }
-          console.log(imageA);
+
           postItem['imageA'] = imageA
           postItem['audioA'] = audioA
           postItem['videoA'] = videoA
         }
         if (topCheckArr.indexOf(postItem.displayorder) != -1) {
           if (this.data.pagenum == 1) {
-            if (postItem.displayorder == 2 || postItem.displayorder == 3) {
-              if (this.data.fid != postItem.fid) {
-                this.data.notThisFidCount++;
-              }
+            if (this.data.fid != postItem.fid) {
+              this.data.notThisFidCount++;
             }
           }
           topArr.push(postItem)
@@ -199,7 +183,6 @@ Page({
         })
       }
 
-      // console.log(commonArr);
       arr1 = commonArr
       if (this.data.pagenum > 1 && arr1.length > 0) {
         arr1 = this.data.datalist.concat(arr1)
@@ -214,7 +197,7 @@ Page({
       if (res.Variables.forum.allowspecialonly == 0) {
         postTypeArr.push(0);
       }
-      if(group) {
+      if (group) {
         if (group.allowpostpoll) {
           postTypeArr.push(1);
         }
@@ -229,7 +212,6 @@ Page({
       var noMore = false
       var getTotal = this.data.datalist.length + this.data.toplist.length;
       var threadCount = parseInt(res.Variables.forum.threadcount) + this.data.notThisFidCount
-      console.log('------------------->', getTotal, threadCount)
       if (getTotal >= threadCount) {
         noMore = true
       }
@@ -247,7 +229,6 @@ Page({
       wx.stopPullDownRefresh();
     })
   },
-
 
   // 播放视频 -------------------
   clickVideo(e) {
@@ -282,8 +263,7 @@ Page({
       self.stopVoice()
     })
     this.innerAudioContext.onTimeUpdate(() => {
-      console.log("ontimeupdate")
-
+      
       if (!self.data.is_moving_slider) { // 播放中
         self.data.currentAudio = self.data.datalist[self.data.currentAudio.toolUse.listIndex].audioA[0]
 
@@ -325,22 +305,16 @@ Page({
   },
   // 点击播放暂停
   audio_play(e) {
-    console.log(e)
     let listIndex = e.currentTarget.dataset.listindex
-    console.log(listIndex)
     let postItem = self.data.datalist[listIndex]
     let currentAudio = postItem.audioA[0]
-
-    console.log(listIndex, currentAudio)
-
-    var param = {}
-    let audioset = "datalist[" + listIndex + "].audioA[0].toolUse.currentAudio";
-    console.log(audioset);
-    param[audioset] = currentAudio.attachment
-    self.setData(param)
     self.setData({
       currentAudio: currentAudio
     })
+
+    var param = {}
+    let audioset = "datalist[" + listIndex + "].audioA[0].toolUse.currentAudio";
+    param[audioset] = currentAudio.attachment
     let isplay = self.data.currentAudio.toolUse.is_play
     let playstr = "datalist[" + listIndex + "].audioA[0].toolUse.is_play";
     param[playstr] = !isplay
@@ -359,12 +333,9 @@ Page({
     self.innerAudioContext.destroy()
   },
 
-
   playVoice() {
-    let src = self.data.currentAudio.attachment;
-    console.log(self.data.currentAudio.attachment);
-    this.innerAudioContext.src = src;
-    this.innerAudioContext.play()
+    this.innerAudioContext.src = self.data.currentAudio.attachment;
+    this.innerAudioContext.play();
   },
   stopVoice() {
     var param = {}
@@ -380,7 +351,6 @@ Page({
     self.data.currentAudio = self.data.datalist[self.data.currentAudio.toolUse.listIndex].audioA[0]
   },
 
-
   /* *********************** 语音end *********** */
   lookImage(e) {
     let cellItem = self.data.datalist[e.currentTarget.dataset.cellindex]
@@ -390,19 +360,10 @@ Page({
       let item = imageA[i]
       imageSrcArray.push(item.attachment)
     }
-    console.log(imageSrcArray[e.currentTarget.id])
     wx.previewImage({
       current: imageSrcArray[e.currentTarget.id],
       urls: imageSrcArray
     })
-  },
-
-  onPullDownRefresh: function() {
-
-  },
-
-  onReachBottom: function() {
-
   },
 
   topCellClick(e) {
@@ -456,7 +417,6 @@ Page({
 
     var special = this.data.postTypeArr[0];
     this.postSelect(special);
-    
   },
 
   postThreadType(e) {

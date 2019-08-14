@@ -173,7 +173,6 @@ Page({
       }
       var usernicknames = res.Variables.usernicknames
 
-      console.log('success', res);
       let arr1 = self.data.datalist;
       let listArray = res.Variables.postlist;
       for (let i = 0; i < listArray.length; i++) {
@@ -472,7 +471,6 @@ Page({
       self.stopVoice()
     })
     this.innerAudioContext.onTimeUpdate(() => {
-      console.log("ontimeupdate")
 
       if (!self.data.is_moving_slider) { // 播放中
         self.data.currentAudio = self.data.datalist[self.data.currentAudio.toolUse.listIndex].audioA[0]
@@ -628,7 +626,6 @@ Page({
     self.requestMore(false)
   },
   submitPoll() {
-    console.log(self.data.pollanswers)
     var urlStr = pollvoteUrl + '&fid=' + self.data.fid + '&tid=' + self.data.tid
     var postData = {
       formhash: app.globalData.formhash,
@@ -661,8 +658,6 @@ Page({
   onReachBottom: function() {
     if (self.data.hasMore) {
       self.requestMore(true)
-    } else {
-      console.log('没有更多了')
     }
   },
   lookjoin() {

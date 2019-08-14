@@ -263,4 +263,14 @@ view,input,textarea,image,text,button,scroll-view{
   height:98rpx;
   line-height:3;
 }
+
+.special {
+  color: white;
+  font-size: 20rpx;
+  text-align: center;
+  background-color: #5abf39;
+  border-radius: 6rpx;
+  padding: 4rpx 6rpx;
+  margin-right: 4rpx;
+}
 /* 获取信息弹窗 - end */

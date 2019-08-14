@@ -1,7 +1,6 @@
 // pages/questionnaire/questionnaire.js
 const workListUrl = require('/../../config').forumdisplayUrl
 const minImgDoc = require('../../config').minImgDoc
-const duration = 2000
 const app = getApp()
 var self
 Page({
@@ -11,7 +10,6 @@ Page({
    */
   data: {
     minImgDoc: minImgDoc,
-    member_identity:'',
     datalist: [],
     loading: false,
     pagenum: 1,
@@ -87,14 +85,6 @@ Page({
     })
   },
 
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-    self.setData({ member_identity: app.globalData.member_identity })
-  },
-
   onPullDownRefresh: function () {
     wx.showLoading({
       title: 'loading...',
@@ -131,14 +121,6 @@ Page({
     })
   },
   postEnter() {
-    if (app.globalData.member_identity == 2 && app.globalData.member_status != 1) {
-      wx.showModal({
-        content: '老师身份正在审核，请耐心等待',
-        showCancel: false,
-        confirmText: '知道了'
-      })
-      return
-    }
     wx.navigateTo({
       url: '../post_question/post_question?fid=' + self.data.fid,
     })

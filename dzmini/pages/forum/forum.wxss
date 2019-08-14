@@ -15,6 +15,7 @@ view,input,textarea,image,text,button,scroll-view{
 }
 
 .forum_cell {
+  display: flex;
   font-size: 32rpx;
   color: #333333;
   padding: 30rpx 0;
@@ -27,4 +28,5 @@ view,input,textarea,image,text,button,scroll-view{
 .forum_cell text {
   color: #4b89ef;
   font-size: 28rpx;
+  margin-left: 6rpx;
 }

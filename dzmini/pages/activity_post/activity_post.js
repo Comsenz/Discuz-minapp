@@ -5,8 +5,6 @@ const postThreadUrl = require('../../config').postThreadUrl
 const util = require('../../utils/util.js')
 const datacheck = require('../../utils/datacheck.js')
 const minImgDoc = require('../../config').minImgDoc
-
-const duration = 2000
 var self
 const app = getApp()
 // 附件分类
@@ -130,7 +128,7 @@ Page({
         wx.showToast({
           title: '上传成功',
           icon: 'success',
-          duration: 1000
+          duration: app.globalData.duration
         })
         let aid = result.data
         if (type == fileCatalog.image) {
