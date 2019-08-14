@@ -15,19 +15,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info:{}
+    info: {}
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     self = this;
   },
 
-  onShow: function () {
+  onShow: function() {
     this.requestData();
   },
 
   requestData() {
-    app.apimanager.getRequest(oauthsUrl).then(res=> {
+    app.apimanager.getRequest(oauthsUrl).then(res => {
       this.setData({
         info: res.Variables
       });
@@ -43,7 +43,7 @@ Page({
       if (boundItem.type == 'minapp') {
         title = '温馨提示';
         content = '解绑后,下回使用小程序需要重新登录'
-        
+
       }
       var data = {
         unbind: "yes",
@@ -53,8 +53,10 @@ Page({
       wx.showModal({
         title: title,
         content: content,
-        success: function (res) {
-          self.unBound(data);
+        success: function(res) {
+          if (res.confirm) {
+            self.unBound(data);
+          }
         }
       });
     } else {
@@ -88,7 +90,7 @@ Page({
           });
           this.requestData();
         }
-        
+
       }).catch(res => {
         wx.hideLoading()
         wx.showToast({
@@ -103,10 +105,11 @@ Page({
 
   unBound(data) {
     app.apimanager.postRequest(unBindThirdUrl, data).then(res => {
-      if (data.type == 'minapp') {
-        
-      }
+      
       if (res.Message.messageval.indexOf('succeed') != -1) {
+        if (data.type == 'minapp') {
+          this.getOpenid();
+        }
         wx.showToast({
           title: '解绑成功！',
           icon: 'none'
@@ -119,6 +122,23 @@ Page({
         });
       }
     });
+  },
+  
+  getOpenid() {
+    // 登录
+    wx.login({
+      success: res => {
+        let dic = {
+          code: res.code
+        }
+        app.apimanager.getRequest(commonLoginUrl, dic).then(res => {
+          if (res.Message.messageval == 'no_bind') {
+            loginmanager.openid = res.Variables.openid;
+            loginmanager.unionid = res.Variables.unionid;
+          }
+        })
+      }
+    })
   }
 
 })
