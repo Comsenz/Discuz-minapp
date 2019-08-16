@@ -1,7 +1,9 @@
 <!--component/activity_joinMask/activity_joinMask.wxml-->
 <view class='Mask' hidden='{{!joinShow}}'>
   <view class='maskContain'>
-    <view class='maskTip'>注意，参加此活动需要扣除{{specialActivity.cost}}威武</view>
+    <view class='maskTip'>
+    <text wx:if="{{specialActivity.creditcost}}">注意，参加此活动需要扣除{{specialActivity.creditcost}}</text>
+    </view>
     <view class='closeView' catchtap='closeMask'>
       <image class='close' src='{{minImgDoc}}coures_join_close.png'></image>
     </view>
@@ -9,7 +11,7 @@
       <form bindsubmit="formSubmit" report-submit='true' report-submit-timeout="500">
         <block wx:for="{{joinfield}}">
         <view class='inputCell'>
-          <view class='subtitle'>*{{item.title}}：</view>
+          <view class='subtitle'><text>*</text>{{item.title}}：</view>
           <input class='maskInput' name="{{item.fieldid}}" placeholder="请输入{{item.title}}"></input>
         </view>
         </block>

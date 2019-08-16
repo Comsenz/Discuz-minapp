@@ -24,6 +24,7 @@ Page({
 
   onShow: function() {
     this.requestData();
+    this.getOpenid();
   },
 
   requestData() {
@@ -69,38 +70,48 @@ Page({
         return;
       }
 
-      var param = {};
       if (loginmanager.openid) {
-        param['openid'] = loginmanager.openid
+        self.boundminapp();
+      } else {
+        this.setData({
+          clickToBound: true
+        });
+        this.getOpenid();
       }
-      if (loginmanager.unionid) {
-        param['unionid'] = loginmanager.unionid
-      }
-      param['loginsubmit'] = "yes"
-      wx.showLoading({
-        title: '绑定中',
-        icon: 'loading'
-      })
-      app.apimanager.postRequest(commonLoginUrl, param).then(res => {
-        wx.hideLoading()
-        if (res.Message.messageval.indexOf('succeed') != -1) {
-          wx.showToast({
-            title: '绑定成功！',
-            icon: 'none'
-          });
-          this.requestData();
-        }
-
-      }).catch(res => {
-        wx.hideLoading()
-        wx.showToast({
-          title: "出错了",
-          icon: 'none'
-        })
-      });
-
     }
 
+  },
+
+  boundminapp() {
+    var param = {};
+    if (loginmanager.openid) {
+      param['openid'] = loginmanager.openid
+    }
+    if (loginmanager.unionid) {
+      param['unionid'] = loginmanager.unionid
+    }
+    param['loginsubmit'] = "yes"
+    wx.showLoading({
+      title: '绑定中',
+      icon: 'loading'
+    })
+    app.apimanager.postRequest(commonLoginUrl, param).then(res => {
+      wx.hideLoading()
+      if (res.Message.messageval.indexOf('succeed') != -1) {
+        wx.showToast({
+          title: '绑定成功！',
+          icon: 'none'
+        });
+        this.requestData();
+      }
+
+    }).catch(res => {
+      wx.hideLoading()
+      wx.showToast({
+        title: "出错了",
+        icon: 'none'
+      })
+    });
   },
 
   unBound(data) {
@@ -135,6 +146,13 @@ Page({
           if (res.Message.messageval == 'no_bind') {
             loginmanager.openid = res.Variables.openid;
             loginmanager.unionid = res.Variables.unionid;
+            if (self.data.clickToBound == true) {
+              this.setData({
+                clickToBound: false
+              });
+              self.boundminapp();
+              
+            }
           }
         })
       }

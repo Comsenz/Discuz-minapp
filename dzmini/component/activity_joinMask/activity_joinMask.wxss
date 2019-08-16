@@ -13,7 +13,8 @@
   text-align:left;
   margin-left:30rpx;
   margin-top:30rpx;
-  color:#999999;
+  color:orange;
+  height: 25rpx;
 }
 .maskContain {
   position:absolute;
@@ -56,6 +57,9 @@
   white-space: nowrap;
   line-height:3.5;
   overflow: hidden;
+}
+.subtitle text {
+  color: red;
 }
 .maskInput {
   height:95rpx;

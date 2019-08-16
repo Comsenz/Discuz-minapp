@@ -126,3 +126,8 @@ view,input,textarea,image,text,button,scroll-view{
   font-size: 24rpx;
   margin-top: 30rpx;
 }
+
+.t-status {
+  font-size: 24rpx;
+  color: #999999;
+}
