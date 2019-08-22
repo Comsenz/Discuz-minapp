@@ -6,7 +6,6 @@ const apiUrl = baseUrl + '/api/mobile/?'
 const indexUrl = baseUrl + '/api/mobile/index.php?'
 const defaultIcon = baseUrl+"/static/image/common/groupicon.gif";
 const userAvatar = baseUrl +"/uc_server/avatar.php?size=middle&uid=";
-// const minImgDoc = 'https://guanjia.comsenz-service.com' + '/data/attachment/xiaochengxu/minimg/'
 const minImgDoc = baseUrl + '/source/plugin/mobile/template/image/xiaochengxu/minimg/'
 const config = {
   // 下面的地址配合云端 Server 工作

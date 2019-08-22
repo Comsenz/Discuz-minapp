@@ -1,22 +1,24 @@
 <!--pages/forumdisplay/forumdisplay.wxml-->
 <import src="../common_temp/audio_player.wxml" />
 <view class='containView'>
-  <view class='classInfoBg easyTalkDesc borderShowdow'>
-    <view class='class-numberItem'>
-      <view class='class-number'>{{dataDic.Variables.forum.posts?dataDic.Variables.forum.posts:"0"}}</view>
-      <view class='class-numberItem-name'>总帖数</view>
+  <view class='classInfoBg borderShowdow'>
+    <view class="easyTalkDesc">
+      <view class='class-numberItem'>
+        <view class='class-number'>{{dataDic.Variables.forum.posts?dataDic.Variables.forum.posts:"0"}}</view>
+        <view class='class-numberItem-name'>总帖数</view>
+      </view>
+      <view class='class-numberItem'>
+        <view class='class-number'>{{dataDic.Variables.forum.threads?dataDic.Variables.forum.threads:"0"}}</view>
+        <view class='class-numberItem-name'>主题</view>
+      </view>
+      <view class='class-numberItem'>
+        <view class='class-number'>{{dataDic.Variables.forum.rank?dataDic.Variables.forum.rank:'0'}}</view>
+        <view class='class-numberItem-name'>排名</view>
+      </view>
     </view>
-    <view class='class-numberItem'>
-      <view class='class-number'>{{dataDic.Variables.forum.threads?dataDic.Variables.forum.threads:"0"}}</view>
-      <view class='class-numberItem-name'>主题</view>
-    </view>
-    <view class='class-numberItem'>
-      <view class='class-number'>{{dataDic.Variables.forum.rank?dataDic.Variables.forum.rank:'0'}}</view>
-      <view class='class-numberItem-name'>排名</view>
-    </view>
+    <view class="forum-desc"><rich-text nodes="{{dataDic.Variables.forum.description}}"></rich-text></view>
   </view>
 </view>
-
 
 <view class='messageList borderShowdow'>
   <view class='easyTalkNav'>
@@ -39,29 +41,33 @@
         <view class='username'>
           {{member_nickname?member_nickname:cellItem.author}}
         </view>
-        <view class='message'><text class="special" wx:if="{{cellItem.special != 0 && cellItem.special != 2 && cellItem.special != 5}}">
+        <view class='message'>
+          <text class="special" wx:if="{{cellItem.special != 0 && cellItem.special != 2 && cellItem.special != 5}}">
       <block wx:if="{{cellItem.special==1}}">投票</block>
       <block wx:if="{{cellItem.special==2}}">商品</block>
       <block wx:if="{{cellItem.special==3}}">悬赏</block>
       <block wx:if="{{cellItem.special==4}}">活动</block>
       <block wx:if="{{cellItem.special==5}}">辩论</block>
-      </text>
-      {{cellItem.subject}}</view>
+      </text> {{cellItem.subject}}
+        </view>
 
-          <wxs module="attCount">
-            var onlyOneImg = function(cellItem) {
-            return cellItem.imageA.length == 1 && cellItem.videoA.length == 0?true:false;
-            }
-            var onlyOneVideo = function(cellItem) {
-            return cellItem.videoA.length == 1 && cellItem.imageA.length == 0?true:false;
-            }
-            module.exports = {onlyImg:onlyOneImg,onlyVideo: onlyOneVideo,};
-          </wxs> 
-            <view class="attachementView {{attCount.onlyVideo(cellItem)?'singleVideo':''}}" wx:if="{{cellItem.attachlist.length > 0}}" catchtap = "{{attCount.onlyVideo(cellItem)?'clickVideo':''}}" id="{{attCount.onlyVideo(cellItem)?cellItem.videoA[0].attachment:''}}">
+        <wxs module="attCount">
+          var onlyOneImg = function(cellItem) {
+            return cellItem.imageA.length == 1 && cellItem.videoA.length == 0 ? true : false;
+          }
+          var onlyOneVideo = function(cellItem) {
+            return cellItem.videoA.length == 1 && cellItem.imageA.length == 0 ? true : false;
+          }
+          module.exports = {
+            onlyImg: onlyOneImg,
+            onlyVideo: onlyOneVideo,
+          };
+        </wxs>
+        <view class="attachementView {{attCount.onlyVideo(cellItem)?'singleVideo':''}}" wx:if="{{cellItem.attachlist.length > 0}}" catchtap="{{attCount.onlyVideo(cellItem)?'clickVideo':''}}" id="{{attCount.onlyVideo(cellItem)?cellItem.videoA[0].attachment:''}}">
 
-            <block wx:for="{{cellItem.imageA}}"  wx:for-index="aidx" wx:for-item="attItem" wx:key="{{attItem.aid}}" wx:if="{{aidx < (cellItem.videoA.length > 0 ? 8 : 9)}}">
-              <image class="attachement {{attCount.onlyImg(cellItem)?'singleAtt':''}}" mode="{{attCount.onlyImg(cellItem)?'widthFix':'aspectFill'}}" src="{{attItem.thumb}} " id="{{aidx}}" data-cellindex="{{cellIdx}}" catchtap="lookImage"></image>
-            </block>
+          <block wx:for="{{cellItem.imageA}}" wx:for-index="aidx" wx:for-item="attItem" wx:key="{{attItem.aid}}" wx:if="{{aidx < (cellItem.videoA.length > 0 ? 8 : 9)}}">
+            <image class="attachement {{attCount.onlyImg(cellItem)?'singleAtt':''}}" mode="{{attCount.onlyImg(cellItem)?'widthFix':'aspectFill'}}" src="{{attItem.thumb}} " id="{{aidx}}" data-cellindex="{{cellIdx}}" catchtap="lookImage"></image>
+          </block>
           <block wx:for="{{cellItem.videoA}}" wx:for-index="aidx" wx:for-item="video" wx:key="{{video.aid}}" wx:if="{{aidx < 1}}">
             <image catchtap='clickVideo' id="{{video.attachment}}" class='attachement' src='{{minImgDoc}}videoPlace.png'></image>
           </block>
@@ -108,8 +114,8 @@
 
 <!-- postEnter -->
 <post_selectMask group="{{dataDic.Variables.group}}" allowspecialonly="{{dataDic.Variables.forum.allowspecialonly}}" postTypeArr="{{postTypeArr}}" bindpostThread="postThreadType">
-<image src='{{minImgDoc}}postEnter.png' class='postEnter borderShowdow' wx:if="{{currentTab != 0}}" bindtap='postEnter'>发布</image>
+  <image src='{{minImgDoc}}postEnter.png' class='postEnter borderShowdow' wx:if="{{currentTab != 0}}" bindtap='postEnter'>发布</image>
 </post_selectMask>
 
-<video id='myVideo' class='{{fullScreen?"show":"hide"}}'  autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{currentVideo}}">
+<video id='myVideo' class='{{fullScreen?"show":"hide"}}' autoplay='{{true}}' bindplay="playVideo" bindfullscreenchange="fullScreenChange" src="{{currentVideo}}">
 </video>

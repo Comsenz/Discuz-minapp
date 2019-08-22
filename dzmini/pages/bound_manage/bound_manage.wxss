@@ -11,7 +11,6 @@ page {
 }
 
 .mi_top {
-  height: 188rpx;
   padding: 32rpx 30rpx;
   background-color: #fff;
   border-bottom: 1rpx solid #e5e5e5;

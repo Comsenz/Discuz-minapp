@@ -87,6 +87,8 @@ view,input,textarea,image,text,button,scroll-view{
   color: #353535;
   margin-top:10rpx;
   word-break: break-all;
+  display: flex;
+  align-items: center;
 }
 
 .attachement {
@@ -270,7 +272,9 @@ view,input,textarea,image,text,button,scroll-view{
   text-align: center;
   background-color: #5abf39;
   border-radius: 6rpx;
-  padding: 4rpx 6rpx;
+  padding: 0rpx 6rpx;
   margin-right: 4rpx;
+  height: 30rpx;
+  line-height: 30rpx;
 }
 /* 获取信息弹窗 - end */

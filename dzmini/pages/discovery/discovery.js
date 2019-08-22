@@ -78,7 +78,7 @@ Page({
       url = digestUrl
     }
     var data = {
-      page: self.data.page
+      page: self.data.page,
     }
     app.apimanager.getRequest(url, data).then(res => {
       wx.hideLoading();
