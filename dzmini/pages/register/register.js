@@ -27,9 +27,8 @@ Page({
       })
     });
 
-    console.log(app.globalData.userInfo);
     // self.downSeccode()
-    if (app.globalData.userInfo.nickName) {
+    if (app.globalData.userInfo && app.globalData.userInfo.nickName) {
       this.setData({
         username: app.globalData.userInfo.nickName,
       })
