@@ -2,7 +2,6 @@
 const registerUrl = require('../../config').registerUrl;
 const loginmanager = require('../../utils/loginManager');
 const datacheck = require('../../utils/datacheck.js');
-var event = require('../../utils/event.js');
 const app = getApp();
 var self;
 Page({
@@ -14,18 +13,8 @@ Page({
     emailkey: '',
   },
 
-  onUnload: function () {
-    event.remove('userInfoChanged', this);
-  },
-
   onLoad: function(options) {
     self = this
-
-    event.on('userInfoChanged', this, function (data) {
-      self.setData({
-        username: data.username,
-      })
-    });
 
     // self.downSeccode()
     if (app.globalData.userInfo && app.globalData.userInfo.nickName) {
@@ -85,10 +74,10 @@ Page({
     data[this.data.password2key] =  e.detail.value.password2;
     data[this.data.emailkey] =  e.detail.value.email;
     if (loginmanager.openid) {
-      param['openid'] = loginmanager.openid
+      data['openid'] = loginmanager.openid
     }
     if (loginmanager.unionid) {
-      param['unionid'] = loginmanager.unionid
+      data['unionid'] = loginmanager.unionid
     }
     var regnameurl = registerUrl + '&mod=' + app.globalData.regname;
     wx.showLoading();
@@ -112,6 +101,4 @@ Page({
       });
     })
   },
-
-
 })

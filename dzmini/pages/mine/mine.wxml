@@ -1,4 +1,4 @@
-<view class='l_main'>
+<view class='l_main' wx:if="{{uid}}">
   <view class='mi_top' bindtap="goToModify">
     <view class='fl mi_head'>
       <image mode='aspectFill' src='{{avatar}}'></image>

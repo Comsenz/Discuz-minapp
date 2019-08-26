@@ -16,19 +16,25 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {  
-  },
-  onShow:function(){
-    var uid = app.globalData.uid;
+  onLoad: function(options) {
     _this = this;
-    this.setData({
-      uid: uid,
-    });
-    
-    if (loginmanager.isLogin()) {
+  },
+  onShow: function() {
+    var uid = app.globalData.uid;
+    if (!uid) {
+      wx.switchTab({
+        url: '/pages/discovery/discovery',
+        complete: function(res) {
+          loginmanager.toLogin();
+        }
+      });
+    } else {
+      this.setData({
+        uid: uid,
+      });
       this.requestProfile();
     }
-    
+
   },
 
   requestProfile() {
@@ -60,7 +66,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '切换账号将退出原有账号',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           loginmanager.toLogin()
         }
@@ -68,7 +74,7 @@ Page({
     })
   },
 
-  goToModify(){
+  goToModify() {
     if (!loginmanager.isLogin()) {
       return
     }
@@ -109,5 +115,5 @@ Page({
       url: '../mine_work/mine_work?is_reply=true',
     })
   },
-  
+
 })

@@ -33,7 +33,7 @@ function isLogin() {
 function toLogin() {
   wx.navigateTo({
     url: '/pages/login/login',
-  })
+  });
 }
 
 var openid = ''
