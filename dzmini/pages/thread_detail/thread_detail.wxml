@@ -187,4 +187,5 @@
   <view class='replyAudio' catchtap='replyAudio'></view>
   <view class='replyImage' catchtap='replyImage'></view>
   <view class='replyVideo' catchtap='replyVideo'></view>
+  <view class="toolback"></view>
 </view>

@@ -282,7 +282,7 @@ view,input,textarea,image,text,button,scroll-view{
   position: fixed; 
   bottom: 0rpx; 
   width: 100%;
-  height: 125rpx;
+  height: calc(125rpx + env(safe-area-inset-bottom));
   display: flex;
 }
 
@@ -291,6 +291,15 @@ view,input,textarea,image,text,button,scroll-view{
   height: 125rpx;
   position:absolute;
   z-index: -1;
+}
+
+.toolback {
+  width: 100%;
+  height: 80rpx;
+  position:absolute;
+  bottom: 0;
+  z-index: -2;
+  background-color: white;
 }
 
 .flowerAndDiscuss {
